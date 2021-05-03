@@ -1,0 +1,519 @@
+\documentclass[11pt,a4paper]{report}
+\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{slashed}
+\usepackage{xfrac}
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+\setlength{\parindent}{0cm}
+\setlength{\parskip}{0.2cm}
+
+\renewcommand{\baselinestretch}{1.2}
+
+
+\author{Joris Josiek}
+\title{Skript QT2}
+
+\setcounter{chapter}{-1}
+\begin{document}
+\maketitle
+
+\tableofcontents
+
+\chapter{Grundstruktur der Quantenmechanik}
+
+\section{Postulate}
+
+\textbf{Essenz:} Doppelspaltexperiment / Stern-Gerlach-Experiment\par 
+\textbf{Zustand:} eindeutig / maximal präpariertes physikalisches System, reproduzierbares Verhalten, eindeutige Zeitentwicklung. Beschreibung durch $\left|\psi\right\rangle$ eines Hilbertraums. Linearkombinationen erlaubt!\par 
+\textbf{Observablen:} Operatoren $\hat{A}$ (hermitesch, da reelle Eigenwerte $\leftrightarrow$ mögliche Messwerte)\par 
+\textbf{Wahrscheinlichkeit:} Für ein Messergebnis $a_n$ ist die Wahrscheinlichkeit $\left|\left\langle a_n|\psi\right\rangle\right|^2$ (normierte Zustände).\par 
+\textbf{Erwartungswert:} (Korrollar) $\langle\psi|\hat{A}|\psi\rangle$\par 
+\textbf{Zeitentwicklung:} $\hat{H}$ (Hamiltonoperator), $\hat{H}$ sei nicht expl. zeitabh.
+$$i\hbar\frac{\mathrm{d}}{\mathrm{d}t}\langle\psi_1|\hat{A}|\psi_2\rangle = \langle\psi_1|[\hat{A},\hat{H}]|\psi_2\rangle$$
+\textbf{Schrödinger-Bild}
+$$i\hbar\frac{\mathrm{d}}{\mathrm{d}t}|\psi (t)\rangle = \hat{H}|\psi (t)\rangle$$
+\textbf{Heisenberg-Bild}
+$$|\psi_H\rangle = e^{i\hat{H}t}|\psi (t)\rangle$$
+$$\hat{A}_H(t)=e^{i\hat{H}t}\hat{A}e^{-i\hat{H}t}$$
+$$i\hbar\frac{\mathrm{d}}{\mathrm{d}t}\hat{A}_H(t)=[\hat{A}_H(t),\hat{H}]$$
+
+\section{Ortsraum, Teilchen in 1D}
+
+Operatoren $\hat{x}$, $\hat{p}$, $[\hat{x},\hat{p}]=i\hbar$.\par 
+EZe: $|x\rangle$, $|p\rangle$ (bilden jeweils Basis)\par 
+
+Wellenfunktionen: $\psi (x) :=\langle x|\psi\rangle$, $\tilde{\psi}(p):=\langle p|\psi\rangle$
+
+\chapter{Relativistische Quantenmechanik}
+
+\newcommand{\dt}{\frac{\mathrm{d}}{\mathrm{d}t}}
+\newcommand{\dif}{\mathrm{d}}
+\newcommand{\vf}[1]{\mathbf{#1}}
+
+
+\section{Kontinuierliche Symmetrien (Bsp. Rotationsinvarianz)}
+
+Frage: Was ist Drehimpuls?
+
+\subsection{Drehungen in 3D}
+
+($\rightarrow$ Liegruppe $SO(3)$)\par 
+
+Aktive Drehung: Bsp. $\vf{v}'=R_z(\theta )\vf{v}$ (Drehung um Winkel $\theta$ um $z$-Achse)\par 
+
+Infinitesimale Drehungen, $\theta = \varepsilon\rightarrow 0$:
+$$R_z(\varepsilon)=\mathbf{1} -i\varepsilon\begin{pmatrix}
+0 & -i & 0 \\
+i & 0 & 0 \\
+0 & 0 & 0
+\end{pmatrix} = \mathbf{1} - i\varepsilon \ell_z$$
+$$\ell_z = \begin{pmatrix}
+0 & -i & 0 \\
+i & 0 & 0 \\
+0 & 0 & 0  
+\end{pmatrix}\qquad\ell_x = \begin{pmatrix}
+0 & 0 & 0 \\
+0 & 0 & -i \\
+0 & i & 0  
+\end{pmatrix}\qquad\ell_y = \begin{pmatrix}
+0 & 0 & i \\
+0 & 0 & 0 \\
+-i & 0 & 0  
+\end{pmatrix}\qquad (\ell_k)_{i,j}=-i\varepsilon_{ijk}$$
+
+``Generatoren der zugehörigen Lie-Algebra"\par 
+
+Charakteristische Kommutatorrelation: $[\ell_i, \ell_j]=i\varepsilon_{ijk}\ell_k$\par 
+
+Endliche Drehungen: $R_z(\theta ) = \exp\:(-i\theta\ell_z)$
+
+\subsection{Darstellungen}
+
+Eine Darstellung einer Gruppe ist eine Zuordnung: $R\mapsto D(R)$ = Matrix / linearer Operator, mit 
+$$D(R_1R_2) = D(R_1)D(R_2)$$
+Physikalische Idee: Viele physikalische Größen $\rightarrow$ angeben, wie sie sich unter Drehungen verhält.
+\begin{itemize}
+\item Impuls: $\vf{p}\longmapsto \vf{p}'=R\vf{p}$
+\item Energie: $E\longmapsto E' = E=D(R)E$ mit $\forall R: D(R)=1$
+\item Ladung: $Q\longmapsto Q' = Q$
+\item Dichte: $\rho \longmapsto \rho ' :\rho'(R\vf{x})=\rho (\vf{x})$
+\item Quantenzustand $|\psi\rangle\longmapsto |\psi '\rangle = \hat{D}(R)|\psi\rangle$
+\end{itemize}
+
+Generatoren für Darstellungen: $\theta=\varepsilon\rightarrow 0$\par 
+$$D(R_z(\varepsilon ))=\vf{1} - i\varepsilon J_z\qquad\text{(Analog für x, y)}$$
+mit Operatoren $J_x, J_y, J_z$ wie $D(R_z(\varepsilon ))$, diese sind spezifisch für die Darstellung.
+$$D(R_z(\theta ))=\exp\:(-i\theta J_z)$$
+$$[J_i, J_j] = i\varepsilon_{ijk}J_k$$
+\emph{Die Generatoren jeder Darstellung erfüllen dieselben Vertauschungsrelationen.}
+
+\subsection{Drehungen in der Quantenmechanik}
+
+\newcommand{\ket}[1]{|#1\rangle}
+\newcommand{\braket}[2]{\langle #1|#2\rangle}
+\newcommand{\erwop}[3]{\langle #1|#2|#3\rangle}
+
+Darstellung von Drehungen:
+$$\hat{D}(R_k(\theta )):\ket{\psi}\mapsto\ket{\psi'}=\hat{D}(R_k(\theta ))\ket{\psi}$$
+Gruppenstruktur:
+$$\hat{D}(R_1R_2)=\hat{D}(R_1)\hat{D}(R_2)$$
+Falls Symmetrie:
+$$\braket{\psi '}{\phi '} = \braket{\psi}{\phi} \Leftrightarrow\erwop{\psi}{\hat{D}^\dagger\hat{D}}{\phi}$$
+$\hat{D}(R)$ ist ein \textit{unitärer} Operator. $[\hat{D}(R), H]=0$.\par 
+
+Infinitesimale Drehung:
+$$\hat{D}(R_k(\varepsilon ))=\vf{1}-i\varepsilon\hat{J}_k$$
+Falls Symmetrie:
+$$[\hat{J}_k, \hat{H}] = 0\qquad [\hat{J}_i, \hat{J}_j]=i\varepsilon_{ijk}\hat{J}_k$$
+Per Definition: $\hat{\vf{J}}$ is Drehimpuls dieser Quantentheorie.\par 
+
+Konsequenzen bei solchen $\hat{\vf{J}}$-Operatoren: (QT1)
+$$[\hat{J}_z, \hat{\vf{J}}]=0\qquad \hat{J}_\pm =\hat{J}_x\pm i\hat{J}_y$$
+Mögliche Eigenzustände: $\ket{j, m}$ mit $j = 0, \frac{1}{2}, 1, \frac{3}{2}, \ldots$ und $m=-j, \ldots , j$\par 
+
+Einfachste nicht-triviale Darstellung: $j=\frac{1}{2}$, d.h. 2-Zustandssystem $\ket{\pm}:=\ket{j=\frac{1}{2},m=\pm\frac{1}{2}}$.
+$$\ket{\psi}=\psi_+\ket{+}+\psi_-\ket{-}$$
+$$\psi\overset{R_k(\theta )}{\longmapsto}\psi' = \left(\vf{1}-i\theta\frac{\sigma_k}{2}\right)\psi$$
+mit Pauli-Matrizen $\sigma_k$.
+
+\section{Lorentzinvarianz}
+
+\subsection{Lorentzgruppe}
+
+Drehungen: $(t,\vf{r})\longmapsto (t,R(\vf{r}))$\par 
+Boosts in x-Richtung:
+$$\begin{pmatrix}
+t \\ x \\ y \\ z
+\end{pmatrix}\longmapsto\begin{pmatrix}
+\cosh\beta & \sinh\beta & 0 & 0 \\
+\sinh\beta & \cosh\beta & 0 & 0 \\
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 1
+\end{pmatrix}\begin{pmatrix}
+t \\ x \\ y \\ z
+\end{pmatrix}$$
+Generatoren: $\ell_x, \ell_y, \ell_z$ wie gehabt. Boosts: $\Lambda_x(\beta ) = \vf{1} - i\beta k_x+\mathcal{O}(\beta^2)$
+$$k_x=i \begin{pmatrix}
+0 & 1 & 0 & 0 \\
+1 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 
+\end{pmatrix}\qquad k_y=i \begin{pmatrix}
+0 & 0 & 1 & 0 \\
+0 & 0 & 0 & 0 \\
+1 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 
+\end{pmatrix}\qquad k_z=i \begin{pmatrix}
+0 & 0 & 0 & 1 \\
+0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 \\
+1 & 0 & 0 & 0 
+\end{pmatrix}$$
+6 Generatoren:
+Vertauschungsrelationen (und zyklisch):
+$$[\ell_x, \ell_y]=i\ell_z$$
+$$[k_x,k_y]=-i\ell_z$$
+$$[\ell_x,k_y]=ik_z$$
+
+\subsection{Darstellungen}
+
+\textbf{Def. Darstellung:} Matrizen/Operatoren $J_i$, $K_i$, mit $[J_x,J_y]=iJ_z$, $[K_x,K_y]=-iJ_z$, $[J_x,K_y]=iK_z$.\par 
+
+Triviale Darstellung: $J_i=0$, $K_i=0$\par 
+
+Spin $\frac{1}{2}$: $J_i=\sigma^i/2$, $K_i=-i\sigma^i/2$. Die Elemente des 2D Darstellungsraumes nennt man \textit{linkshändige Weyl-Spinoren}. (Andere Variante mit $K_i=+i\sigma^i/2$: Elemente sind \textit{rechtshändige Weyl-Spinoren})\par 
+
+\paragraph{Partität/Raumspiegelung $P$:} $\vf{x}\mapsto -\vf{x}$, $\vf{p}\mapsto -\vf{p}$, $\vf{J}\mapsto\vf{J}$, $\vf{K}\mapsto -\vf{K}$. Falls $P$-Transformation genutzt werden soll, sind beide Darstellungen nötig $\Rightarrow$ 4D komplexer Spinorraum aus \textit{Dirac-Spinoren} notwendig.
+$$\Psi =\begin{pmatrix}
+\psi_\alpha \\ \overline{\psi}^{\dot{\alpha}}
+\end{pmatrix}$$
+Darstellung für Diracspinoren:
+$$J_i=\begin{pmatrix}
+\frac{\sigma^i}{2} & 0 \\ 0 & \frac{\sigma^i}{2}
+\end{pmatrix}\qquad K_i =\begin{pmatrix}
+-i\frac{\sigma^i}{2} & 0 \\ 0 & i\frac{\sigma^i}{2}
+\end{pmatrix}$$
+Diracspinoren: 4-komponentige komplexe Spinoren. Einfachste Darstellung mit $P$-Transformation.\par 
+
+Lorentztransformationen und Darstellungen:
+$${\Lambda^\mu}_\nu = {\delta^\mu}_\nu +{\omega^\mu}_\nu$$
+(mit infinitesimalem und antisymmetrischem $\omega^{\mu\nu}$ (wenn beide Indizes oben!), z.B Drehung, Boost)
+
+$$\Lambda = \vf{1} -\frac{i}{2}\omega^{\mu\nu}L_{\mu\nu}$$
+
+mit $L_{ij} = -L_{ji} = \varepsilon_{ijk}\ell_k$ und $L_{i0}=-L_{0i}=k_i$
+
+Für eine Darstellung $S$:
+$$\boxed{S(\Lambda ) := \vf{1}-\frac{i}{2}\omega^{\mu\nu}L_{\mu\nu}}$$
+
+\subsection{Diracspinoren und $\gamma$-Matrizen}
+$\psi = (\psi_1,\psi_2,\psi_3,\psi_4)$ = komplexer Diracspinor.\par 
+
+\paragraph{Def $\gamma$-Matrizen:} $\{\gamma^\mu ,\gamma^\nu\}=2g^{\mu\nu}\vf{1}$\par 
+
+Weyl-Form:
+$$\gamma^0 :=\begin{pmatrix}
+0 & \vf{1}_2 \\ \vf{1}_2 & 0 
+\end{pmatrix}\qquad\gamma^i \begin{pmatrix}
+0 & \sigma^i \\ -\sigma^i & 0
+\end{pmatrix}$$
+Die Generatoren $\vf{J}$, $\vf{K}$ lassen sich so ausdrücken:
+$$S_{\mu\nu}=\frac{i}{4}[\gamma_\mu,\gamma_\nu]$$
+Dies reproduziert die Darstellungsmatrix $L_{\mu\nu}$ der Lorentztransformation.\par 
+
+${\gamma^\mu}^\dagger$: ${\gamma^0}^\dagger = \gamma^0$, ${\gamma^i}^\dagger = -\gamma^i = \gamma^0\gamma^i\gamma^0$
+$${S^\dagger}_{\mu\nu} = \gamma^0 S_{\mu\nu} \gamma^0$$
+$$S^{-1}(\Lambda )=\vf{1}+\frac{i}{2}\omega^{\mu\nu}S_{\mu\nu}=\gamma^0 S^\dagger (\Lambda )\gamma^0$$
+Def \textit{Adjungierter Spinor:} $\overline{\psi}:=\psi^\dagger\gamma^0$\par 
+Lorentz:
+$$\psi\longmapsto S(\Lambda )\psi$$
+$$\overline{\psi}\longmapsto \overline{\psi}S^{-1}(\Lambda )$$
+$$\overline{\psi}\psi\longmapsto\overline{\psi}\psi$$
+$$\overline{\psi}\gamma^\mu\psi\longmapsto {\Lambda^\mu}_\nu\overline{\psi}\gamma^\nu\psi$$
+$$S^{-1}(\Lambda )\gamma^\mu S(\Lambda )={\Lambda^\mu}_\nu\gamma^\nu$$
+
+\section{Überblick über relativistische Wellengleichungen}
+
+Welche Gleichungen wären erlaubt durch Lorentzinvarianz?\par 
+
+Notation: \par 
+\begin{itemize}
+\item 4-Vektoren: $(x^\mu )=(t,\vf{x})$, $(p^\mu)=(E,\vf{p})$
+\item Lorentzinvarianten sind Skalarprodukte, z.B. $p^\mu p_\mu = E^2-\vf{p}^2=:m^2$
+\item Ableitungen: $\partial_\mu = \left(\frac{\partial}{\partial x^\mu}\right) = (\partial_t,\nabla )$, $\square = \partial_\mu\partial^\mu = \partial_t -\Delta$
+\item Elektrodynamik: $j^\mu = (\rho ,\vf{j})$, $\partial_\mu j^\mu = 0$, $A^\mu = (\phi, \vf{A})$, $F^{\mu\nu}=\partial^\mu A^\nu -\partial^\nu A^\mu$\\
+Maxwell: $\partial_\mu F^{\mu\nu} = \mu_0 j^\nu$, homogene Gleichung automatisch durch Potentiale erfüllt.\\
+Lorentz-Transf.: $x'^\mu ={\Lambda^\mu}_\nu x^\nu$, $j'^\mu (x')={\Lambda^\mu}_\nu j^\nu (x)$
+\end{itemize}
+
+\subsection{Klein-Gordon-Gleichung}
+
+$\phi (x)$ sei Skalarfeld ($\phi\mapsto \phi '$ mit $\phi '(x')=\phi (x)$).
+
+$$\boxed{\square \phi (x) + m^2\phi (x) = 0}$$
+
+\paragraph{Interpretation?}
+\begin{itemize}
+\item Einfachste relativistische Differentialgleichung
+\item ``erraten aus QM'' (mit QM Ersetzungsregeln $E\rightarrow i\partial_t$, $\vf{p}\rightarrow -i\nabla$)
+\item Nichtrelativistischer Limes: ein Teilchen, $E\approx m + \text{Korrektur}$. Ansatz:
+$$\psi (\vf{x},t)=e^{-imt}\psi_{n.r.} (\vf{x},t)$$
+$$\Rightarrow \partial_t^2\psi = (-2im\partial_t\psi_{n.r.}-m^2\psi_{n.r.}+\mathcal{O}(\ddot{\psi}))e^{-imt}$$
+$$\Rightarrow 2im\partial_t\psi_{n.r.}=-\Delta\psi_{n.r.}$$
+\item Klassische Feldgleichung:
+$$\mathcal{L}_{KG}=(\partial^\mu \phi^*)(\partial_\mu\phi )-m^2\phi^*\phi$$
+Euler-Lagrange:
+$$0=\partial_\rho\frac{\partial\mathcal{L}}{\partial (\partial_\rho\phi^*)}-\frac{\partial\mathcal{L}}{\partial\phi^*}$$
+\end{itemize}
+
+\paragraph{Rolle als QM Wellengleichung für ein Teilchen in Ortsdarstellung:}
+\mbox{}\par
+Schrödinger-Gleichung nicht-relativistisch: $i\partial_t\psi = -\frac{\Delta}{2m}\psi$\\
+Klein-Gordon-Gleichung: $-\partial_t^2\phi = (-\Delta +m^2)\phi$\par 
+
+Aufenthaltwahrscheinlichkeitsdichte: Suche $(j^\mu )=(\rho ,\vf{j})$ mit Kontinuitätsgleichung $\partial_\mu j^\mu =0$:
+$$\phi^* (\square + m^2)\phi -\phi (\square+m^2)\phi^* = 0$$
+$$=\partial_\mu [\phi^*\partial^\mu \phi - \phi\partial^\mu\phi^*]$$
+Definiere 4-Stromdichte:
+$$j^\mu = \frac{i}{2m}\left[\phi^*\partial^\mu\phi -\phi\partial^\mu\phi^*\right]$$
+$$\Rightarrow \vf{j}=-\frac{i}{2m}\left[\phi^*\nabla\phi -\phi\nabla\phi^*\right]$$
+$$\Rightarrow \rho = \frac{i}{2m}\left[\phi^*\partial_t\phi - \phi\partial_t\phi^*\right]$$
+\paragraph{Interpretation}
+\begin{itemize}
+\item $\rho$ ist nicht positiv definit! $\rho < 0$ möglich! Also kann $\rho$ nicht als Aufenthaltswahrscheinlichkeit interpretiert werden.
+\item Lösungen: $\phi\sim e^{-iEt+i\vf{p}\cdot\vf{x}}$: $\rho = \frac{E}{m}>0$, $\rho\sim e^{+iEt-i\vf{p}\cdot\vf{x}}$: $\rho = -\frac{E}{m}<0$: negative Energie möglich!?
+\item Idee: KG-Gl. beschreibt zwei Teilchentypen (Teilchen + Antiteilchen) mit entgegengesetzten Ladungen. Interpretiere $\rho$ als elektrische Ladungsdichte.
+\end{itemize}
+
+\subsection{Dirac-Gleichung}
+
+$\psi (x)$ sein ``Dirac-Spinorfeld'' d.h. $\psi\mapsto \psi '$ mit $\psi'(x')=S(\Lambda ) \psi (x)$.
+$$S(\Lambda ) = \vf{1}_4-\frac{i}{2}\omega^{\mu\nu}S_{\mu\nu}$$
+$$S_{\mu\nu} = \frac{i}{4}[\gamma_\mu ,\gamma_\nu ]$$
+$$\{\gamma^\mu ,\gamma^\nu\} = 2g^{\mu\nu}\vf{1}_4$$
+Dirac-Gleichung:
+$$\boxed{ (i\partial_\mu\gamma^\mu - m)\psi =0}$$
+
+\paragraph{Interpretation:}
+\begin{itemize}
+\item nicht einfachste Differenzialgleichung
+\item erraten von Dirac: gewünscht ``Wurzel aus KG-Gleichung'' (Herleitung $\curvearrowright$ Lit.)
+\item $\mathcal{L} = \overline{\psi}(i\partial_\mu \gamma^\mu - m)\psi$
+\item Adjungierte Dirac-Gl. $i\partial_\mu \overline{\psi}\gamma^\mu + m\overline{\psi} = 0$
+$$\Rightarrow \partial_\mu (\overline{\psi}\gamma^\mu\psi )=0$$
+\item Def. $j^\mu = \overline{\psi}\gamma^\mu\psi $, $\rho = \psi^\dagger\psi$ ist positiv-definit
+\end{itemize}
+
+\paragraph{Vollständige Darstellung der Lorentztransformationen}\mbox{}\par 
+
+$$\psi '(x)=S(\Lambda )\psi (\Lambda^{-1}x) = (\vf{1}-\frac{i}{2}\omega^{\mu\nu}S_{\mu\nu})\psi (x-\omega x)$$
+und
+$$\psi '=(\vf{1}-\frac{i}{2}\omega^{\mu\nu}\hat{J}_{\mu\nu})\psi$$
+($\hat{J}$ Generatoren der Darstellung der Lorentz-Algebra auf dem Fkt.-Raum der Spinorfelder)
+$$\Longrightarrow \hat{J}_{\mu\nu}=i(x_\mu\partial_\nu -x_\nu\partial_\mu )+S_{\mu\nu}$$
+$$\hat{J}_{\mu\nu}=\hat{L}_{\mu\nu}+S_{\mu\nu}$$
+Analog zur KG-Gl. treten Inkonsistenzen auf, wenn man Diracgl. als 1-Teilchen-Theorie auffasst. Die Probleme sind ähnlich aber nicht gleich.
+
+\section{Physik und Lösungen der Diracgleichung}
+
+\subsection{Freie Lösungen, Impuls-/Spin-Eigenzustände}
+
+\newcommand{\dslash}{\slashed{\partial}}
+\newcommand{\pslash}{\slashed{p}}
+
+Dirac-Gleichung: $(i\dslash - m)\psi = 0$\\
+Gesamt-Drehimpuls: $\hat{J}_{ij}=\hat{L}_{ij}+S_{ij}$. Spin-EZ: $\pm\frac{1}{2}$\par 
+
+Ansatz: $\psi (x)= w(p)e^{\mp ipx}$ (mit $px = p_\mu x^\mu$)
+$$\Rightarrow (\pm \pslash - m)w(p)=0$$
+Eigenwertgleichung für $\pslash$ !\par 
+
+Beachte: $\pslash^2 = p^\mu\gamma_\mu p^\nu\gamma_\nu = p^\mu p^\nu \gamma_\mu\gamma_\nu = \frac{1}{2}p^\mu p^\nu \{\gamma_\mu ,\gamma_\nu\} = p^2\vf{1}$\par 
+D.h. $\pslash$ hat EWe $\pm \sqrt{p^2}$ vermutlich je 2-fach entartet. Nicht-triviale Lösung der EW-Gl. für $p^2=m^2$ $\rightarrow$ Teilchen mit Ruhemasse $m$ beschrieben.
+
+\paragraph{Bezeichnungen der Lösungen}
+$$(\pslash - m)u(p,s)=0$$
+$$(\pslash + m)v(p,s)=0$$
+Beispiel: $p^2 = m^2$, $(p^\mu )=(E,0,0,p_z)$ in $z$-Richtung, $E^2=p_z^2+m^2$.
+$$\pslash = p^\mu \gamma_\mu = E\gamma_0 + p_z\gamma_3 = E\gamma^0-p_z\gamma^3=\begin{pmatrix}
+\mathbf{1}E & -p_z\sigma^3 \\ p_z\sigma^3 & -\mathbf{1}E
+\end{pmatrix}$$
+Es gilt $[\pslash , S_{12}]=0$, d.h. $\pslash$ und $S_z$ haben simultane Eigenzustände. (allg. $\pslash$ und $\frac{\vf{p}\cdot\vf{S}}{|\vf{p}|}$ = Helizitätsoperator simultan Diagonalisierbar).\par 
+EW-Gleichung lösen:
+$$u(p,+\sfrac{1}{2})=N\cdot\begin{pmatrix}
+E+m \\ 0 \\ p_z \\ 0
+\end{pmatrix}$$
+$$u(p,-\sfrac{1}{2})=N\cdot\begin{pmatrix}
+0 \\E+m \\ 0 \\ -p_z 
+\end{pmatrix}$$
+mit $N=\frac{1}{\sqrt{E+m}}$.
+$$v(p, +\sfrac{1}{2})=N\cdot\begin{pmatrix}
+p_z \\ 0 \\ E+m \\ 0
+\end{pmatrix}$$
+$$v(p, -\sfrac{1}{2})=N\cdot\begin{pmatrix}
+0 \\ -p_z \\ 0 \\ E+m
+\end{pmatrix}$$
+Spinoren für andere $\vf{p}$: $\vf{p}=R\vf{p}_z = e^{-\frac{i}{2}\omega^{\mu\nu}L_{\mu\nu}}\vf{p}_z$:
+$$u(p,s)=e^{-\frac{i}{2}\omega^{\mu\nu}S_{\mu\nu}}u(p_z,s)$$
+\paragraph{Negative Energien}
+$$\psi (x)=u(p,s)=e^{-iEt+i\vf{p}\cdot\vf{x}}$$
+$$\psi (x)=v(p,s)=e^{+iEt-i\vf{p}\cdot\vf{x}}$$
+D.h. Energie $(-E)<0$ für $v$-Lösungen.
+
+\subsection{Mehr zum Drehimpuls}
+
+Man betrachte die Diracgleichung als quantenmechanische 1-Teilchen-Gleichung. (sinnvoll, solange Antiteilchen und QFT Effekte vernachlässigbar sind).\par 
+
+Formulierung analog zur Schrödingergleichung im Ortsraum:
+$$(i\dslash - m)\psi = 0$$
+Multiplikation mit $\gamma^0$ von links und nach Zeitableitung umstellen:
+$$i\partial_t\psi = (-i\gamma^0\gamma^i\partial_i+m\gamma^0)\psi =:\hat{H}^{(0)}_D\psi$$
+\paragraph{Drehimpuls} aus Darstellung der Lorentztransformation.
+$$\hat{J}_{ij}=i(x_i\partial_j-x_j\partial_i)+\hat{S}_{ij} = \hat{L}_{ij}+\hat{S}_{ij}$$
+$$\hat{\vf{J}}=\hat{\vf{L}}+\hat{\vf{S}}$$
+Es gilt $[\hat{H}^{(0)}_D,\hat{\vf{J}}]=0$, d.h. Gesamtdrehimpuls erhalten. $[\hat{H}^{(0)}_D,\hat{\vf{L}}]=\gamma^0\gamma_1\partial_y-\gamma^0\gamma_2\partial_x$.
+\paragraph{Helizität}
+$$\frac{\hat{\vf{S}}\cdot\hat{\vf{p}}}{|\hat{\vf{p}}|}$$
+$$[\hat{H}^{(0)}_D, \hat{\vf{S}}\cdot\hat{\vf{p}}]=[\hat{H}^{(0)}_D,\frac{1}{2}\epsilon_{ijk}S_{ij}\hat{p}^k]=\sim\frac{1}{2}\epsilon_{ijk}\gamma^0\gamma_i\partial_j\partial_k=0$$
+Es gibt simultane Eigenzustände zu Energie, Impuls, Helizität.
+
+\paragraph{Interpretation der 4 Komponenten von $\psi$}\mbox{}\par 
+Zu gegebenem Impuls $\vf{p}$: 4 linear unabhängige Lösungen:
+\begin{itemize}
+\item $E>0$, Helizität $\pm\frac{1}{2}$
+\item $E<0$, Helizität $\pm\frac{1}{2}$
+\end{itemize}
+
+\subsection{Kopplung ans elektromagnetische Feld}
+
+Freie Diracgleichung: $(i\gamma^\mu\partial_\mu -m)\psi = 0$\par 
+Freie Klein-Gordon-Gleichung: $(-\partial_\mu\partial^\mu - m^2)\phi = 0$\par 
+Relativistisches klassisches Teilchen: $L=\frac{1}{2}m\frac{\dif x^\mu}{\dif\tau}\frac{\dif x_\mu}{\dif\tau}$
+
+Kopplung and e.m. Feld soll relativistisch invariant und eichinvariant sein. (Eichung $A^\mu (x)\mapsto A^\mu (x)+\partial^\mu\theta (x)$).\par 
+
+Klassisches Teilchen:
+$$L=\frac{1}{2}m\frac{\dif x^\mu}{\dif\tau}\frac{\dif x_\mu}{\dif\tau} - e\frac{\dif x_\mu}{\dif\tau}A^\mu (x)$$
+(Einfachse denkbare relativistische WW, Wirkung ist eichinvariant, reproduziert Coulomb- und Lorentzkraft)\par 
+Kanonisch konjugierter Impuls:
+$$\mathcal{P}^\mu = \frac{\partial L}{\partial\frac{\dif x_\mu}{\dif\tau}}=m\frac{\dif x^\mu}{\dif\tau}-eA^\mu$$
+$$\Rightarrow H=\frac{1}{2m}(\mathcal{P}^\mu + eA^\mu )^2$$
+Rezept: minimale Kopplung $\mathcal{P}^\mu\rightarrow\mathcal{P}^\mu + eA^\mu$, Klein-Gordon-Gleichung:
+$$\boxed{\left[\left( i\partial^\mu + eA^\mu\right)\left( i\partial_\mu +eA_\mu \right) -m^2\right]\phi = 0}$$
+Dirac-Gleichung:
+$$\boxed{\left(i\dslash + e\slashed{A}-m\right)\psi = 0}$$
+Elektromagnetische Stromdichte:
+$$j^\mu = e\overline{\psi}\gamma^\mu\psi$$
+Eichinvarianz:
+\begin{align*}
+A^\mu (x) &\longrightarrow A^\mu (x) +\partial^\mu\theta (x) \\
+\psi (x) &\longrightarrow e^{ie\theta (x)}\psi(x)
+\end{align*}
+Eichkovariante Ableitung:
+$D^\mu\psi :=(\partial^\mu -ieA^\mu )\psi$. Damit gilt $D^\mu\psi \longrightarrow e^{ie\theta (x)} D^\mu\psi$
+
+
+\subsection{Nichtrelativistischer Limes}
+
+Nichtrelativistische Schrödingergleichung mit e.m. Feld:
+$$(i\partial_t + e\Phi )\psi = \frac{(\hat{\vf{p}}+e\vf{A})^2}{2m}\psi$$
+Klein-Gordon-Gleichung:
+$$\left[\left( i\partial^\mu + eA^\mu\right)\left( i\partial_\mu +eA_\mu \right) -m^2\right]\phi = 0$$
+$(A^\mu ) = (\Phi ,\vf{A})$, $(i\partial^j) = (-i\partial_j ) = (p^j)$.\par 
+Ansatz: 
+\begin{itemize}
+\item $\phi$ ist Energie-EZ, $i\partial_t\phi = E\phi$
+\item $E=m+\textit{klein}$, $E>0$
+\item $e|A^\mu |\ll m$
+\item $|\partial_tA^\mu |\ll |mA^\mu |$
+\item $|p|\ll m$
+\end{itemize}
+Einsetzen in KG-Gl.:
+$$\left[ (i\partial_t+e\Phi)(E+e\Phi )-(\hat{\vf{p}}+e\vf{A})^2-m^2\right]\phi = 0$$
+Vernachlässigen von $\partial_t\Phi$:
+$$\left[ (E+e\Phi )^2 - (\hat{\vf{p}}+e\vf{A})^2-m^2\right]\phi = 0$$
+Mit $E+e\Phi = m + (E-m+e\Phi )$ mit Vernachlässigung des Quadrates der letzten Klammer:
+$$\left[ 2m(E-m+e\Phi ) - (\hat{\vf{p}}+e\vf{A})^2 \right]\phi = 0$$
+Daraus folgt direkt die nichtrelativistische Schrödingergleichung.
+
+\paragraph{Diracgleichung mit e.m. Feld}
+$$(i\slashed{D} - m)\psi = 0$$
+Ansatz wie oben. Aufteilung des Diracspinors in zwei Paulispinoren:
+$$\psi = \begin{pmatrix}
+\psi_A \\ \psi_B
+\end{pmatrix}$$
+$$\begin{pmatrix}
+iD_0 -m & iD_i\sigma^i \\
+-iD_i\sigma^i & -iD_0 - m
+\end{pmatrix}\begin{pmatrix}
+\psi_A \\ \psi_B
+\end{pmatrix}=0$$
+Nach Ansatz: $iD_0\rightarrow E+e\Phi $, $iD_i\sigma^i = -\vec{\sigma}(\hat{\vf{p}}+e\vf{A})$.
+\begin{align*}
+(E-m+e\Phi )\psi_A - \vec{\sigma}(\hat{\vf{p}}+e\vf{A})\psi_B &= 0 \\
+(-E-m-e\Phi )\psi_B + \vec{\sigma}(\hat{\vf{p}}+e\vf{A})\psi_A &= 0
+\end{align*}
+Eliminiere 
+$$\psi_B = \frac{\vec{\sigma}(\hat{\vf{p}}+e\vf{A})}{E+m+e\Phi}\psi_A \cong \left(\frac{1}{2m}+\mathcal{O}(m^{-2})\right)\vec{\sigma}(\hat{\vf{p}}+e\vf{A})$$
+$$\Rightarrow\quad (E-m+e\Phi )\psi_A = \frac{1}{2m}\left(\vec{\sigma}(\hat{\vf{p}}+e\vf{A})\right)\left(\vec{\sigma}(\hat{\vf{p}}+e\vf{A})\right)\psi_A$$
+\paragraph{Vereinfachung der $\sigma$-Anteile}
+$$(\vec{\sigma}\cdot\hat{\vf{O}})(\vec{\sigma}\cdot\hat{\vf{O}}) = \sigma^i\hat{O}^i\sigma^j\hat{O}^j=\sigma^i\sigma^j\hat{O}^i\hat{O}^j$$
+$$=\left(\frac{1}{2}\left\{\sigma^i,\sigma^j\right\} + \frac{1}{2}\left[\sigma^i,\sigma^j\right]\right)\hat{O}^i\hat{O}^j = \left(\delta^{ij}+i\epsilon^{ijk}\sigma^k\right)\hat{O}^i\hat{O}^j$$
+$$=\hat{\vf{O}}^2+i\epsilon^{ijk}\sigma^k\frac{1}{2}[\hat{O}^i,\hat{O}^j]$$
+Hier: $\hat{\vf{O}}=(\hat{\vf{p}}+e\vf{A})$:
+$$\cdots = (\hat{\vf{p}}+e\vf{A})^2 + i\epsilon^{ijk}\sigma^k(-i\partial_ieA^j)$$
+$$=(\hat{\vf{p}}+e\vf{A})^2 + e\vf{B}\cdot\vec{\sigma}$$
+$$\boxed{(E-m+e\Phi )\psi_A=\left[\frac{(\hat{\vf{p}}+e\vf{A})^2}{2m}+\frac{e}{2m}\vec{\sigma}\cdot\vf{B}\right]\psi_A}$$
+Pauli-Gleichung enthält Term $\vf{S}\cdot\vf{B}$ ($\vf{S}=\vec{\sigma}/2$) mit Vorfaktor:
+$$\boxed{g_s\frac{e}{2m}\vf{S}\cdot\vf{B}\qquad ,\qquad g_s=2}$$
+
+\paragraph{Bedeutung des $g_s$-Terms} Allg. Hamiltonian für magnetischen Dipol $\vec{\mu}$ im $\vf{B}$-Feld:
+$$H = -\vec{\mu}\cdot\vf{B}_{ext}$$
+Vergleich mit Pauli-Gleichung liefert $\vec{\mu}_s = -g_s\frac{e}{2m}\vf{S}$ mit $g_s = 2$. Das ist ein intrinsisches magnetisches Dipolmoment, proportional zum Spin.\par 
+
+Vergleich mit klassischer Elektrodynamik (rotierende Ladungsverteilung, Ladung $Q$, Masse $M$, Drehimpuls $\vf{L}$) liefert $\vec{\mu}=\frac{Q}{M}\vf{L}$ $\Rightarrow$ Klassisches Ergebnis entspricht $g=1$.
+
+\paragraph{Interpretation des ersten Terms} (identisch in der nicht-relativistischen Schrödingergleichung)
+$$\frac{(\hat{\vf{p}}+e\vf{A})^2}{2m}=\underbrace{\frac{\hat{\vf{p}}^2}{2m}}_{E_{kin}}+\underbrace{\frac{e}{2m}(\hat{\vf{p}}\vf{A}+\vf{A}\hat{\vf{p}})+\frac{e^2}{2m}\vf{A}^2}_{\text{e.m. WW}}$$
+Bsp. homogenes $\vf{B}$-Feld: setze $\vf{A}(x)=-\frac{1}{2}(\vf{x}\times\vf{B})$, dann $\vf{B}=\nabla\times\vf{A}$.
+$$\hat{\vf{p}}\vf{A}+\vf{A}\hat{\vf{p}}=\vf{B}\cdot\hat{\vf{L}}$$
+$$\Rightarrow \text{Erster Term } = \frac{\hat{\vf{p}}^2}{2m} +\frac{e}{2m}\vf{B}\cdot\hat{\vf{L}}+\frac{e^2}{2m}\vf{A}^2$$
+
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
