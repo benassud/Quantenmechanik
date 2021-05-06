@@ -1,0 +1,19 @@
+
+# temporary files of build-latex
+*.aux
+*.bbl
+*.blg
+*.d
+*.fls
+*.lof
+*.log
+*.lot
+*.make
+*.out
+*.toc
+*.dvi
+*.bcf
+*.fdb_latexmk
+*.synctex.gz
+*.run.xml
+*-blx.bib
