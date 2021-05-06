@@ -35,3 +35,4 @@
 \contentsline {paragraph}{Vereinfachung der $\sigma $-Anteile}{12}{}%
 \contentsline {paragraph}{Bedeutung des $g_s$-Terms}{13}{}%
 \contentsline {paragraph}{Interpretation des ersten Terms}{13}{}%
+\contentsline {subsection}{\numberline {1.4.5}Weitere Konsequenzen: Spin-Bahn-Kopplung}{13}{}%

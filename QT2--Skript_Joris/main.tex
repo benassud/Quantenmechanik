@@ -483,7 +483,46 @@ Bsp. homogenes $\vf{B}$-Feld: setze $\vf{A}(x)=-\frac{1}{2}(\vf{x}\times\vf{B})$
 $$\hat{\vf{p}}\vf{A}+\vf{A}\hat{\vf{p}}=\vf{B}\cdot\hat{\vf{L}}$$
 $$\Rightarrow \text{Erster Term } = \frac{\hat{\vf{p}}^2}{2m} +\frac{e}{2m}\vf{B}\cdot\hat{\vf{L}}+\frac{e^2}{2m}\vf{A}^2$$
 
+\subsection{Weitere Konsequenzen: Spin-Bahn-Kopplung}
 
+Höhere Ordnungen im nicht-relativistischen Limes:
+\begin{itemize}
+\item Spin-Bahn-Kopplung $\sim\vf{L}\cdot\vf{S}$ (Feinstrukturaufspaltung)
+\item Darwin-Term
+\item Korrektur E-kin. 
+\end{itemize}
+
+Saubere Herleitung durch systematische Entwicklung in Potenzen von $m$. $\frac{1}{m}$ sei eine kleine Größe. \\ $\rightarrow$ Foldy-Wouthuysen-Transformation/-Bild.
+
+$$(i\slashed{D}-m)\psi = 0$$
+$$\Leftrightarrow i\partial_t\psi = (-e\Phi + m\gamma^0 - iD_i\gamma^0\gamma^i)\psi = H_D\psi$$
+
+Idee: Unitäre Transformation / neues "Bild", Zerlegung in 2-Spinoren.
+$$\psi = e^{-iS}\psi '=e^{-iS}\begin{pmatrix}
+\psi_A' \\ \psi_B'
+\end{pmatrix}$$
+$S$ hermitesch, eventuell $t$-abhängig.\par 
+
+Neuer Hamiltonian:
+$$i\partial_t\psi' = i\partial_t (e^{iS}\psi ) = (i\partial_t e^{iS})\psi + e^{iS}i\partial_t\psi$$
+$$=\left[ (i\partial_te^{iS})e^{-iS}+e^{iS}H_De^{-iS}\right]\psi '$$
+$$H_D'=i(i\dot{S}+\frac{i^2}{2}[S,\dot{S}]+\frac{i^3}{6}[S,[S,\dot{S}]]+\ldots )+ H_D + i[S,H_D]+\frac{i^2}{2}[S,[S,H_D]]+\ldots$$
+
+Idee 2: $H_D'$ soll blockdiagonal sein in 2-Spinoren (bis zu bestimmter Ordnung) $\rightarrow$ Gleichung für $\psi_A '$ reicht aus.\par 
+
+Konkret: 
+$$H_D=m\gamma^0 + (-e\Phi ) + \begin{pmatrix}
+0 & (\vf{p}+e\vf{A})\cdot\vec{\sigma} \\
+(\vf{p}+e\vf{A})\cdot\vec{\sigma} & 0
+\end{pmatrix}= \underbrace{m\gamma^0}_{\mathcal{O}(m^1)} + \underbrace{\mathcal{E}}_{{\mathcal{O}(m^0)}} + \underbrace{\mathcal{O}}_{{\mathcal{O}(m^0)}}$$
+Häufige Umformung: $\gamma^0 O =-O\gamma^0$ mit ungeradem Operator $O$.\par 
+
+1. Schritt: arbeite bis $\mathcal{O}(m^0)$: Setze $S=\mathcal{O}(m^{-1})$
+$$H_D'=H_D + i[S,H_D] + \mathcal{O}(m^{-1}) = m\gamma^0+\mathcal{E}+\mathcal{O}+i[S,m\gamma^0+\mathcal{E}+\mathcal{O}] + \mathcal{O}(m^{-1})$$
+$$=m\gamma^0 +\mathcal{E}+\mathcal{O} + i[S,m\gamma^0]$$
+Lösung: $S=-\frac{i}{2m}\gamma^0\mathcal{O}$\par 
+Damit $H_D'$ komplett ausrechnen bis $\mathcal{O}(m^{-2})$:
+$$H_D'=H_D+i[S,H_D]-\dot{S}+\frac{i^2}{2}[S,[S,H_D]]-\frac{i}{2}[S,\dot{S}] + \frac{i^3}{6}[S,[S,[S,H_D]]]+\mathcal{O}(m^{-3})$$
 
 \end{document}
 
