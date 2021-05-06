@@ -524,6 +524,76 @@ Lösung: $S=-\frac{i}{2m}\gamma^0\mathcal{O}$\par
 Damit $H_D'$ komplett ausrechnen bis $\mathcal{O}(m^{-2})$:
 $$H_D'=H_D+i[S,H_D]-\dot{S}+\frac{i^2}{2}[S,[S,H_D]]-\frac{i}{2}[S,\dot{S}] + \frac{i^3}{6}[S,[S,[S,H_D]]]+\mathcal{O}(m^{-3})$$
 
+Für die einzelnen Terme finden Wirkung
+\begin{align*}
+    i [S, H_D] &= i \left[-\frac{i}{2m} \gamma^0 \mathcal{O}, m \gamma^0 + \mathcal{E} + \mathcal{O} \right] = -\mathcal{O} + \frac{1}{2m} \gamma^0 [\mathcal{O}, \mathcal{E}] + \frac{1}{m} \gamma^0 \mathcal{O}^2 \\
+    - \dot{S} &= \frac{i}{2m} \gamma^0 \dot{\mathcal{O}} \\
+    \frac{i}{2} [S, \dot{S}] &= -\frac{i}{8 m^2} [\mathcal{O}, \dot{\mathcal{O}}] \\
+    \frac{i^2}{2} [S, [S, H_D]] &= -\frac{1}{2m} \gamma^0 \mathcal{O}^2 - \frac{1}{8 m^2} [\mathcal{O}, [\mathcal{O}, \mathcal{E}]] - \frac{1}{2m^2} \mathcal{O}^3 \\
+    \frac{i^3}{3!} [S, [S, [S, H_D]]] &= \frac{1}{6m^2} \mathcal{O}^3
+\end{align*}
+Der neue Hamiltonian ist nun
+\begin{align*}
+    H_D' &=\underbrace{m \gamma^0 + \mathcal{E} + \frac{1}{2m} \gamma^0 \mathcal{O}^2 - \frac{1}{8 m^2} [\mathcal{O}, i \dot{\mathcal{O}} + [\mathcal{E}, \mathcal{O}]]}_{\text{gerade} \;=: H_{D,\text{even}}'} + \\
+    &= \underbrace{\frac{1}{2m} \gamma^0 (i \dot{\mathcal{O}} + [\mathcal{O}, \mathcal{E}]) - \frac{1}{6m^2} \mathcal{O}^3}_{\text{ungerade} \; =: \mathcal{O}'} \\
+    &=: H_{D,\text{even}}' + \mathcal{O}'
+\end{align*}
+
+2. Schritt: arbeite bis $\mathcal{O}(m^-1)$: 
+
+In Analogie setzen wir $\psi' = e^{i S'} \psi''$ mit $S' = -\frac{i}{2m} \gamma^0 \mathcal{O}'$ und erhalten
+$$H_D'' = H_{D,\text{even}}' + i [S', \mathcal{E}] - \dot{S}' + \mathcal{O}(m^{-3}) := D_{D,\text{even}} + \mathcal{O}''$$
+
+3. Schritt: arbeite bis $\mathcal{O}(m^{-2})$:
+
+Wir setzen wieder $\psi'' = e^{i-i S''} \psi'''$ mit $S'' = -\frac{i}{2m} \gamma^0 \mathcal{O}'' = \mathcal{O}(m^{-3})$.
+
+HIER FEHLT NOCH DIE GLEICHUNG FÜR $H_D'''$
+
+Vollständig ausgerechnet:
+$$H_D''' = \underbrace{m\gamma^0 + \mathcal{E} + \frac{1}{2m} \gamma^0 \mathcal{O}^2}_{\mathcal{O}(m^{-1})} - \underbrace{\frac{1}{8m^2} [\mathcal{O}, i \dot{\mathcal{O}} + [\mathcal{O}, \mathcal{E}]]}_{\mathcal{O}(m^{-2})}$$
+
+\begin{itemize}
+    \item Terme bis $\mathcal{O}(m^{-1})$ liefern genau den Limes aus 1.4.4 inkl. des $g-2$-Terms
+    \item Zusätzliche Terme der relativistischen Korrektur bis $\mathcal{O}(m^{-2})$
+\end{itemize}
+
+Wir diskutieren diese Terme anhand des Zentralpotentials mit $\vec{A} = 0$ und $\Psi(\vec{x}, t) = \Psi(r)$ mit $r = |\vec{x}|$.
+Es ergeben sich die Terme
+\begin{align*}
+    \nabla \Psi (r) &= \frac{\vec{x}}{r} \frac{\mathrm{d} \Psi}{\mathrm{d} r} \\
+    \vec{E} &= - \nabla \Psi \\
+    \mathcal{E} &= e \Psi \\
+    \mathcal{O} &= \begin{pmatrix}
+        0 & \vec{\sigma} \vec{p} \\ \vec{\sigma} \vec{p} & 0 \\
+    \end{pmatrix} = -i \begin{pmatrix}
+        0 & \vec{\sigma} \nabla \\ \vec{\sigma} \nabla & 0 \\
+    \end{pmatrix} \\
+    [\mathcal{O}, \mathcal{E}] &= -i e \begin{pmatrix}
+        0 & \vec{\sigma} \vec{E} \\ \vec{\sigma} \vec{E} & 0 \\
+    \end{pmatrix} \\
+    [\mathcal{O}, [\mathcal{O}, \mathcal{E}]] &= (-i) (-i e) \begin{pmatrix}
+        [\vec{\sigma} \nabla, \vec{\sigma} \vec{E}] & 0 \\ 0 & [\vec{\sigma} \nabla, \vec{\sigma} \vec{E}] \\
+    \end{pmatrix}  \\
+    [\vec{\sigma} \nabla, \vec{\sigma} \vec{E}]  &= \sigma^i \sigma^j (\partial_i E^j + E^j \partial_i) - \sigma^j \sigma^i E^j \partial_i \\
+    &= \nabla E + \underbrace{i \vec{\sigma} (\nabla \times E)}_{= 0} 
+    + \underbrace{i^2 \epsilon^{i j k} \sigma^k E^j \partial_i}_{=2 \vec{\sigma} (\vec{E} \times \vec{p})} \\
+    &= \nabla E - \frac{2}{r} \frac{\mathrm{d}\Psi}{\mathrm{d}r} \vec{\sigma} \vec{L}
+\end{align*}
+Wir finden den nun bis zum $\mathcal{O}(m^{-2})$ Term blockdiagonalen Hamiltonian
+$$H_D''' = \frac{e}{8 m^2} \nabla \vec{E} - \frac{e}{2 m^2 r} \frac{\mathrm{d} \Psi}{\mathrm{d}r} \vec{S} \vec{L}$$
+Der obere Block ist 
+\begin{align*}
+    H_{\text{eff}} &= m + H_{\mathcal{O}(m^{-1})} + H_{\mathcal{O}(m^{-2})} + \ldots \\
+    H_{\mathcal{O}(m^{-1})} &= H_{\text{Pauli}} = -e \Psi + \frac{(\vec{p} + e \vec{A})^2}{2 m} + \frac{e}{2m}\vec{\sigma} \vec{B} \\
+    H_{\mathcal{O}(m^{-2})} &= \underbrace{\frac{e}{8m^2}\nabla \vec{E}}_{\text{Darwin-Term}} - \underbrace{\frac{e}{2m^2 r} \frac{\mathrm{d}\Psi}{\mathrm{d}r} \vec{S} \vec{L}}_{\text{Spin-Bahn-Kopplung}}
+\end{align*}
+Diskussion:
+\begin{itemize}
+    \item Darwin-Term: beim Atom $\nabla \vec{E} = 4\pi \rho_{\text{Kern}} \propto \delta^{(3)}(\vec{x})$ ergibt sich eine Korrektur für die s-Orbitale, die am Kern eine endliche Aufenthaltswahrscheinlichkeit haben
+    \item Spin-Bahn-Koppluns: Wegen dieses Terms $[H_{\text{eff}}, \vec{S}] \neq 0$ und $[H_{\text{eff}}, \vec{L}] \neq 0$, aber $[H_{\text{eff}}, \vec{J}] \neq 0$.
+\end{itemize}
+
 \end{document}
 
 
