@@ -6,6 +6,7 @@
 \usepackage{amssymb}
 \usepackage{slashed}
 \usepackage{xfrac}
+\usepackage{amsbsy}
 \usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
 
 \setlength{\parindent}{0cm}
@@ -13,6 +14,7 @@
 
 \renewcommand{\baselinestretch}{1.2}
 
+\renewcommand{\vec}{\boldsymbol}
 
 \author{Joris Josiek}
 \title{Skript QT2}
@@ -558,41 +560,43 @@ $$H_D''' = \underbrace{m\gamma^0 + \mathcal{E} + \frac{1}{2m} \gamma^0 \mathcal{
     \item Zusätzliche Terme der relativistischen Korrektur bis $\mathcal{O}(m^{-2})$
 \end{itemize}
 
-Wir diskutieren diese Terme anhand des Zentralpotentials mit $\vec{A} = 0$ und $\Psi(\vec{x}, t) = \Psi(r)$ mit $r = |\vec{x}|$.
+Wir diskutieren diese Terme anhand des Zentralpotentials mit $\vf{A} = 0$ und $\Psi(\vf{x}, t) = \Psi(r)$ mit $r = |\vf{x}|$.
 Es ergeben sich die Terme
 \begin{align*}
-    \nabla \Psi (r) &= \frac{\vec{x}}{r} \frac{\mathrm{d} \Psi}{\mathrm{d} r} \\
-    \vec{E} &= - \nabla \Psi \\
+    \nabla \Psi (r) &= \frac{\vf{x}}{r} \frac{\mathrm{d} \Psi}{\mathrm{d} r} \\
+    \vf{E} &= - \nabla \Psi \\
     \mathcal{E} &= e \Psi \\
     \mathcal{O} &= \begin{pmatrix}
-        0 & \vec{\sigma} \vec{p} \\ \vec{\sigma} \vec{p} & 0 \\
+        0 & \vec{\sigma} \cdot\vf{p} \\ \vec{\sigma}\cdot\vf{p} & 0 \\
     \end{pmatrix} = -i \begin{pmatrix}
-        0 & \vec{\sigma} \nabla \\ \vec{\sigma} \nabla & 0 \\
+        0 & \vec{\sigma}\cdot\nabla \\ \vec{\sigma}\cdot \nabla & 0 \\
     \end{pmatrix} \\
     [\mathcal{O}, \mathcal{E}] &= -i e \begin{pmatrix}
-        0 & \vec{\sigma} \vec{E} \\ \vec{\sigma} \vec{E} & 0 \\
+        0 & \vec{\sigma}\cdot \vf{E} \\ \vec{\sigma}\cdot \vf{E} & 0 \\
     \end{pmatrix} \\
     [\mathcal{O}, [\mathcal{O}, \mathcal{E}]] &= (-i) (-i e) \begin{pmatrix}
-        [\vec{\sigma} \nabla, \vec{\sigma} \vec{E}] & 0 \\ 0 & [\vec{\sigma} \nabla, \vec{\sigma} \vec{E}] \\
+        [\vec{\sigma}\cdot \nabla, \vec{\sigma}\cdot \vf{E}] & 0 \\ 0 & [\vec{\sigma}\cdot \nabla, \vec{\sigma}\cdot \vf{E}] \\
     \end{pmatrix}  \\
-    [\vec{\sigma} \nabla, \vec{\sigma} \vec{E}]  &= \sigma^i \sigma^j (\partial_i E^j + E^j \partial_i) - \sigma^j \sigma^i E^j \partial_i \\
-    &= \nabla E + \underbrace{i \vec{\sigma} (\nabla \times E)}_{= 0} 
-    + \underbrace{i^2 \epsilon^{i j k} \sigma^k E^j \partial_i}_{=2 \vec{\sigma} (\vec{E} \times \vec{p})} \\
-    &= \nabla E - \frac{2}{r} \frac{\mathrm{d}\Psi}{\mathrm{d}r} \vec{\sigma} \vec{L}
+    [\vec{\sigma}\cdot \nabla, \vec{\sigma}\cdot \vf{E}]  &= \sigma^i \sigma^j (\partial_i E^j + E^j \partial_i) - \sigma^j \sigma^i E^j \partial_i \\
+    &= \nabla\cdot \vf{E} + \underbrace{i \vec{\sigma}\cdot (\nabla \times \vf{E})}_{= 0} 
+    + \underbrace{i^2 \epsilon^{i j k} \sigma^k E^j \partial_i}_{=2 \vec{\sigma}\cdot (\vf{E} \times \vec{p})} \\
+    &= \nabla\cdot\vf{E} - \frac{2}{r} \frac{\mathrm{d}\Psi}{\mathrm{d}r} \vec{\sigma}\cdot \vf{L}
 \end{align*}
 Wir finden den nun bis zum $\mathcal{O}(m^{-2})$ Term blockdiagonalen Hamiltonian
-$$H_D''' = \frac{e}{8 m^2} \nabla \vec{E} - \frac{e}{2 m^2 r} \frac{\mathrm{d} \Psi}{\mathrm{d}r} \vec{S} \vec{L}$$
+$$H_D''' = \frac{e}{8 m^2} \nabla\cdot\vf{E} - \frac{e}{2 m^2 r} \frac{\mathrm{d} \Psi}{\mathrm{d}r} \vf{S}\cdot \vf{L}$$
 Der obere Block ist 
 \begin{align*}
     H_{\text{eff}} &= m + H_{\mathcal{O}(m^{-1})} + H_{\mathcal{O}(m^{-2})} + \ldots \\
-    H_{\mathcal{O}(m^{-1})} &= H_{\text{Pauli}} = -e \Psi + \frac{(\vec{p} + e \vec{A})^2}{2 m} + \frac{e}{2m}\vec{\sigma} \vec{B} \\
-    H_{\mathcal{O}(m^{-2})} &= \underbrace{\frac{e}{8m^2}\nabla \vec{E}}_{\text{Darwin-Term}} - \underbrace{\frac{e}{2m^2 r} \frac{\mathrm{d}\Psi}{\mathrm{d}r} \vec{S} \vec{L}}_{\text{Spin-Bahn-Kopplung}}
+    H_{\mathcal{O}(m^{-1})} &= H_{\text{Pauli}} = -e \Psi + \frac{(\vf{p} + e \vf{A})^2}{2 m} + \frac{e}{2m}\vec{\sigma}\cdot \vf{B} \\
+    H_{\mathcal{O}(m^{-2})} &= \underbrace{\frac{e}{8m^2}\nabla\cdot \vf{E}}_{\text{Darwin-Term}} - \underbrace{\frac{e}{2m^2 r} \frac{\mathrm{d}\Psi}{\mathrm{d}r} \vf{S}\cdot \vf{L}}_{\text{Spin-Bahn-Kopplung}}
 \end{align*}
 Diskussion:
 \begin{itemize}
-    \item Darwin-Term: beim Atom $\nabla \vec{E} = 4\pi \rho_{\text{Kern}} \propto \delta^{(3)}(\vec{x})$ ergibt sich eine Korrektur für die s-Orbitale, die am Kern eine endliche Aufenthaltswahrscheinlichkeit haben
-    \item Spin-Bahn-Koppluns: Wegen dieses Terms $[H_{\text{eff}}, \vec{S}] \neq 0$ und $[H_{\text{eff}}, \vec{L}] \neq 0$, aber $[H_{\text{eff}}, \vec{J}] \neq 0$.
+    \item Darwin-Term: beim Atom $\nabla\cdot\vf{E} = 4\pi \rho_{\text{Kern}} \propto \delta^{(3)}(\vf{x})$ ergibt sich eine Korrektur für die s-Orbitale, die am Kern eine endliche Aufenthaltswahrscheinlichkeit haben
+    \item Spin-Bahn-Koppluns: Wegen dieses Terms $[H_{\text{eff}}, \vf{S}] \neq 0$ und $[H_{\text{eff}}, \vf{L}] \neq 0$, aber $[H_{\text{eff}}, \vf{J}] = 0$.
 \end{itemize}
+
+
 
 \end{document}
 
