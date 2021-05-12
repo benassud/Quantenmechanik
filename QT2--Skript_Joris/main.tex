@@ -596,6 +596,112 @@ Diskussion:
     \item Spin-Bahn-Koppluns: Wegen dieses Terms $[H_{\text{eff}}, \vf{S}] \neq 0$ und $[H_{\text{eff}}, \vf{L}] \neq 0$, aber $[H_{\text{eff}}, \vf{J}] = 0$.
 \end{itemize}
 
+\chapter{Ununterscheidbare Teilchen\\ \Large{Bosonen und Fermionen}}
+
+Klassisch: jedes Teilchen hat eine eindeutige Bahnkurve $\rightarrow$ prinzipiell daran erkennbar.\par 
+
+QM: keine eindeutige Bahnkurve
+
+\paragraph{Fragen}
+\begin{itemize}
+\item Existieren ``ununterscheidbare Teilchen''? $\rightarrow$ Ja! (experimenteller Beweis)
+\item Wie beschreibt man das? $\rightarrow$ Mehrteilchensysteme, Zustände, Hilberträume/Operatoren
+\item Nützlicher Formalismus? $\rightarrow$ Erzeuger/Vernichter, Zweite Quantisierung, Quantenfeldtheorie
+\end{itemize}
+
+\section{Unterscheidbare Teilchen}
+
+\subsection{Zustände}
+
+\newcommand{\bra}[1]{\langle #1 |}
+\newcommand{\sprod}[2]{\langle #1 | #2 \rangle}
+
+Basiszustände für zwei Teilchen ohne Wechselwirkung:\par 
+Basis für Teilchen 1: $\ket{n^{(1)}}$, $n=1,2,\ldots$\\
+Basis für Teilchen 2: $\ket{m^{(2)}}$, $m=1,2,\ldots$\par 
+$\Rightarrow$ vernünftige Annahme: Basiszustände für Teilchen 1+2:\\ $\ket{n^{(1)}}\ket{m^{(2)}}$, $n,m=1,2,\ldots$ ``Produktzustände''\par 
+
+Hilbertraum: Teilchen 1 $\mathcal{H}_1^{(1)}$, Teilchen 2 $\mathcal{H}_1^{(2)}$. (Oberer Index Teilchenindex, Unterer Index Teilchenzahl)\\
+Teilchen 1+2: $\mathcal{H}_2=\mathcal{H}_1^{(1)}\otimes\mathcal{H}_1^{(2)}$ (\textit{Produktraum})
+\begin{itemize}
+\item $\mathcal{H}_2$ enthält sowohl Produktzustände (\textit{separabel}), z.B. $$\ket{1^{(1)}}\ket{2^{(2)}}$$ oder $$\left(\ket{1^{(1)}}+\ket{{3}^{(1)}}\right)\left(\ket{5^{(2)}}+\ket{7^{(2)}}\right)$$\\
+aber auch \textit{verschränkte Zustände} (``entangled''), z.B. $$\frac{\ket{1^{(1)}}\ket{1^{(2)}}-\ket{2^{(1)}}\ket{2^{(2)}}}{\sqrt{2}}$$
+\end{itemize}
+
+\paragraph{Skalarprodukte} ``offensichtlich'' übertragen
+$$\left(\bra{\psi^{(1)}}\bra{\phi^{(2)}}\right)\left(\ket{\psi'^{(1)}}\ket{\phi'^{(2)}}\right):=\left(\sprod{\psi^{(1)}}{\psi'^{(1)}}\right)\cdot \left(\sprod{\phi^{(2)}}{\phi'^{(2)}}\right)$$
+Schreibweise: $\ket{\psi^{(1)}}\ket{\phi^{(2)}}=\ket{\psi ,\phi}$, 
+Ortsraum-Wellenfunktion: $\ket{x_1^{(1)}}\ket{x_2^{(2)}}=\ket{x_1,x_2}$\par 
+$$\sprod{x_1,x_2}{\psi}=:\psi (x_1,x_2)$$
+
+\subsection{Observablen/Operatoren}
+
+Observable: $A_2$: hermitesche Operatoren auf $\mathcal{H}_2$
+\begin{itemize}
+\item Observablen, die nur ein Teilchen betreffen: entsprechen $A_1^{(1)}$:
+$$\bra{\psi^{(1)}}\bra{\phi^{(2)}} A_2^{(1)} \ket{\psi'^{(1)}}\ket{\phi'^{(2)}} = \erwop{\psi^{(1)}}{A_1^{(1)}}{\psi'^{(1)}}\cdot\sprod{\phi^{(2)}}{\phi'^{(2)}}$$
+$$A_2^{(1)}=A_1^{(1)}\otimes\mathbf{1}$$
+\item Analog: Observable betrifft nur Teilchen 2:
+$$B_2^{(2)}=\mathbf{1}\otimes B_1^{(2)}$$
+\end{itemize}
+Allgemeine Observable: keine Produktstruktur nötig! $\rightarrow$ WW zwischen Teilchen!\par 
+Bsp. Coulomb-Potenzial zwischen Teilchen 1 und 2:
+$$\erwop{\psi^{(1)},\phi^{(2)}}{V_2}{\psi^{(1)},\phi^{(2)}}=\int\dif^3x_1\,\dif^3x_2\frac{-\alpha}{|\vf{x}_1-\vf{x}_2|}|\psi (\vf{x}_1)|^2 |\phi (\vf{x}_2)|^2$$
+$$\Longrightarrow V_2 = \int\dif^3x_1\,\dif^3x_2 (\ket{\vf{x}_1^{(1)}}\bra{\vf{x}_1^{(1)}}\otimes \ket{\vf{x}_2^{(2)}}\bra{\vf{x}_2^{(2)}})\frac{-\alpha}{|\vf{x}_1-\vf{x}_2|}$$
+
+Hamiltonian:
+$$H_2=H_1^{(1)}\otimes\mathbf{1} + \mathbf{1}\otimes H_1^{(2)}+H_{WW}^{(1,2)}$$
+
+\section{Identische/Ununterscheidbare Teilchen}
+
+\subsection{Prinzipien}
+
+Exp: Pauliprinzip, Fermigas, Gibbs Paradoxon (keine Mischungsentropie wenn gleichatomige Gase gemischt werden)\par 
+
+Bisheriger Formalismus reicht nicht aus, da die bisherigen Zustände zu detailliert sind (Zuordnung des Teilchenindexes ist überflüssig)\par 
+
+\paragraph{Fundamentale Beobachtungstatsache / Postulat} Zustände eines Systems ununterscheidbarer Teilchen sind gegenüber Vertauschung der Teilchenindizes generell symmetrisch oder generell antisymmetrisch.
+
+\paragraph{Bosonen} (Spin ganzzahlig) $\ket{...\psi, \phi ...} = +\ket{...\phi, \psi ...}$
+\paragraph{Fermionen} (Spin halbzahlig) $\ket{...\psi, \phi ...} = -\ket{...\phi, \psi ...}$
+
+\subsection{Zustände}
+
+\newcommand{\hil}{\mathcal{H}}
+
+$N$-Teilchen Hilbertraum $\hil_N=\hil_1\otimes\ldots\otimes\hil_N$\par 
+
+Permutationsoperator $P_{ij}$:
+$$P_{ij}\ket{...\psi^{(i)}...\phi^{(j)}...}=\ket{...\phi^{(i)}...\psi^{(j)}...}$$
+$(P_{ij})^2=\mathbf{1}$, $(P_{ij})^\dagger = P_{ij}$\par 
+(Anti-)symmetrischer Hilbertraum:
+\begin{itemize}
+\item $\hil_N^{(+)}$ Teilchenraum mit $P_{ij}\ket{\phi^{(+)}}=\ket{\phi^{(+)}}$
+\item $\hil_N^{(-)}$ Teilchenraum mit $P_{ij}\ket{\phi^{(-)}}=-\ket{\phi^{(-)}}$
+\end{itemize}
+
+\paragraph{Bsp. 2 Bosonen} 
+\begin{itemize}
+\item Basis $\hil_1$: $\ket{n}$
+\item Basis $\hil_2$: $\ket{n^{(1)},m^{(2)}}$
+\item Basis $$\hil_2^{(+)}: \frac{\ket{n^{(1)}m^{(2)}}+\ket{m^{(1)}n^{(2)}}}{\sqrt{2}}=:\ket{n,m}^{(+)}$$
+\end{itemize}
+\paragraph{Bsp. 2 Fermionen} (Vernachlässige Spin)
+\begin{itemize}
+\item Basis $$\hil_2^{(-)}: \frac{\ket{n^{(1)}m^{(2)}}-\ket{m^{(1)}n^{(2)}}}{\sqrt{2}}=:\ket{n,m}^{(-)}$$
+\end{itemize}
+\paragraph{Bsp. 2 Fermionen} (Mit Spin)
+\begin{itemize}
+\item Basis $\hil_1$: $\ket{n^\uparrow}$, $\ket{n^\downarrow}$
+\item Basis $\hil_2$: Vier Kombinationen von $n$ und $m$ für verschiedene Spineinstellungen oder äquivalent:
+$$\ket{n^{(1)}m^{(2)}}\otimes\ket{\uparrow\uparrow}, \ket{n^{(1)}m^{(2)}}\otimes\left(\frac{\ket{\uparrow\downarrow}+\ket{\downarrow\uparrow}}{\sqrt{2}}\right), \ket{n^{(1)}m^{(2)}}\otimes\ket{\downarrow\downarrow}, \ket{n^{(1)}m^{(2)}}\otimes\left(\frac{\ket{\uparrow\downarrow}-\ket{\downarrow\uparrow}}{\sqrt{2}}\right)$$
+\item $\hil_2^{(1)}$:
+$$\frac{\ket{n^{(1)}m^{(2)}}-\ket{m^{(1)}n^{(2)}}}{\sqrt{2}} \otimes\left\{\begin{matrix}
+\ket{\uparrow\uparrow} \\ \frac{\ket{\uparrow\downarrow}+\ket{\downarrow\uparrow}}{\sqrt{2}} \\ \ket{\downarrow\downarrow}
+\end{matrix}\right.$$
+$$ \frac{\ket{n^{(1)}m^{(2)}}+\ket{m^{(1)}n^{(2)}}}{\sqrt{2}}\otimes \frac{\ket{\uparrow\downarrow}-\ket{\downarrow\uparrow}}{\sqrt{2}}$$
+Folgerung: Selber Ort unmöglich, wenn Spins gleich.
+\end{itemize}
 
 
 \end{document}
