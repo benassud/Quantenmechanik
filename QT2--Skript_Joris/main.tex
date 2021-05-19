@@ -723,9 +723,74 @@ $S_N^{(\pm )}$ sind hermitesche Projektionsoperatoren auf $\hil_N^{(\pm )}$.
 \begin{itemize}
 \item Nimm Basis von $\hil_N$ aus Produktzuständen: $\ket{n_1^{(1)}n_2^{(2)}\cdots n_N^{(N)}}$
 \item Def. $S_N^{(\pm )}\ket{n_1^{(1)}n_2^{(2)}\cdots n_N^{(N)}} =: \ket{n_1\cdots n_N}^{(\pm )}$
+\item Nimm beliebigen Zustand $\ket{\psi_N^{\pm}} \in \mathcal{H}_N^{\pm}$
+\begin{align*}
+    \implies \ket{\psi_N^{\pm}} &\in \mathcal{H}_N, \\
+    P_{i j} \ket{\psi_N^{\pm}} &= \pm \ket{\psi_N^{\pm}} \implies S_N^{\pm} \ket{\psi_N^{\pm}} = + \ket{\psi_N^{\pm}} \\
+    \implies \ket{\psi_N^{\pm}} &=  S_N^{\pm} \left(\int \ket{n_1^1 \ldots n_N^N}\bra{n_1^1 \ldots n_N^N}\right) \left(S_N^{\pm}\right)^\dagger \ket{\psi_N^{\pm}}\\
+    &= \sum\int \underbrace{\ket{n_1 \ldots n_N}}_{\text{Basiszustänge}} \underbrace{\sprod{n_1 \ldots n_N}{\psi_N^{\pm}}}_{\text{Koeffizienten}}
+\end{align*}
+In der Tat stimmt die obige Antwort und die Basis ist durch die obige Gleichung gegeben.
+\item Normierung: per Konstruktion gilt die Vollständigkeitsrelation
+$$\mathbf{1}_{\mathcal{H}^{\pm}_N} = \int \ket{n_1 \ldots n_N}^{\pm}\bra{n_1\ldots n_N}^{\pm}$$
+wegen $S_N^{\pm} S_N^{\pm} = S_N^{\pm}$ aber anders normiert als im 2-Teilchen-Beispiel.
 \end{itemize}
 
+\subsubsection{Observablen, weitere Motivation für Symmetrisierungspostulate}
 
+System aus $N$ identischen Teilchen, $A_N$ sei sinnvolle Observable, $\ket{\psi_N}$ und $\ket{\phi_N}$ seien sinnvolle Zustände.
+\begin{itemize}
+    \item $\ket{\psi_N}$ und $P_{i j} \ket{\psi_N}$ ``bedeuten das selbe''
+    \item Sinnvolle Annahme für die Observablen
+    \begin{align*}
+        \bra{\psi_N} A_N \ket{\psi_N} &= \bra{\psi_N} P_{ i j} A_N P_{i j} \ket{\psi_N} \\
+        \implies A_N &= P_{i j} A_N P_{i j} \implies [A_N, P_{i j}] = 0
+    \end{align*}
+    für jede sinnvolle Observable auf dem Raum der sinnvollen Zustände.
+    \item Spezielle Observable $A_N := \ket{\psi_N} \bra{\psi_N}$ ergibt $$P_{i j} A_N \ket{\psi_N} = A_N P_{i j} \ket{\psi_N} \iff  (P_{i j} \ket{\phi_N}) \bra{\phi_N} \ket{\psi_N} = \ket{\phi_N} \bra{\phi_N} P_{i j} \ket{\psi_N}$$
+    Woraus schließlich folgt dass $$\iff P_{i j} \ket{\phi_N} = \lambda \ket{\phi_N} \implies \lambda=\pm 1$$.
+    \item Das Symmetrisierungspostulat wird hierdurch suggestiert.  Das Postulat selbst ist noch etwas stärker, denn es besagt, dass für jede Teilchensorte genau nur ein Vorzeichen erlaubt ist.
+    \item Beispiele für Observablen
+    \begin{table}[hb!]
+        \centering
+        \begin{tabular}{|l|l|}
+            \hline
+            2 Teilchen unterscheidbar & $\vec{x}_1, \vec{x}_2$; $\vec{p}_1, \vec{p}_2$; $H = \frac{\vec{p}_1^2}{2m} + \frac{\vec{p}_2^2}{2m}$; $\vec{L}_1, \vec{L}_2, \vec{L}_{\text{ges}}$ \\
+            & $H$ sinnvoll, $\vec{x}_1, \vec{x}_2$ nicht sinnvoll \\\hline
+            2 Teilchen ununterscheidbar & $\vec{x}_1 - \vec{x}_2$ nicht sinnvoll, \\
+            & aber $\vec{x}_1 + \vec{x}_2$, $(\vec{x}_1 - \vec{x}_2)^2$, $|\vec{x}_1 - \vec{x}_2|^2$, $\vec{x}_1 \vec{x}_2$ sinnvoll \\
+            \hline
+        \end{tabular}
+    \end{table}
+    \item Vollständiges System kommutierender Observablen ist kompliziert.
+    \item Oft möglich: Rechnen nicht direkt mit $\mathcal{H}_N^{\pm}$ sondern in $\mathcal{H}$ und mit einzelnen Observablen und am Ende: Spezialisieren/Einschränken auf symmetrische bzw. antisymmetrische Zustände.
+\end{itemize}
+
+\section{Einfache Anwendungen}
+
+\subsection{Grund- und angeregte Zustände}
+
+$N$ Teilchen ohne Wechselwirkung;
+\begin{enumerate}
+    \item  Unterscheidbar: z.B. die Elektronen im He-Atom
+    \item Fermionen: z.B. Elektronen im Metall
+    \item Bosonen: mehrere $H$-Atome
+\end{enumerate}
+
+Beispiel: Alle Teilchen im Potential mit möglichen Energien $e_1$, $e_2$, $e_3, \ldots$ und Eigenzuständen $\ket{1}$, $\ket{2}$, $\ket{3}, \ldots$.
+\begin{enumerate}
+    \item Grundzustand $\ket{1^1, 1^2}$, $E = 2 e_1$
+
+    1. Angeregter Zustand $\ket{1^1 2^2}$ oder $\ket{2^1 1^2}$, $E = e_1 + e_2$ 2-fach entartet.
+
+    \item Grundzustand N: $\ket{1, 2, \ldots, N}^{-}$, $E = e_1 + e_2 + \ldots + e_N$ nicht entartet.
+    $e_N$ ist die maximale besetzte Energie im Grundzustand, genannt Fermienergie
+    
+    1. Angeregter Zustand: $\ket{1,2, \ldots, N-1, N+1}^{-}$ nicht entartet! $\Delta E = e_{N+1} - e_N$
+    \item Grundzustand N: $\ket{1, 1, \ldots, 1}^+$, $E = N e_1$
+    
+    1. Angeregter Zustand: $\ket{2, 1, \ldots, 1}$ nicht entartet! $\Delta E = e_2 - e_1$
+\end{enumerate}
 
 \end{document}
 
