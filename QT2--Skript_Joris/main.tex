@@ -703,6 +703,29 @@ $$ \frac{\ket{n^{(1)}m^{(2)}}+\ket{m^{(1)}n^{(2)}}}{\sqrt{2}}\otimes \frac{\ket{
 Folgerung: Selber Ort unmöglich, wenn Spins gleich.
 \end{itemize}
 
+\paragraph{Frage:} Sind obige Zustände eine Basis? Wie konstruiert man allgemein eine Basis von $\hil_N^{(\pm )}$?
+
+\paragraph{Antwort:} Nimm Basis aus Produktzuständen von $\hil_N$, symmetrisiere/antisymmetrisiere jedes Basiselement (wie für $N=2$ genutzt).\par 
+
+Def. \textit{Symmetrisierungsoperator}
+$$S_N^{(\pm )} := \frac{1}{N!}\sum_{\mathcal{P}} (\pm 1)^\mathcal{P}\mathcal{P}$$
+mit Permutationsoperator $\mathcal{P}$ (beliebiges Produkt von $P_{ij}$-Operatoren).\par 
+Es gilt: 
+\begin{itemize}
+\item[(a)] $$P_{ij}S_N^{(\pm )} = \frac{1}{N!}\sum_\mathcal{P}(\pm )^\mathcal{P} P_{ij}\mathcal{P} = \pm S_N^{(\pm )}=S_N^{(\pm )}P_{ij}$$
+\item[(b)] $$\mathcal{P} S_N^{(\pm )} = (\pm 1)^\mathcal{P} S_N^{ (\pm )}$$
+\item[(c)] $S_N^{(\pm )}$ ist hermitesch.
+\item[(d)] $$S_N^{(\pm )} S_N^{(\pm )} = S_N^{(\pm )}$$
+\end{itemize}
+$S_N^{(\pm )}$ sind hermitesche Projektionsoperatoren auf $\hil_N^{(\pm )}$.
+
+\paragraph{Konstruktion einer Basis}
+\begin{itemize}
+\item Nimm Basis von $\hil_N$ aus Produktzuständen: $\ket{n_1^{(1)}n_2^{(2)}\cdots n_N^{(N)}}$
+\item Def. $S_N^{(\pm )}\ket{n_1^{(1)}n_2^{(2)}\cdots n_N^{(N)}} =: \ket{n_1\cdots n_N}^{(\pm )}$
+\end{itemize}
+
+
 
 \end{document}
 
