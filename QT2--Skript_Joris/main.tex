@@ -728,7 +728,7 @@ $S_N^{(\pm )}$ sind hermitesche Projektionsoperatoren auf $\hil_N^{(\pm )}$.
     \implies \ket{\psi_N^{\pm}} &\in \mathcal{H}_N, \\
     P_{i j} \ket{\psi_N^{\pm}} &= \pm \ket{\psi_N^{\pm}} \implies S_N^{\pm} \ket{\psi_N^{\pm}} = + \ket{\psi_N^{\pm}} \\
     \implies \ket{\psi_N^{\pm}} &=  S_N^{\pm} \left(\int \ket{n_1^1 \ldots n_N^N}\bra{n_1^1 \ldots n_N^N}\right) \left(S_N^{\pm}\right)^\dagger \ket{\psi_N^{\pm}}\\
-    &= \sum\int \underbrace{\ket{n_1 \ldots n_N}}_{\text{Basiszustänge}} \underbrace{\sprod{n_1 \ldots n_N}{\psi_N^{\pm}}}_{\text{Koeffizienten}}
+    &= \sum\int \underbrace{\ket{n_1 \ldots n_N}}_{\text{Basiszustände}} \underbrace{\sprod{n_1 \ldots n_N}{\psi_N^{\pm}}}_{\text{Koeffizienten}}
 \end{align*}
 In der Tat stimmt die obige Antwort und die Basis ist durch die obige Gleichung gegeben.
 \item Normierung: per Konstruktion gilt die Vollständigkeitsrelation
@@ -747,7 +747,7 @@ System aus $N$ identischen Teilchen, $A_N$ sei sinnvolle Observable, $\ket{\psi_
         \implies A_N &= P_{i j} A_N P_{i j} \implies [A_N, P_{i j}] = 0
     \end{align*}
     für jede sinnvolle Observable auf dem Raum der sinnvollen Zustände.
-    \item Spezielle Observable $A_N := \ket{\psi_N} \bra{\psi_N}$ ergibt $$P_{i j} A_N \ket{\psi_N} = A_N P_{i j} \ket{\psi_N} \iff  (P_{i j} \ket{\phi_N}) \bra{\phi_N} \ket{\psi_N} = \ket{\phi_N} \bra{\phi_N} P_{i j} \ket{\psi_N}$$
+    \item Spezielle Observable $A_N := \ket{\psi_N} \bra{\psi_N}$ ergibt $$P_{i j} A_N \ket{\psi_N} = A_N P_{i j} \ket{\psi_N} \iff  (P_{i j} \ket{\phi_N}) \sprod{\phi_N}{\psi_N} = \ket{\phi_N} \bra{\phi_N} P_{i j} \ket{\psi_N}$$
     Woraus schließlich folgt dass $$\iff P_{i j} \ket{\phi_N} = \lambda \ket{\phi_N} \implies \lambda=\pm 1$$.
     \item Das Symmetrisierungspostulat wird hierdurch suggestiert.  Das Postulat selbst ist noch etwas stärker, denn es besagt, dass für jede Teilchensorte genau nur ein Vorzeichen erlaubt ist.
     \item Beispiele für Observablen
@@ -791,6 +791,125 @@ Beispiel: Alle Teilchen im Potential mit möglichen Energien $e_1$, $e_2$, $e_3,
     
     1. Angeregter Zustand: $\ket{2, 1, \ldots, 1}$ nicht entartet! $\Delta E = e_2 - e_1$
 \end{enumerate}
+
+\subsection{Direkter Prozess vs. Austauschterm}
+
+Zwei Teilchen: $\ket{\psi}$, $\ket{\phi}$ $\longrightarrow$ Prozess $\longrightarrow$ $\ket{n}$, $\ket{m}$\par 
+
+Anfangszustand $\ket{i}$ $\longrightarrow$ Endzustand $\ket{f}$. Frage: Was ist die Wahrscheinlichkeit?
+$$P_{i\rightarrow f} = |A_{i\rightarrow f}|^2$$
+
+Unterscheidbar: (entweder nur links oder nur rechts):
+\begin{itemize}
+\item ``direkt'': $$A^d_{i\rightarrow f} = \sprod{n^{(1)}m^{(2)}}{\psi^{(i)}\phi^{(2)}}=\sprod{n}{\psi}\sprod{m}{\phi}$$
+\item ``Austauschterm'': $$A^a_{i\rightarrow f}=\sprod{m^{(1)}n^{(2)}}{\psi^{(1)}\phi^{(2)}}=\sprod{m}{\psi}\sprod{n}{\phi}$$
+\item Gesamtwahrscheinlichkeit: ``entweder $\bra{nm}$ oder $\bra{mn}$''
+$$P_{i\rightarrow f}=|A^d_{i\rightarrow f}|^2+|A^a_{i\rightarrow f}|^2$$
+\end{itemize}
+
+Bosonen:
+$$\ket{i}=\frac{\ket{\psi\phi}+\ket{\phi\psi}}{\sqrt{2}}\qquad\qquad\ket{f}=\frac{\ket{nm}+\ket{mn}}{\sqrt{2}}$$
+$$A_{i\rightarrow f} = \sprod{f}{i} = \frac{1}{2}\left(\sprod{\psi}{n}\sprod{\phi}{m}+\sprod{\phi}{n}\sprod{\psi}{m}\right)\cdot 2 = A^d_{i\rightarrow f}+A^a_{i\rightarrow f}$$
+$$P_{i\rightarrow f} = \left|A^d_{i\rightarrow f}+A^a_{i\rightarrow f}\right|^2$$
+
+Fermionen (Analog):
+$$P_{i\rightarrow f} = \left|A^d_{i\rightarrow f}-A^a_{i\rightarrow f}\right|^2$$
+
+Spezialfall $n=m$: (Beide Teilchen gehen in den selben Zustand über)
+\begin{itemize}
+\item Fermionen: $P_{i\rightarrow f}=0$
+\item Bosonen: $P_{i\rightarrow f}=2|A^d_{i\rightarrow f}|^2$ (Doppelt so groß wie bei unterscheidbaren Teilchen)
+\end{itemize}
+
+\subsection{Wasserstoffmolekül $\mathrm{H}_2$}
+
+Chemische Bindung, gewisser Atomabstand $R$ minimiert die Energie. Austauschwechselwirkung sehr wichtig $\rightarrow$ Orts-Wellenfunktion.\par 
+
+Im Grundzustand: Orts-Wellenfunktion symmetrisch, Spin antisymmetrisch.\par 
+
+Annahme/Näherung: Kerne fixiert im Abstand $R$, Positionen der Kerne $a$ und $b$, Elektronen $1$ und $2$
+
+$$H=\frac{\vec{p}_1^2}{2m}+\frac{\vec{p}_2^2}{2m}-\alpha\left(\frac{1}{r_{1a}}+\frac{1}{r_{2a}}+\frac{1}{r_{1b}}+\frac{1}{r_{2b}}-\frac{1}{r_{12}}-\frac{1}{R}\right)$$
+
+$$H=H_{1,a}+H_{2,b}-\alpha\left(\frac{1}{r_{1b}}+\frac{1}{r_{2a}}-\frac{1}{r_{12}}-\frac{1}{R}\right)$$
+
+H-Atom-Zustände, Struktur der 2-Elektron-Zustände.\par 
+
+\paragraph{Erinnerung H-Atom:}\mbox{}\par 
+Quantenzahlen $n, l, m$: $\psi_{nlm}\sim R_{nl}(r)Y_{lm}(\theta ,\varphi )$\par 
+Grundzustand:
+$$\psi_{100}=\frac{2}{\sqrt{4\pi}}a_B^{-\frac{3}{2}}e^{-\frac{r}{a_B}}$$
+(Bohrscher Radius $a_B=\frac{1}{\alpha m}$).\par 
+Energien: $E_1 = -\frac{\alpha^2 m}{2}$, $E_n = \frac{E_1}{n^2}$ (Zusätzlich ungebundene Zustände mit $E>0$)\par 
+
+\paragraph{H-Atom mit Proton im Punkt $\vec{R}_a$}\mbox{}\par 
+
+Selbe Energie-EW, Eigenzustände: $\psi_a(\vec{x})=\psi_{\mathrm{Ursprung}}(\vec{x}-\vec{R}_a)$
+
+\paragraph{2-Elektron-Zustände} 2 Basen von 1-T.-Zuständen um Proton $a$ $\ket{\psi_a,nlm}$ und um Proton $b$ $\ket{\psi_b,nlm}$\par 
+
+Basis von 2-Teilchen-Zuständen (antisymmetrisch): $\hil_2^{(-)}$:
+$$\ket{\psi_{a,nlm},\psi_{b,n'l'm'}}^{(-)}\otimes\left\{\begin{matrix}
+\ket{\uparrow\uparrow} \\ \frac{\ket{\uparrow\downarrow}+\ket{\downarrow\uparrow}}{\sqrt{2}} \\ \ket{\downarrow\downarrow}
+\end{matrix}\right.$$
+$$\ket{\psi_{a,nlm},\psi_{b,n'l'm'}}^{(+)}\otimes \left(\frac{\ket{\uparrow\downarrow}-\ket{\downarrow\uparrow}}{\sqrt{2}}\right)$$
+
+Spinoperator kommutiert mit Hamiltonian, des Weiteren: $[\vec{S}^2,S_z]=0$. Simultane Eigenzustände:
+$$\ket{SM}\qquad \qquad \vec{S}^2\ket{SM}=S(S+1)\ket{SM}\qquad S_z\ket{SM}=M\ket{SM}$$
+Spin-Notation:
+\begin{align*}
+\ket{1,1}&:=\ket{\uparrow\uparrow}\\
+\ket{1,0}&:=\frac{\ket{\uparrow\downarrow}+\ket{\downarrow\uparrow}}{\sqrt{2}}\\
+\ket{1, -1}&:=\ket{\downarrow\downarrow} \\
+\ket{0, 0}&:= \frac{\ket{\uparrow\downarrow}-\ket{\downarrow\uparrow}}{\sqrt{2}}
+\end{align*}
+
+Damit Basis:\par 
+Ort antisymmetrisch, Spin $S=1$: $\ket{\psi_{a,nlm},\psi_{b,n'l'm'}}^{(-)}\otimes\ket{1,M}$\\
+Ort symmetrisch, Spin $S=0$: $\ket{\psi_{a,nlm},\psi_{b,n'l'm'}}^{(+)}\otimes\ket{0,0}$\par 
+
+Idee zur Lösung des H$_2$-Moleküls:
+\begin{itemize}
+\item Ziel: Grundzustandsenergie? Optimaler Abstand R?
+\item Annahme/Näherung: obigen Basiszustände sind Eigenzustände des vollen Moleküls (d.h. WW klein, H-Atome nur wenig beeinflusst)
+\item Variationsprinzip: Ansatz sinnvoller Zustände $\ket{\psi_{\text{sinnvoll}}}$
+$$E_{var}=\frac{\erwop{\psi_{\text{sinnvoll}}}{H}{\psi_{\text{sinnvoll}}}}{\sprod{\psi_{\text{sinnvoll}}}{\psi_{\text{sinnvoll}}}}$$
+Auf jeden Fall: $E_{var}\geq E_{\text{Grundzustand}}$ (Gleichheit bei guter Wahl)
+\end{itemize}
+\paragraph{Heitler-London-Näherung}\mbox{}\par 
+
+Wähle $\ket{\psi_{\text{sinnvoll}}}:=\ket{\psi}^{(\pm )}=\ket{\phi_a,\phi_b}^{(\pm )}\otimes\ket{SM}$, wobei $\phi_a$ und $\phi_b$ die Grundzustände bezüglich der einzelnen H-Atome sind. Bei folgenden Matrixelementen: $\sprod{SM}{SM}=1$ trägt nicht weiter bei $\rightarrow$ ab jetzt nur noch Ortsraum betrachten.
+
+$$\sprod{\vec{x}}{\phi_{a,b}}=\frac{2}{\sqrt{4\pi}}a_B^{-\frac{3}{2}}e^{-\frac{|\vec{x}-\vec{R}_{a,b}|}{a_B}}$$
+
+Längere Rechnung ($\psi^{(\pm )}$ einsetzen und bekannte Skalarproduktrelationen, Normierung ausnutzen und beim Matrixelement auf Eigenzustände von Teilen des Hamiltonians achten):
+\begin{itemize}
+\item[(a)] $$\sprod{\psi^{(\pm )}}{\psi^{(\pm )}} = 1\pm |L_{ab}|^2$$
+mit $L_{ab}=\sprod{\phi_a}{\phi_b}=\int\dif^3x\:\phi_a(\vec{x})\phi_b(\vec{x})$ (Überlapp).
+\item[(b)] $$\erwop{\psi^{(\pm )}}{H}{\psi^{(\pm )}} = \erwop{\phi_a^{(1)}\phi_b^{(2)}}{H}{\phi_a^{(1)}\phi_b^{(2)}} \pm \erwop{\phi_a^{(1)}\phi_b^{(2)}}{H}{\phi_b^{(1)}\phi_a^{(2)}}$$
+Diagonalterm:
+$$\erwop{\phi_a^{(1)}\phi_b^{(2)}}{H}{\phi_a^{(1)}\phi_b^{(2)}}=2E_1+C_{ab}$$
+mit Coulomb-Zusatzenergie 
+\begin{align*}
+C_{ab}=\frac{\alpha}{R}&-\alpha\int\dif^3x\: |\phi_a(\vec{x})|^2\frac{1}{|\vec{x}-\vec{R}_b|} \\
+&- \alpha\int\dif^3x\: |\phi_b(\vec{x})|^2\frac{1}{|\vec{x}-\vec{R}_a|} \\
+&+\alpha\int\dif^3x_1\:\dif^3x_2\frac{|\phi_a(\vec{x}_1)|^2|\phi_b(\vec{x}_2)|^2}{|\vec{x}_1-\vec{x}_2|}
+\end{align*}
+Off-Diagonalterm:
+$$\erwop{\phi_a^{(1)}\phi_b^{(2)}}{H}{\phi_b^{(1)}\phi_a^{(2)}}= 2E_1|L_{ab}|^2+A_{ab}$$
+mit Austauschterm
+\begin{align*}
+A_{ab}=\frac{\alpha}{R}|L_{ab}|^2 &-\alpha L_{ab}^*\int\dif^3x\: \frac{\phi^*_a(\vec{x})\phi_b(\vec{x})}{|\vec{x}-\vec{R}_a|} \\
+&-\alpha L_{ab}\int\dif^3x\: \frac{\phi_a(\vec{x})\phi_b^*(\vec{x})}{|\vec{x}-\vec{R}_b|} \\
+&+\alpha \int\dif^3x_1\:\dif^3x_2\frac{\phi_a^*(\vec{x}_1)\phi_b(\vec{x}_1)\phi_b^*(\vec{x}_2)\phi_a(\vec{x}_2)}{|\vec{x}_1-\vec{x}_2|}
+\end{align*}
+Damit
+$$\boxed{E_{var}^{(\pm )}=2E_1 + \frac{C_{ab}\pm A_{ab}}{1\pm |L_{ab}|^2}}$$
+numerisch ausrechnen!\par 
+Stabile Bindung? Für welches R?
+
+
+\end{itemize}
 
 \end{document}
 
