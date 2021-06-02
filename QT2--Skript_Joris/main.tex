@@ -910,6 +910,103 @@ Stabile Bindung? Für welches R?
 
 \end{itemize}
 
+\section{Erzeugungs- und Vernichtungsoperatoren}
+
+\subsection{Fock-Raum}
+
+Der \textit{Fock-Raum} ist ein Zustandsraum, der sowohl 1-Teilchen-, also auch Mehr-Teilchen-Zustände enthält.\par 
+
+Start wie bisher: 1-Teilchenraum $\hil_1$, Basis $\ket{n}$ sei gegeben.\par 
+
+\newcommand{\fock}{\mathcal{F}}
+
+Nun füge hinzu:
+\begin{itemize}
+\item ``Vakuumzustand'' $\ket{0}$ (Nicht Nullvektor!), $\sprod{0}{0} = 1$\\
+$\rightarrow$ Vakuum-Hilbertraum $\hil_0 = \{ c\ket{0} , c\in\mathbb{C}\}$
+\item ``Fockraum''\\
+Bosonen: $\fock:=\hil_0 \oplus \hil_1 \oplus \hil_2^{(+)} \oplus \hil_3^{(+)} \oplus ... $\\
+Fermionen: $\fock:=\hil_0 \oplus \hil_1 \oplus \hil_2^{(-)} \oplus \hil_3^{(-)} \oplus ... $\par 
+
+Basis von $\fock$:
+\begin{itemize}
+\item Vakuum: $\ket{0}$
+\item 1-Teilchen: $\ket{n}$
+\item 2-Teilchen: $\ket{n_1n_2}^{(\pm )}$
+\item 3-Teilchen: $\ket{n_1n_2n_3}^{(\pm )}$
+\end{itemize}
+
+Skalarprodukte:
+$$\sprod{N\text{-Teilchen-Zustand}}{M\text{-Teilchen-Zustand}} = \left\{ \begin{matrix}
+0 & N\neq M \\
+\text{wie gehabt} & N=M
+\end{matrix}\right. $$
+
+\end{itemize}
+
+\subsection{Erzeuger/Vernichter für Bosonen}
+
+Erzeugungsoperator $a_n^\dagger$ ``erzeugt ein zusätzliches Teilchen im Basiszustand $\ket{n}$''
+
+$$a_n^\dagger : \hil_N^{(+)}\rightarrow \hil_{N+1}^{(+)} \qquad a_n^\dagger\ket{0} = \ket{n}\qquad a_n^\dagger\ket{m} = \sqrt{2}\ket{nm}^{(+)} \qquad a_n^\dagger\ket{mk}^{(+)}=\sqrt{3}\ket{nmk}^{(+)}, \qquad ...$$
+
+Jeder Basiszustand des Fockraums lässt sich durch mehrfache Anwendung des Erzeugers auf das Vakuum gewinnen.
+$$\boxed{\ket{n_1,...,n_N}^{(+)} = \frac{1}{\sqrt{N!}}a_{n_1}^\dagger\cdots a_{n_N}^\dagger \ket{0}}$$
+
+\paragraph{Vertauschungsrelationen} Nimm einen beliebigen Basiszustand aus $\fock$
+$$a_{n_1}^\dagger a_{n_2}^\dagger \ket{m_1,...,m_N}^{(+)} = \sqrt{(N+1)(N+2)}\ket{n_1n_2m_1,...,m_N}^{(+)}$$
+$$a_{n_2}^\dagger a_{n_1}^\dagger \ket{m_1,...,m_N}^{(+)} = \sqrt{(N+1)(N+2)}\ket{n_2n_1m_1,...,m_N}^{(+)}$$
+
+\newcommand{\create}[1]{a_{#1}^\dagger}
+\newcommand{\destroy}[1]{a_{#1}}
+
+$$\Rightarrow [\create{n_1},\create{n_2}] = 0\qquad \text{(Für Bosonen)}$$
+
+\paragraph{Vernichtungsoperator} $a_n := (\create{n})^\dagger$
+
+$$\destroy{n}\ket{0} = 0$$
+$$\destroy{n}\ket{m} = \left\{\begin{matrix}
+0 & n\neq m \\
+\ket{0} &n=m \text{ (und Zustände normiert)}
+\end{matrix}\right.$$
+$$\destroy{n}\ket{m_1,...,m_N}^{(+)} = \frac{1}{\sqrt{N!}}\sum_{i=1}^N \delta_{nm_i}\ket{m_1...m_{i-1}m_{i+1}...m_N}^{(+)}$$
+
+\paragraph{Vertauschungsrelation}
+$$\destroy{n}\create{m}\ket{m_1...m_N}^{(+)} = \destroy{n}\sqrt{N+1}\ket{mm_1...m_N}^{(+)} =  \delta_{nm}\ket{m_1...m_N} + \sum \delta_{nm_i}\ket{mm_1...m_{i-1}m_{i+1}...m_N}^{(+)}$$
+$$\create{m}\destroy{n}\ket{m_1...m_N}^{(+)}= \sum \delta_{nm_i}\ket{mm_1...m_{i-1}m_{i+1}...m_N}^{(+)}$$
+Differenz enthält nur $\delta_{nm}$-Term.
+\begin{align*}
+[\destroy{n},\create{m}]&=\delta_{nm} :=\sprod{n}{m} \\
+[\create{n},\create{m}] &= 0 \\
+[\destroy{n},\destroy{m}] &= 0
+\end{align*}
+Diese Vertauschungsrelationen beschreiben die Bose-Natur der Teilchen. 
+
+\subsection{Erzeuger/Vernichter für Fermionen}
+
+\newcommand{\createf}[1]{c^\dagger_{#1}}
+\newcommand{\destroyf}[1]{c_{#1}}
+
+Erzeugungsoperator
+$$\createf{n}:\hil_N^{(-)}\rightarrow \hil_{N+1}^{-}\qquad \createf{n}\ket{0} = \ket{n}\qquad \createf{n}\ket{m} = \sqrt{2}\ket{nm}^{(-)}\qquad ...$$
+
+$$\boxed{\ket{n_1,...,n_N}^{(-)} = \frac{1}{\sqrt{N!}}\createf{n_1}\cdots \createf{n_N} \ket{0}}$$
+
+Vernichter: $\destroyf{n} := (\createf{n})^\dagger$\par 
+
+\paragraph{Vertauschungsrelationen} Vorgehen analog zu Bosonen.
+
+$$\{\createf{n_1}\createf{n_2}\} = 0$$
+
+$$c_n\ket{m_1...m_N}^{(-)} = \frac{1}{\sqrt{N!}}\sum (-1)^{i-1}\delta_{nm_i}\ket{m_1...m_{i-1}m_{i+1}...m_N}^{(-)}$$
+
+\begin{align*}
+\{\destroyf{n},\createf{m}\}&=\delta_{nm} :=\sprod{n}{m} \\
+\{\createf{n},\createf{m}\} &= 0 \\
+\{\destroyf{n},\destroyf{m}\} &= 0
+\end{align*}
+Diese Vertauschungsrelationen beschreiben die Fermi-Statistik.
+
 \end{document}
 
 
