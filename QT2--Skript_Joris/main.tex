@@ -1007,6 +1007,95 @@ $$c_n\ket{m_1...m_N}^{(-)} = \frac{1}{\sqrt{N!}}\sum (-1)^{i-1}\delta_{nm_i}\ket
 \end{align*}
 Diese Vertauschungsrelationen beschreiben die Fermi-Statistik.
 
+\subsection{Besetzungszahldarstellung}
+
+1.-T.-Basiszustände $\ket{\psi_n}$, Mehr-T.-Zustände z.B. $\create{\psi_{n_1}}\create{\psi_{n_2}}\create{\psi_{n_3}}\ket{0} = \sqrt{3!}\ket{\psi_{n_1}\psi_{n_2}\psi_{n_3}}$\par 
+Äquivalente Charakterisierung: ``... Teilchen mit Zustand $\psi_i$'' $\rightarrow$ \textit{Besetzungszahldarstellung} (Nur sinnvoll für sym./antisym. Zustände, mit abzählbarer Basis)
+$$\ket{\psi_1\psi_3\psi_6}^{(\pm)} \quad \hat{=} \quad \ket{1,0,1,0,0,1,0,0,...}$$
+Häufig andere Normierung genutzt:\par 
+Bsp: 
+$$\create{\psi_{1}}\create{\psi_{2}}\create{\psi_{3}}\ket{0} = \sqrt{3!}\ket{\psi_1\psi_3\psi_6}^{(\pm)}$$
+$$\ket{\psi_1\psi_3\psi_6}^{(\pm)}=\frac{1}{3!}\sum_{\mathcal{P}}(\pm 1)^\mathcal{P}\ket{\psi_1\psi_3\psi_6}$$
+$$\sprod{\psi_1\psi_3\psi_6}{\psi_1\psi_3\psi_6}^{(\pm )} = \frac{1}{3!}$$
+
+$$\create{\psi_{1}}\create{\psi_{1}}\create{\psi_{5}}\ket{0} = \sqrt{3!}\ket{\psi_1\psi_1\psi_5}^{(+)}$$
+$$\ket{\psi_1\psi_1\psi_5}^{(+)}=\frac{1}{3!}\sum_{\mathcal{P}}\ket{\psi_1\psi_1\psi_5}$$
+$$\sprod{\psi_1\psi_1\psi_5}{\psi_1\psi_1\psi_5}^{(+ )} = \frac{2!}{3!}$$
+
+Allgemein: 
+\begin{itemize}
+\item Falls jeder Zustand maximal einfach besetzt ist, dann Umnormierung mit $\sqrt{N!}$
+\item Falls Zustände Besetzungszahlen $n_1, n_2,...,$ haben, dann Umnormierung mit
+$$\sim \sqrt{\frac{N!}{n_1!n_2!...}}$$
+\end{itemize}
+\paragraph{Besetzungszahldarstellung normiert}
+$$\ket{n_1,n_2,...}=\pm \cdots \frac{\left(\create{\psi_2}\right)^{n_2}}{\sqrt{n_2 !}} \frac{\left(\create{\psi_1}\right)^{n_1}}{\sqrt{n_1 !}}\ket{0}$$
+Vorzeichen für Bosonen immer $+$.
+
+\subsection{Formulierung von Observablen}
+
+Immer entweder Bose/Fermi aber immer mit $a^\dagger$/$a$\par 
+
+Nehme direkte normierte Basis $\ket{\psi_n}$\par
+
+Besetzungszahloperator:
+\newcommand{\anzahl}[1]{\hat{n}_{\psi_{#1}}}
+\newcommand{\vac}{\ket{0}}
+
+$$\hat{n}_{\psi_k} := \create{\psi_k}\destroy{\psi_k}$$
+$$\anzahl{k}\vac =  0$$
+
+Vertauschungsrelation:
+$$\anzahl{k}\create{\psi_l}=\create{\psi_k}\destroy{\psi_k}\create{\psi_l} = \create{\psi_l}\anzahl{k}+\delta_{kl}\create{\psi_l}$$
+$$[\anzahl{k},\create{\psi_l}]=\delta_{kl}\create{\psi_l} \qquad [\anzahl{k},\left(\create{\psi_l}\right)^{n_l}]=n_l\delta_{kl}\left(\create{\psi_l}\right)^{n_l}$$
+
+$$\anzahl{k}\ket{n_1,n_2,...,n_k,...} = n_k\ket{n_1,n_2,...,n_k,...}$$
+
+Teilchenzahloperator:
+$$N :=\sum_k\anzahl{k}$$
+
+\newcommand{\cre}[1]{\create{\psi_{#1}}}
+\newcommand{\des}[1]{\destroy{\psi_{#1}}}
+
+Nebenrechnung:
+$$\cre{k}\des{l}\ket{\psi_{n_1},...,\psi_{n_N}}^{(\pm )}=\sum_{m=1}^N \delta_{ln_m}\ket{\psi_{n_1},...,\psi_k,...,\psi_{n_N}}^{(\pm )}$$
+(wobei $\psi_k$ den Zustand $\psi_{n_m}$ ersetzt)\par 
+
+Einteilchenobservablen: z.B. kinetische Energie:
+
+$$T_1 = \frac{\vec{p}^2}{2m}$$
+$$T_N = \sum_{m=1}^N T_1^{(m)}$$
+
+Matrixelement zw. 1-T.-Zuständen
+$$\erwop{\psi_k}{T_1}{\psi_l} =: T_{kl}$$
+$$T_1\ket{\psi_l} = \sum_k T_{kl}\ket{\psi_k}$$
+
+Wirkung auf $N$-T.-Zustand:
+$$T_N\ket{\psi_{n_1}...\psi_{n_N}}^{(\pm)} = \sum_{m=1}^N\sum_k T_{kn_m}\ket{\psi_{n_1},...,\psi_k,...,\psi_{n_N}}^{(\pm )}$$
+Vergleich mit Nebenrechnung:
+$$\boxed{T_N = \sum_{k,l}T_{kl}\:\cre{k}\des{l}}$$
+
+\paragraph{Zwei-Teilchen-Observablen} (z.B. Coulomb-Potential zwischen Teilchen $i$,$j$)
+$$V_2^{(ij)} : \erwop{\psi_{k_1}\psi_{k_2}}{V_2^{(12)}}{\psi_{l_1}\psi_{l_2}}=: V_{k_1,k_2,l_1,l_2}$$
+
+$$V = \frac{1}{2}\sum_{i\neq j} V_2^{(ij)}$$
+
+analog
+
+$$V = \frac{1}{2}\sum_{k_1k_2l_1l_2} V_{k_1,k_2,l_1,l_2}\cre{k_1}\cre{k_2}\des{l_2}\des{l_1}$$
+
+Beispiel Impulsbasis:\par 
+
+Nicht diskret, sondern kontinuierlich. Impuls-EZ für 1 Teilchen $\ket{\vf{p}}$, W.fkt $\sprod{\vf{x}}{\vf{p}}=\frac{1}{\sqrt{2\pi}^3}e^{i\vf{p}\cdot\vf{x}}$
+$$\sprod{\vf{p}'}{\vf{p}} = \delta^{(3)}(\vf{p}-\vf{p}')$$
+Erzeuger/Vernichter, kontinuierlicher Index:
+$$[\destroy{\vf{p}},\create{\vf{p}'}]=\delta^{(3)}(\vf{p}-\vf{p}')$$
+Alles analog mit $\sum_{k,l} \rightarrow \int\dif^3p\:\dif^3p'$
+
+$$T = \int \dif^3p\:\dif^3p' \: \frac{\vf{p}^2}{2m}\: \delta^{(3)}(\vf{p}-\vf{p}') \create{\vf{p}'}\destroy{\vf{p}}$$
+
+$$\boxed{T=\int\dif^3p \: \frac{\vf{p}^2}{2m} \:\create{\vf{p}}\destroy{\vf{p}}}$$
+
 \end{document}
 
 
