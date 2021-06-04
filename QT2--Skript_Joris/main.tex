@@ -969,7 +969,7 @@ $$\destroy{n}\ket{m} = \left\{\begin{matrix}
 0 & n\neq m \\
 \ket{0} &n=m \text{ (und Zustände normiert)}
 \end{matrix}\right.$$
-$$\destroy{n}\ket{m_1,...,m_N}^{(+)} = \frac{1}{\sqrt{N!}}\sum_{i=1}^N \delta_{nm_i}\ket{m_1...m_{i-1}m_{i+1}...m_N}^{(+)}$$
+$$\destroy{n}\ket{m_1,...,m_N}^{(+)} = \frac{1}{\sqrt{N}}\sum_{i=1}^N \delta_{nm_i}\ket{m_1...m_{i-1}m_{i+1}...m_N}^{(+)}$$
 
 \paragraph{Vertauschungsrelation}
 $$\destroy{n}\create{m}\ket{m_1...m_N}^{(+)} = \destroy{n}\sqrt{N+1}\ket{mm_1...m_N}^{(+)} =  \delta_{nm}\ket{m_1...m_N} + \sum \delta_{nm_i}\ket{mm_1...m_{i-1}m_{i+1}...m_N}^{(+)}$$
@@ -998,7 +998,7 @@ Vernichter: $\destroyf{n} := (\createf{n})^\dagger$\par
 
 $$\{\createf{n_1}\createf{n_2}\} = 0$$
 
-$$c_n\ket{m_1...m_N}^{(-)} = \frac{1}{\sqrt{N!}}\sum (-1)^{i-1}\delta_{nm_i}\ket{m_1...m_{i-1}m_{i+1}...m_N}^{(-)}$$
+$$c_n\ket{m_1...m_N}^{(-)} = \frac{1}{\sqrt{N}}\sum (-1)^{i-1}\delta_{nm_i}\ket{m_1...m_{i-1}m_{i+1}...m_N}^{(-)}$$
 
 \begin{align*}
 \{\destroyf{n},\createf{m}\}&=\delta_{nm} :=\sprod{n}{m} \\
