@@ -1096,6 +1096,60 @@ $$T = \int \dif^3p\:\dif^3p' \: \frac{\vf{p}^2}{2m}\: \delta^{(3)}(\vf{p}-\vf{p}
 
 $$\boxed{T=\int\dif^3p \: \frac{\vf{p}^2}{2m} \:\create{\vf{p}}\destroy{\vf{p}}}$$
 
+2-Teilchen-Potentiale in Impulsbasis:\par 
+
+im Ortsraum: $V_2^{(12)}=V(\vf{x}_1-\vf{x}_2)$:
+
+$$V = \frac{1}{2}\sum\int V_{\vf{p}_1'\vf{p}_2'\vf{p}_1\vf{p}_2}\create{\vf{p}_1'}\create{\vf{p}_2'}\destroy{\vf{p}_2}\destroy{\vf{p}_1}$$
+
+\begin{align*}
+V_{\vf{p}_1'\vf{p}_2'\vf{p}_1\vf{p}_2} &= \erwop{\vf{p}_1'\vf{p}_2'}{V_2}{\vf{p}_1\vf{p}_2} \\
+&=\frac{1}{(2\pi )^6}\int\dif^3x_1\:\dif^3x_2\: e^{i(\vf{p}_1\vf{x}_1 + \vf{p}_2\vf{x}_2 - \vf{p}_1'\vf{x}_1 - \vf{p}_2'\vf{x}_2)}\: V(\vf{x}_1-\vf{x}_2) \\
+&= \delta^{(3)}(\vf{p}_1+\vf{p}_2 - \vf{p}_1' -\vf{p}_2')\cdot \frac{1}{(2\pi )^3}\int d^3z\:e^{i\vf{z}\vf{q}}V(\vf{z})
+\end{align*}
+mit $\vf{z}=\vf{x}_1-\vf{x}_2$ und $\vf{q}=\vf{p}_2'-\vf{p}_2$
+
+$$\boxed{V = \frac{1}{2}\int \dif^3p_1\:\dif^3p_2\:d^3q\:\frac{1}{(2\pi )^3}\tilde{V}(\vf{q})\create{\vf{p}_1+\vf{q}}\create{\vf{p}_2-\vf{q}}\destroy{\vf{p}_2}\destroy{\vf{p}_1}}$$
+
+\subsection{Kurz-Überblick über Anwendungen}
+
+System identischer Teilchen mit 2.-T.-WW, endl. Volumen
+
+$$H=\underbrace{T+V_{ext}}_{H_0}+V_2$$
+
+Wähle 1-T-Basis aus $H_0$ Eigenzuständen:
+$$H_0\ket{\psi_n}=E_n\ket{\psi_n}$$
+Zugehöriger Erzeuger: $\create{n}$
+$$T+V_{ext}=\sum_n E_n\create{n}\destroy{n}$$
+$V_2$ in Impulsbasis:
+$$V_2 = \frac{2}{L^3}\sum_{\vf{p},\vf{p}',\vf{q}}\tilde{V}(\vf{q})\create{\vf{p}-\vf{q}}\create{\vf{p}'+\vf{q}}\destroy{\vf{p}'}\destroy{\vf{p}}$$
+
+Genereller Hamiltonian für Festkörperelektronen mit spinunabhängigem $V_2$
+
+$$H = \sum_{\vf{k},\sigma}\xi_{\vf{k}}\createf{\vf{k}\sigma}\destroyf{\vf{k}\sigma} + \frac{1}{2L_3}\sum_{\vf{k}_1\vf{k}_2\vf{q}\sigma_1\sigma_2}\tilde{V}(\vf{q})\createf{\vf{k}_1-\vf{q},\sigma_1}\createf{\vf{k}_2+\vf{q},\sigma_2}\destroyf{\vf{k}_2\sigma_2}\destroyf{\vf{k}_1\sigma_1}$$
+
+Genereller Hamiltonian für Bosegas mit Wechselwirkung:
+
+$$H=\sum_\vf{p}\frac{\vf{p}^2}{2m}\create{\vf{p}}\destroy{\vf{p}}+\frac{1}{2L^3}\sum_{\vf{p}_1\vf{p}_2\vf{q}}\tilde{V}(\vf{q})\create{\vf{p}_1-\vf{q}}\create{\vf{p}_2+\vf{q}}\destroy{\vf{p}_2}\destroy{\vf{p}_2}$$
+
+\paragraph{Anwendung: Hartree-Fock-Näherung}\mbox{}\par 
+
+$\createf{A}\createf{B}\destroyf{C}\destroyf{D}$ = Produkt aus Paar $AB$ oder aus Paar $A'B'$
+
+$$A=\createf{A}\destroyf{D}\qquad B = \createf{B}\destroyf{C}\qquad A'=\createf{A}\destroyf{C}\qquad B'=\createf{B}\destroyf{D}$$
+
+\newcommand{\erw}[1]{\langle #1\rangle}
+
+\textit{Mean-field-Näherung}:
+$$A=\erw{A}+\delta A\qquad B=\erw{B}+\delta B$$
+$$AB = (\erw{A}+\delta A)(\erw{B}+\delta B) \approx \erw{A}B + A\erw{B} - \erw{A}\erw{B}$$
+H.F.-Näherung:
+$$\createf{}\create{}cc \approx A\erw{B}+B\erw{A}-\erw{A}\erw{B}-A'\erw{B'}-B'\erw{A'}+\erw{A'}\erw{B'}$$
+(s. Wick-Theorem)
+$$\Rightarrow\quad H^{\text{genähert}}\approx \text{Summe con Termen }\sim c^\dagger c$$
+
+\paragraph{Weitere Anwendungsbeispiele:} Supraleitung, Suprafluidität
+
 \end{document}
 
 
