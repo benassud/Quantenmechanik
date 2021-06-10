@@ -1130,7 +1130,7 @@ $$H = \sum_{\vf{k},\sigma}\xi_{\vf{k}}\createf{\vf{k}\sigma}\destroyf{\vf{k}\sig
 
 Genereller Hamiltonian für Bosegas mit Wechselwirkung:
 
-$$H=\sum_\vf{p}\frac{\vf{p}^2}{2m}\create{\vf{p}}\destroy{\vf{p}}+\frac{1}{2L^3}\sum_{\vf{p}_1\vf{p}_2\vf{q}}\tilde{V}(\vf{q})\create{\vf{p}_1-\vf{q}}\create{\vf{p}_2+\vf{q}}\destroy{\vf{p}_2}\destroy{\vf{p}_2}$$
+$$H=\sum_\vf{p}\frac{\vf{p}^2}{2m}\create{\vf{p}}\destroy{\vf{p}}+\frac{1}{2L^3}\sum_{\vf{p}_1\vf{p}_2\vf{q}}\tilde{V}(\vf{q})\create{\vf{p}_1-\vf{q}}\create{\vf{p}_2+\vf{q}}\destroy{\vf{p}_2}\destroy{\vf{p}_1}$$
 
 \paragraph{Anwendung: Hartree-Fock-Näherung}\mbox{}\par 
 
@@ -1144,11 +1144,141 @@ $$A=\createf{A}\destroyf{D}\qquad B = \createf{B}\destroyf{C}\qquad A'=\createf{
 $$A=\erw{A}+\delta A\qquad B=\erw{B}+\delta B$$
 $$AB = (\erw{A}+\delta A)(\erw{B}+\delta B) \approx \erw{A}B + A\erw{B} - \erw{A}\erw{B}$$
 H.F.-Näherung:
-$$\createf{}\create{}cc \approx A\erw{B}+B\erw{A}-\erw{A}\erw{B}-A'\erw{B'}-B'\erw{A'}+\erw{A'}\erw{B'}$$
+$$\createf{}\createf{}cc \approx A\erw{B}+B\erw{A}-\erw{A}\erw{B}-A'\erw{B'}-B'\erw{A'}+\erw{A'}\erw{B'}$$
 (s. Wick-Theorem)
-$$\Rightarrow\quad H^{\text{genähert}}\approx \text{Summe con Termen }\sim c^\dagger c$$
+$$\Rightarrow\quad H^{\text{genähert}}\approx \text{Summe von Termen }\sim c^\dagger c$$
 
 \paragraph{Weitere Anwendungsbeispiele:} Supraleitung, Suprafluidität
+
+\section{Ortsraum, Impulsraum, QFT (Spin=0)}
+
+\subsection{Zur Interpretation der letzten Ergebnisse}
+
+$$H=T+V$$
+
+In Impulsbasis:
+$$H=\int\dif^3p\:\frac{\vf{p}^2}{2m}\create{\vf{p}}\destroy{\vf{p}}+\frac{1}{2}\int\dif^3p_1\:\dif^3p_2\:\dif^3q\: \tilde{V}(\vf{q})\create{\vf{p}_1-\vf{q}}\create{\vf{p}_2+\vf{q}}\destroy{\vf{p}_2}\destroy{\vf{p}_1}$$
+
+\begin{itemize}
+\item freier Anteil: Summe über harmonische Oszillatoren mit $\omega_\vf{p} = \frac{\vf{p}^2}{2m}$.
+\item Zahl von Teilchen mit $\vf{p}$: Anregungszahl des entsprechenden Oszillators $n_\vf{p} =\create{\vf{p}}\destroy{\vf{p}}$
+\item Bedeutung der Oszillatoren: de Broglie-Wellen der Impuls-Eigenzustände
+\item Bedeutung von $\sum$ bzw. $\int\dif^3p$: Oszillatoren sind unabhängig, $T$ beschreibt keine Wechselwirkung zwischen den Teilchen.
+\item Wechselwirkungsanteil als Feynmandiagramm. (Siehe Vorlesung)\par 
+\small{\textit{Das gegebene Feynmandiagramm enthält zwei Teilchen mit Impulsen $\vf{p}_1$ und $\vf{p}_2$, die von links kommen und in der Mitte wechselwirken mit $\tilde{V}(\vf{q})$ (Wie ein bosonisches Austauschteilchen gezeichnet). Danach kommen Teilchen mit veränderten Impulsen $\vf{p}_1+\vf{q}$ und $\vf{p}_2-\vf{q}$ rechts raus.}}
+\end{itemize}
+
+\subsection{Ortsraum}
+
+Ortsraum-EZ für ein Teilchen: $\ket{\vf{x}}$.\par 
+
+\newcommand{\ccreate}[1]{\hat{\Psi}^\dagger (\vf{#1})}
+\newcommand{\ddestroy}[1]{\hat{\Psi} (\vf{#1})}
+
+Erzeuger/Vernichter kontinuierlicher ``Index'': $\create{\vf{x}}$. Andere Bezeichnung $\hat{\Psi}^\dagger (\vf{x})$.
+
+$$[\ddestroy{x},\ddestroy{y}]^{(\pm )}=0$$
+$$[\ddestroy{x},\ccreate{y}]^{(\pm )}=\delta^{(3)}(\vf{x}-\vf{y})$$
+$$\ccreate{x}\vac = \ket{\vf{x}}$$
+
+Zusammenhang mit Impulsdarstellung:
+
+$$\ccreate{x}=\frac{1}{\sqrt{2\pi}^3}\int\dif^3p\: \create{\vf{p}} e^{-i\vf{x}\cdot\vf{p}}$$
+$$\ddestroy{x}=\frac{1}{\sqrt{2\pi}^3}\int\dif^3p\: \destroy{\vf{p}} e^{i\vf{x}\cdot\vf{p}}$$
+
+Dann mit 2-Teilchen-Potential:
+
+$$V = \frac{1}{2}\int\dif^3x_1\:\dif^3x_2\:\ccreate{x_1}\ccreate{x_2}V(\vf{x}_1-\vf{x}_2)\ddestroy{x_2}\ddestroy{x_1}$$
+
+Dann freier 1-Teilchen-Hamiltonian:
+
+\begin{align*}
+T&=\int\dif^3x_1\:\dif^3x_2\:\erwop{\vf{x}_2}{\frac{\vf{p}^2}{2m}}{\vf{x}_1}\ccreate{x_2}\ddestroy{x_1} \\
+&= \int\dif^3x_1\:\dif^3x_2\:\dif^3p\:\frac{\vf{p}^2}{2m}\frac{e^{i(\vf{p}\vf{x}_2-\vf{p}x_1)}}{(2\pi )^3}\ccreate{x_2}\ddestroy{x_1}
+\end{align*}
+
+$\vf{p}^2$-Term durch Laplaceoperator ersetzen und partielle Integration.
+
+\begin{align*}
+&= \int\dif^3x_1\:\dif^3x_2\:\dif^3p \frac{e^{i(\vf{p}\vf{x}_2-\vf{p}x_1)}}{(2\pi )^3}\ccreate{x_2}\cdot\frac{-\Delta}{2m}\ddestroy{x_1}
+\end{align*}
+
+Integrieren nach $\vf{p}$ ergibt $\delta$-Funktion.
+
+$$\boxed{T=\int\dif^3x\:\ccreate{x}\frac{-\Delta}{2m}\ddestroy{x}}$$
+
+Bedeutung und Vergleich:\par 
+
+$\ddestroy{x}$:
+\begin{itemize}
+\item Vernichter für Teilchen bei $\vf{x}$. 
+\item Definiert auf Fockraum.
+\item Auch \textit{Quantenfeldoperator} genannt.
+\item Kann auf beliebige Zustände wirken.
+\end{itemize}
+
+$\psi (x)$:
+\begin{itemize}
+\item 1-Teilchen-QM
+\item Wellenfunktion $\psi (x) = \sprod{\vf{x}}{\psi}$
+\item Charakterisiert einen bestimmten Zustand $\ket{\psi}$
+\item Nicht sinnvoll in Mehrteilchentheorie.
+\end{itemize}
+
+Die Ähnlichkeit motivierte den historischen Begriff \textit{zweite Quantisierung}.\par 
+
+Relation: im Fockraum gibt es einen 1-Teilchen-Unterraum und 1-Teilchen-Zustände. Präpariere einen 1-Teilchen-Zustand $\ket{\psi}$. Dann:
+
+$$\erwop{0}{\ddestroy{x}}{\psi} = \psi (\vf{x})$$
+
+\subsection{Quantenfeldtheorie}
+
+Betrachte nur freien Hamiltonian
+
+$$H = \int\dif^3x\:\ccreate{x}\frac{-\Delta}{2m}\ddestroy{x} = \int\dif^3x\:\frac{1}{2m}(\nabla\ccreate{x})(\nabla\ddestroy{x})$$
+
+Umgekehrte Sichtweise: starte von anderem Startpunkt $\longrightarrow$ liefert Fockraum.\par 
+
+Starte mit einer klassischen Feldtheorie mit klassischem Feld $\psi (\vf{x},t)$. (Bekannte klassische Feldtheorien sind die Elektrodynamik und die allgemeine Relativitätstheorie)
+
+\paragraph{Lagrangedichte}
+
+$$\mathcal{L}=i\psi^*\dot{\psi}-\frac{1}{2m}|\nabla\psi |^2$$
+
+\newcommand{\lag}{\mathcal{L}}
+
+\paragraph{Euler-Lagrange-Gleichungen} (Subtilität: $\psi^*$ und $\psi$ als unabhängig betrachten)
+
+$$\frac{\partial\lag}{\partial\psi^*}=\frac{\partial}{\partial x^\mu}\frac{\partial\lag}{\partial\left(\frac{\partial\psi^*}{\partial x^\mu}\right)}$$
+
+$$\Longleftrightarrow\qquad i\dot{\psi}=\frac{-\Delta}{2m}\psi$$
+
+Die Form ist äquivalent zur Schrödingergleichung, die Bedeutung ist hier aber nur die einer klassischen Feldgleichung.\par 
+
+\paragraph{Kanonisch konjugierter Impuls}
+$$\pi = \frac{\partial\lag}{\partial\dot{\psi}}=i\psi^*$$
+
+\paragraph{Hamiltonian} $H=\int\dif^3x\:\mathcal{H}$
+$$\mathcal{H}=\pi\cdot\dot{\psi}-\lag=\frac{1}{2m}|\nabla\psi |^2$$
+
+\paragraph{Poissonklammern}
+$$\{A,B\}_{PK}:=\int\left(\frac{\partial A}{\partial\psi (\vf{x})}\frac{\partial B}{\partial\pi (\vf{x})}-\frac{\partial B}{\partial\psi (\vf{x})}\frac{\partial A}{\partial\pi (\vf{x})}\right)\:\dif^3x$$
+
+$$\frac{\partial\psi (\vf{x})}{\partial\psi (\vf{y})}=\delta^{(3)}(\vf{x}-\vf{y})$$
+
+$$\{\psi (\vf{x}),\pi (\vf{y})\}_{PK} = \delta^{(3)}(\vf{x}-\vf{y})$$
+$$\{\psi (\vf{x}),\psi (\vf{y})\}_{PK}=0$$
+
+\paragraph{Quantisierung} Rezept: ``kanonische Quantisierung''
+
+Ersetze $ih\{\; ,\:\}_{PK}\longrightarrow [\; ,\:]$. Die kanonische Quantisierung liefert Operatoren $\ddestroy{x}$, $\hat{\pi}(\vf{x})=i\ccreate{x}$, $\hat{\hil}$.
+
+$$[\ddestroy{x},\ddestroy{y}]^{(\pm )}=0\qquad [\ddestroy{x},\ccreate{y}]^{(\pm )}=\delta^{(3)}(\vf{x}-\vf{y})$$
+$$\hat{H}=\int\dif^3x\:\hat{\hil}(\vf{x}) = \int\dif^3x\:\frac{1}{2m}(\nabla\ccreate{x})(\nabla\ddestroy{x})$$
+
+
+
+
 
 \end{document}
 
