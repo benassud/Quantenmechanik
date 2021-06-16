@@ -1276,8 +1276,66 @@ Ersetze $ih\{\; ,\:\}_{PK}\longrightarrow [\; ,\:]$. Die kanonische Quantisierun
 $$[\ddestroy{x},\ddestroy{y}]^{(\pm )}=0\qquad [\ddestroy{x},\ccreate{y}]^{(\pm )}=\delta^{(3)}(\vf{x}-\vf{y})$$
 $$\hat{H}=\int\dif^3x\:\hat{\hil}(\vf{x}) = \int\dif^3x\:\frac{1}{2m}(\nabla\ccreate{x})(\nabla\ddestroy{x})$$
 
+\subsection*{2.5.3. Anhang: Kanonische Quantisierung}
 
+Rezept, um eine sinnvolle Quantentheorie zu definieren.\par 
 
+\begin{tabular}{|p{8cm}|p{8cm}|}
+\hline 
+Klassische Theorie & Quantentheorie \\
+\hline 
+ein Paar von ``kanonischen Variablen'' $q$, $\dot{q}$ ``ein Freiheitsgrad'' & Forderung: es existieren Operatoren auf dem Zustandsraum mit $\hat{q}$, $\hat{p}$ und \\
+$L(q,\dot{q})\rightarrow q, p=\frac{\partial L}{\partial\dot{q}}$ kanon. konj. Impuls & $\hat{H}=H(\hat{q},\hat{p})$\\
+$\rightarrow H(q,p)=p\dot{q}-L$ &  mit $[\hat{A},\hat{B}]=i\hbar \{ A,B\}_{PK}$\\
+Bewegungsgleichung $$\frac{\dif}{\dif t}\frac{\partial L}{\partial\dot{q}}=\frac{\partial L}{\partial q}$$ & \\
+oder äquivalent $$\dot{q}=\frac{\partial H}{\partial p}\quad ,\quad \dot{p}=-\frac{\partial H}{\partial q}$$ & \\
+oder äquivalent $$\frac{\dif}{\dif t}A = \{ A,H\}_{PK}$$ mit & \\
+$$\{A ,B\}_{PK} = \frac{\partial A}{\partial q}\frac{\partial B}{\partial p} - \frac{\partial A}{\partial p}\frac{\partial B}{\partial q}$$ & \\
+\hline
+\end{tabular}
+
+Verallgemeinerung: viele Variablen $q_1(t)$, $q_2(t)$, $q_3(t)$,... bzw. unendlich viele Variablen und auch kontinuierliche Variablen $q_x(t)=: q(t,x)$ (``Feld'')
+
+\paragraph{Beispiel: Harmonischer Oszillator}
+
+$$L=\frac{m}{2}\dot{q}^2 - \frac{m\omega^2}{2}q^2$$
+$$p = \frac{\partial L}{\partial \dot{q}} = m\dot{q}$$
+$$H=p\dot{q} -L = \frac{p^2}{2m}+\frac{m\omega^2}{q}q^2$$
+Bewegungsgleichung aus Lagrange
+$$m\ddot{q}=-m\omega^2q$$
+Bewegungsgleichung aus Hamilton
+$$\dot{p}=-m\omega^2q\quad , \quad \dot{q}=\frac{p}{m}$$
+QT: Operatoren $\hat{q}$, $\hat{p}$ mit $[\hat{q},\hat{p}]=i\hbar$
+$$\hat{H}=\frac{\hat{p}^2}{2m}+\frac{m\omega^2}{2}\hat{q}^2$$
+Aus dem Kommutator $[\hat{q},\hat{p}]=i\hbar$ folgt
+$$\sprod{x}{p}=N\cdot e^{ipx/\hbar }$$
+In Ortsdarstellung folgt
+$$\hat{p}=-i\hbar\frac{\partial}{\partial x}$$
+Warum ist das Rezept sinnvoll? $\rightarrow$ Die so erzeugte QT reproduziert die ursprüngliche klassische Theorie im klassischen Limes!\par 
+
+Beispiel:
+$$\hbar\frac{\dif}{\dif t}\erwop{\psi}{\hat{p}}{\psi}=\erwop{\psi}{i[\hat{H},\hat{p}]}{\psi}$$
+$$[\hat{H},\hat{p}]=m\omega^2\hat{q}i\hbar$$
+$$\Rightarrow \frac{\dif}{\dif t}\erw{\hat{p}} = -m\omega^2\erw{\hat{q}}$$
+D.h. die QT liefert, dass die Erwartungswerte die klassischen Bewegungsgleichungen erfüllen!\par 
+
+\paragraph{Ehrenfest-Theorem}
+$$\frac{\dif}{\dif t}\hat{A}=\frac{i}{\hbar}[\hat{H},\hat{A}]$$
+(Entspricht der klassischen Bewegungsgleichung mit Poissonklammern)
+
+\subsection{Quantenfeldtheorie und Impulsraum}
+
+Startpunkt: $\lag = i\psi^*\psi - \frac{1}{2m}|\nabla\psi |^2$.\par 
+
+Wie kann man die Struktur des Zustandsraums ermitteln?\par 
+Ansatz: neue Operatoren $a_{\vf{p}}$:
+$$\hat{\Psi} (\vf{x})=\frac{1}{\sqrt{2\pi}^3}\int \dif^3p \: a_{\vf{p}} \: e^{i\vf{p}\cdot\vf{x}}$$
+simple Rechnung erzeugt Vertauschungsrelationen:
+$$[a_{\vf{p}},a_{\vf{p}'}]=0\qquad ,\qquad [a_{\vf{p}},a^\dagger_{\vf{p}'}]=\delta^{(3)}(\vf{p}-\vf{p}')$$
+Hamiltonian wird zu
+$$\hat{H}\int\dif^3p\:\frac{\vf{p}^2}{2m}\create{\vf{p}}\destroy{\vf{p}}$$
+
+[HIER FEHLT EIN GANZES STÜCK ZUM ERZEUGTEN FOCKRAUM UND ZUR INTERPRETATION DER ZUSTÄNDE - Vorlesung 16.06.2021]
 
 
 \end{document}
