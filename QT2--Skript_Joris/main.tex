@@ -1400,6 +1400,101 @@ $\Rightarrow$ Vibrationswellen/Schallwellen mit Dispersionsrelation $\omega (k)$
 
 Quantisierung liefert Schallwellenquanten (``Phononen'')
 
+
+\chapter{Streutheorie}
+
+\section{Grundbegriffe}
+
+\subsection{Motivation}
+
+Interessante Fragen:
+
+\begin{itemize}
+\item zeitabhängige Phänomene $\rightarrow$ Prozesse
+\item Wie findet man $\hat{H}$ aus gegebenen Energie-EW?
+\end{itemize}
+
+\paragraph{Streuung:} Ein Teilchen bewegt sich auf ein Potential zu und wird abgelenkt. Die Ablenkung hängt mit der Struktur des Potentials zusammen.
+
+\paragraph{Beispiel:}
+\begin{itemize}
+\item elastische Streuung: Natur/innere Struktur der Teilchen ändert sich nicht, $E$, $|\vf{p}|$ bleiben gleich. (z.B. Rutherford, Compton, Bhabha, Rayleigh)
+\item inelastische Streuung: Innere Struktur der Teilchen kann sich ändern. (z.B. Photoeffekt,\linebreak $e^- + H^{1s} \rightarrow e^- + H^{2s}$, $pp\rightarrow pp + \pi^0$)
+\end{itemize}
+
+\subsection{Übersicht}
+
+\textcolor{red}{[Hier gab es einige Zeichnungen]}\par 
+
+Wichtige Parameter:
+\begin{itemize}
+\item Streuwahrscheinlichkeit in gewisse Winkel $\rightarrow$ $\frac{\dif\sigma (\theta , \varphi )}{\dif\Omega}$
+\item Größe des Streuteilchens / ``Ausdehnung'' des Potentials $\rightarrow$ de-Broglie-Wellenlänge $|\vf{p}|=\frac{h}{\lambda}$ $\leftrightarrow$ Reichweite des Potentials.\par 
+Falls $\lambda \ll$ Reichweite $\Rightarrow$ innere Struktur des Potentials auflösbar, sonst sehr einfache Winkelverteilung
+\item Stärke des Potentials $\rightarrow$ falls $|V|\ll E$, evtl ``Taylorentwicklung'' in $V$ möglich
+\end{itemize}
+
+\paragraph{Themenübersicht}
+\begin{itemize}
+\item Allgemeine Formulierung:\par 
+$S$- $T$-Matrix, $\sprod{\sim\text{freie Teilchen für }t\rightarrow\infty}{\sim\text{freie Teilchen bei }t\rightarrow -\infty , p_i}$\par 
+Relation $S$-Matrix $\leftrightarrow$ Wirkungsquerschnitt\par 
+optisches Theorem\par 
+exakte Gleichungen: Lippmann-Schwinger-Gleichung, Greensche Funktionen $\rightarrow$ Näherungen\par 
+Näherungen: zeitabhängige Störungstheorie ($\rightarrow$ Feynmandiagramme der Teilchenphysik)
+\item nichtrelativistische elastische Streuung an Potential $V(\vf{x})$\par 
+Spezialfall, in obigem enthalten\par 
+Streuwelle $\sim f(\theta ,\varphi )\frac{e^{ikr}}{r}$\par 
+Relation $f \leftrightarrow $ Wirkungsquerschnitt\par 
+Störungstheorie für kleines $V$ $\rightarrow$ Borusche Näherung\par 
+Partialwellenentwicklung $\rightarrow$ insbesondere für kleine Reichweite
+\item (Themenreihenfolge von unten nach oben)
+\end{itemize}
+
+\subsection{Grundstruktur der 3-dimensionalen Streuung (nichtrelativisch, elastisch)}
+
+\newcommand{\ham}{\hat{H}}
+\newcommand{\mom}{\hat{\vf{p}}}
+\newcommand{\pot}{\hat{V}}
+\newcommand{\vx}{\vf{x}}
+\newcommand{\vp}{\vf{p}}
+\newcommand{\vk}{\vf{k}}
+
+$$\ham = \frac{\mom^2}{2m} + \pot = \ham_0 + \pot$$
+
+Annahme: $|\vx |\cdot V(\vx )\longrightarrow 0$ für $|\vx |\rightarrow\infty$.\par 
+
+\newcommand{\dep}{(\vx ,t)}
+
+Suche Lösung $\psi\dep$ für einfallenden Zustand $E,\vp$.
+$$\ham\psi = E\psi\qquad ,\qquad E=\frac{\hbar^2\vf{k}^2}{2m} > 0$$
+
+Vgl. 1D Potentialstufe $V(x)\sim \Theta (a-|x|)$: Einfallende Welle resultiert in einer reflektierten und transmittierten Welle mit Koeffizienten $r$ und $t$.
+$$\psi (x) = \left\{ \begin{matrix}
+\text{links} & e^{ipx} + re^{-ipx} \\
+\text{rechts} & te^{ipx} \\
+\text{mitte} & \text{irgendwas}
+\end{matrix}\right.$$
+
+\paragraph{Ansatz} 
+\begin{itemize}
+\item einlaufend: $\phi_\vk(\vx )=e^{i\vk\vx}$
+\item auslaufend: $ f(\theta ,\varphi ) \frac{e^{ikr}}{r}$
+$$\psi_\text{gesamt} \cong e^{i\vk\vx} + f(\theta ,\varphi ) \frac{e^{ikr}}{r}$$
+\end{itemize}
+Der Ansatz löst die Schrödingergleichung für $x\rightarrow\infty$.\par 
+\textit{Beweis:}
+$$\ham\psi = \left[\frac{\hbar^2}{2m} (-i\nabla )^2 + V(\vf{x})\right]\psi = E\psi=\frac{\hbar^2\vk^2}{2m}\psi$$
+$$\Leftrightarrow \frac{\hbar^2}{2m}(-\Delta -\vk^2 )\psi (\vf{x}) = -V(\vf{x})\psi (\vf{x})$$
+$x\rightarrow\infty$:
+$$(\Delta + \vk^2 )\Psi (\vx )=0$$
+Das gilt trivialerweise für die einfallende Welle.\par 
+Gestreute Welle (Längere Rechnung$\rightarrow$ schreibe $\Delta$ in Kugelkoordinaten)
+$$\Delta\psi_\text{streu} \overset{r\rightarrow\infty }{=} (ik)^2f(\theta ,\varphi ) \frac{e^{ikr}}{r}+\mathcal{O}(r^{-2}) = -k^2\psi_\text{streu} $$
+Damit haben wir die asymptotische Lösung durch einlaufendes $\phi$ und auslaufende Kugelwelle bestimmt, die interessante Größe ist die \textit{Streuamplitude} $f(\theta ,\varphi )$.
+
+
+
 \end{document}
 
 
