@@ -1491,9 +1491,71 @@ $$(\Delta + \vk^2 )\Psi (\vx )=0$$
 Das gilt trivialerweise für die einfallende Welle.\par 
 Gestreute Welle (Längere Rechnung$\rightarrow$ schreibe $\Delta$ in Kugelkoordinaten)
 $$\Delta\psi_\text{streu} \overset{r\rightarrow\infty }{=} (ik)^2f(\theta ,\varphi ) \frac{e^{ikr}}{r}+\mathcal{O}(r^{-2}) = -k^2\psi_\text{streu} $$
-Damit haben wir die asymptotische Lösung durch einlaufendes $\phi$ und auslaufende Kugelwelle bestimmt, die interessante Größe ist die \textit{Streuamplitude} $f(\theta ,\varphi )$.
+Damit haben wir die asymptotische Lösung durch einlaufendes $\phi$ und auslaufende Kugelwelle bestimmt, die interessante Größe ist die \textit{Streuamplitude} $f(\theta ,\varphi )$.\par 
 
+\newcommand{\vj}{\vf{j}}
 
+\paragraph{Messbare Stromdichten} Gegeben sei ein Teilchenstrahl mit einer gegebenen Anzahl an Teilchen pro Zeit pro Fläche. $:=|\vj_\text{ein}|$ (Einlaufende Stromdichte) \par 
+Nach Streuung betrachten wir Teilchen in einem infinitesimalen Raumwinkel $\dif\Omega$ und zählen darin die Teilchen pro Zeit. $:=dI_\text{aus}$ (auslaufender Strom)
+
+Das Verhältnis der beiden Größen wird als \textit{differenzieller Wirkungsquerschnitt} $\dif\sigma$ definiert:
+$$\dif\sigma\cdot |\vj_\text{ein}| = \dif I_\text{aus}$$
+und
+$$\dif I_\text{aus} = |\vj_\text{streu}|\cdot r^2\dif\Omega$$
+Konkret mit obiger Streulösung:
+$$\vf{j}_\text{ein} = \frac{\hbar\vk}{m}\qquad \vf{j}_\text{aus} = \frac{\hbar k \vf{e}_r}{m}\frac{1}{r^2}\cdot |f(\theta ,\phi )|^2 + \mathcal{O}(r^{-3})$$
+Damit:
+$$\boxed{\dif\sigma = |f(\theta ,\varphi )|^2\:\dif\Omega}$$
+
+\section{Detail-Analyse der Potentialstreuung}
+
+\subsection{Differentialgleichung, Greenfunktion, Integralgleichung}
+
+Gewünscht: $\ham\psi_\vk = E\psi_\vk$, $E=\frac{\hbar^2\vk^2}{2m}$
+
+$$(\Delta +\vk^2)\psi_\vk (\vx ) = v(\vx )\psi_\vk (\vx )\qquad \text{mit}\qquad v(\vx ):=\frac{2m}{\hbar^2}V(\vx )$$
+
+Außerdem gewünscht ist die Randbedingung
+
+$$\psi_\vk (\vx ) \cong e^{i\vk\cdot\vx }+f(\theta ,\varphi )\frac{e^{i\vk\cdot\vx}}{r}$$
+
+Greensche-Funktion obigen Form der Schrödingergleichung:
+$$(\Delta +k^2)G(\vx )=\delta^{(3)}(\vx )\qquad\text{mit dem ``Yukawapotential''}\qquad G(\vx )=-\frac{e^{ik|\vx |}}{4\pi |\vx |}$$
+
+Damit lässt sich die Schrödingergleichung zu einer Integralgleichung umformen:
+$$\psi_\vk (\vx )=e^{i\vk\cdot\vx}+\int\dif^3x'\: G(\vx - \vx ')v(\vx ')\psi_\vk (\vx ')$$
+Bemerkungen:
+\begin{itemize}
+\item Das ist eine Integralgleichung für $\psi_\vk$ (immer noch nichttrivial)
+\item Ist äquivalent zur Schrödingergleichung (Beweis durch Einsetzen)
+\item Randbedingung ist auch erfüllt:\par 
+Ebene Welle steht schon da, das Integral werten wir für $|\vx |\gg$ Reichweite des Potentials, $|\vx |\gg |\vx '|$ aus:
+$$|\vx - \vx '| = |\vx |(1 - \vf{e}_x\cdot\frac{\vx '}{|\vx |}+...) \overset{r\rightarrow\infty}{=} |\vf{x}|-\vf{e}_x\cdot\vx '$$
+$$\frac{e^{ik|\vf{x}-\vf{x}'|}}{|\vx -\vx'|}\cong \frac{e^{ikx}e^{-ik'x'}}{x}\qquad\text{mit}\qquad k'=\vf{e}_x'\cdot \vf{k}$$
+Damit
+$$\psi_k (\vx ) \cong e^{i\vk\cdot\vx} + \frac{e^{ikr}}{r}\cdot\underbrace{\left(-\frac{1}{4\pi}\right)\int\dif^3x'\:e^{-i\vf{k}'\vf{x}'}v(\vx ')\psi_\vk (\vx ')}_{=f(\vf{e}_{\vk'})=f(\theta ,\varphi )}$$
+\end{itemize}
+
+\subsection{Bornsche Näherung}
+
+Näherung für schwache Potentiale, $V$=``klein''
+$$\psi_{\vk \vx }=\phi_{\vk\vx}+\int_{x'}G_{xx'}v_{x'}{\psi_\vk}_{x'}$$
+Variablen umbenennen:
+$$\psi_{\vk \vx' }=\phi_{\vk\vx'}+\int_{x''}G_{x'x''}v_{x''}{\psi_\vk}_{x''}$$
+Einsetzen der zweiten Gleichung in das erste Integral:
+$$\psi_{\vk \vx }=\phi_{\vk\vx} + \int_{x'}G_{xx'}v_{x'}{\phi_\vk}_{x'} +\int_{x'}\int_{x''}G_{xx'}v_{x'}G_{x'x''}v_{x''}{\psi_\vk}_{x''}$$
+Die ersten beiden Terme sind bekannt, der letzte enthält noch $\psi$. Durch Iteration dieses Verfahrens verschiebt sich der unbekannte Term weiter nach hinten. Es entsteht eine Potenzreihe in $v(\vx )$.
+$$\psi_\vk (\vf{x})=\phi_\vk (\vx )+\psi_\vk^{(1)}(\vx )+...$$
+Für alle Ordnungen gibt es eine explizite Form. Oft reichen wenige Ordnungen aus.\par 
+Allerdings: es ist nicht klar, ob $\psi_\vk$ als Potenzreihe darstellbar bzw. ob die Potenzreihe konvergent ist.
+\paragraph{Ergebnis für Streuamplitude}
+
+$$f=f^{(1)}+f^{(2)}+...$$
+
+$$f^{(n)}=-\frac{m}{2\pi}\int\dif^3x'e^{-i\vk\cdot\vx } V(\vx')\psi_\vk^{(n-1)}(\vx')$$
+
+Besonders interessant: 1. Bornsche Näherung
+$$f^{(1)}=-\frac{m}{2\pi}\int\dif^3x'\:e^{i(\vk -\vk')\vx'}V(\vx )$$
 
 \end{document}
 
