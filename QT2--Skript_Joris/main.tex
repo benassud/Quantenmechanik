@@ -9,6 +9,8 @@
 \usepackage{amsbsy}
 \usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
 \usepackage{xcolor}
+\usepackage{hyperref}
+\hypersetup{hidelinks}
 
 \setlength{\parindent}{0cm}
 \setlength{\parskip}{0.2cm}
@@ -16,6 +18,8 @@
 \renewcommand{\baselinestretch}{1.2}
 
 \renewcommand{\vec}{\boldsymbol}
+
+\newcommand{\norm}[1]{\left\lVert #1 \right\rVert}
 
 \title{Skript QT2}
 
@@ -1557,35 +1561,251 @@ $$f^{(n)}=-\frac{m}{2\pi}\int\dif^3x'e^{-i\vk\cdot\vx } V(\vx')\psi_\vk^{(n-1)}(
 Besonders interessant: 1. Bornsche Näherung
 $$f^{(1)}=-\frac{m}{2\pi}\int\dif^3x'\:e^{i(\vk -\vk')\vx'}V(\vx )$$
 
+\section{Mathematische Methoden - Funktionen in drei oder weniger dimensionaler Physik}
+
+\subsection{Komplexe und reelle Analysis}
+
+\subsubsection{Funktionenräume}
+Besonders interessant sind die $p$ Normen und $L^p$ Räume
+\begin{align*}
+    \norm{f}_p &:= (\int |f(x)|^p \mathrm{d}x)^{1/p} \\
+    L^p & := \left\{ f \middle| \norm{f}_p < \infty \right\}
+\end{align*}
+mit gewissen Definitionsbereichen.
+
+Interessant:
+\begin{align*}
+    L^1 &&&\int |f(x)| \mathrm{d}x < \infty \\
+    L^2 &&&\int |f(x)|^2 \mathrm{d}x < \infty
+\end{align*}
+
+\subsubsection{Distributionen}
+
+Die Distributionen $\delta(x), \theta(x), \text{etc.}$ als Element aus dem Dualraum der Testfunktionen $f \mapsto D(f) = ``\int \mathrm{d}x D(x) f(x)''$.
+Eine Testfunktion ist nur in einem kompakten Bereich ungleich $0$ und $\infty$ oft differenzierbar.
+
+\subsubsection{Fourier Transformation}
+
+\begin{align*}
+    f \in L^1 \implies \tilde{f}(k) := \int \mathrm{d}x e^{-i k x} f(x) \text{ existiert } \forall k 
+\end{align*}
+Es sind $\tilde{f} \in L^1$ oder $\tilde{f} \notin L^1$ möglich.
+Wenn $f$, $\tilde{f} \in L^1$ gilt $f(x) = \frac{1}{2\pi} \int \mathrm{d}k e^{+ i k x} \tilde{f}(k)$ fast überall.
+
+Für quadratintegrable Funktionen ist die Fouriertransformation nicht unbedingt konvergent.
+Es gilt das \textbf{Planchorel Theorem} nach dem sich die Fouriertrasformation als Abbildung $f \in L^2 \mapsto \tilde{f} \in L^2$ mit 
+\begin{itemize}
+    \item falls $f \in L^2$ \textbf{und} $f \in L^1$ enspricht die Fouriertransformation $\tilde{f}(k) = \int \mathrm{d}x e^{-i k x} f(x)$
+    \item $\tilde{f}$ ist aber sonst auch definiert, mit selber Schreibweise und $\norm{f}_2 = \norm{\frac{1}{\sqrt{2\pi}} \tilde{f}}_2$
+    \item Es gilt die Verallgemeinerung des Inversionstheorems
+\end{itemize}
+
+Die Anwendung in der Quantenmehanik ist mit der Wellenfunktion $\Psi \in L^2$ im Hilbertraum der Quantenmechanik $L^2$ und den entsprechenden Fouriertransformationen
+\begin{align*}
+    \tilde{\Psi}(p) &= \int \mathrm{d}x e^{-i p x} \Psi(x) \\
+    \Psi(x) &= \int \mathrm{d}p e^{i p x} \tilde{\Psi}(p)
+\end{align*}
+
+Für Distributionen ist die Fouriertransformation über die Testfunktionen definiert.
+\subsubsection{Residuensatz für komplexe Analysis}
+
+Sei $f$ holomorph in einem Gebiet $G$, bis auf Pole an Punkten $\{z_n\}$ (haben keinen Häufungswert in $G$)
+\begin{align*}
+    \int_{\text{Geschl. Weg} T \text{in} G} f(z) \mathrm{d}z = 2\pi i \sum_{z_n} \mathrm{ind}_T(z_n) \mathrm{Res}(f; z_n) 
+\end{align*}
+
+Eine wichtige, typische Anwendung ist die Integration im Reellen.
+
+\subsubsection{Beispiel}
+
+Herleitung der Fouriertransformation der Greenfunktion
+\begin{align*}
+    - \frac{1}{4\pi} \frac{e^{i k r}}{r} = \lim_{\varepsilon \rightarrow 0_+} \int \frac{\mathrm{d}^3 q}{(2\pi)^3} \frac{e^{i \mathbf{q} \mathbf{x}}}{k^2 - q^2 + i \varepsilon}
+\end{align*}
+
+Wir beginnen mit $\mathbf{q} \mathbf{x} = q r \cos \theta$ und finden 
+\begin{align*}
+    \int \frac{\mathrm{d}^3 q}{(2\pi)^3} \frac{e^{i \mathbf{q} \mathbf{x}}}{k^2 - q^2 + i \varepsilon} &= \int \frac{q^2 \mathrm{d}q \mathrm{d}\cos \theta \mathrm{d}\phi}{(2\pi)^3} \frac{e^{i q r \cos \theta}}{k^2 - q^2 + i \varepsilon} \\ 
+    &= \frac{2\pi}{(2\pi)^3} \int \frac{q^2 \mathrm{d}q}{k^2 - q^2 + i \epsilon} \frac{1}{i q r} \left(e^{i q r} - e^{-i q r}\right) \\ 
+    &= \frac{1}{i (2\pi)^2 r} \int_0^\infty \frac{q \mathrm{d}q}{k^2 - q^2 + i \epsilon} \left(e^{i q r} - e^{-i q r}\right) \\ 
+    &= \frac{1}{i (2\pi)^2 r} \int_{-\infty}^\infty \frac{q \mathrm{d}q}{k^2 - q^2 + i \epsilon} e^{i q r} \\ 
+\end{align*}
+
+\subsection{dreidimensionale Funktionen, Kugelkoordinaten}
+
+In Kugelkoordinaten:
+\begin{align*}
+    \Delta = \frac{1}{r^2} \partial_r r^2 \partial_r - \frac{\mathbf{L}^2}{r^2} = \frac{1}{r} \partial_r^2 r - \frac{\mathbf{L}^2}{r^2}
+\end{align*}
+
+Kugelflächenfunktionen dienen zur Beschreibung von Funktionen $f(\theta, \phi)$ auf Kugeloberflächen.
+Beispielsweise kann die Temperaturverteilung gut durch Kugelflächenfunktionen mit $l=1$ oder $l=2$ oder die Kosmische Hintergrundstrahlung mit $l \approx 200$ modelliert werden.
+Die Entwicklung ist 
+\begin{align*}
+    f(\theta, \phi) = \sum_{l m} c_{l m} Y_{l m}(\theta, \phi)
+\end{align*}
+
+Es gilt $Y_{l m} = e^{i m \phi} P_l^{|m|}(\cos \theta)$ mit den Legendrepolynomen $P_l(x) = \frac{1}{2^l l!} \left(\frac{\mathrm{d}}{\mathrm{d}x}\right)^l (x^2 - 1)^l$.
+Die Normierung ist dabei $\int_{-1}^1 P_{l}(x) P_{l'}(x) \mathrm{d}x = \frac{2}{2 l + 1} \delta_{l l'}$.
+
+Aus der \textbf{Freien Schrödingergleichung} $(k^2 + \Delta) \Psi = 0$ folgt mit $\Psi(r, \theta, \phi) = R(r) Y_{l m} (\theta, \phi)$
+\begin{align*}
+    \frac{1}{r} \partial_r^2 r R + \left(k^2 - \frac{l (l+1)}{r^2}\right) R = 0
+\end{align*}
+Wir verwenden $k r = \rho$, $\partial_r^2 = \partial_\rho^2 k^2$, $R(r) = \xi(kr) = \xi(\rho)$ woraus die sphärische Bessel-Differentialgleichung folgt
+\begin{align*}
+    \frac{1}{\rho} \partial_\rho^2 \rho \xi + \left(1 - \frac{l (l +1)}{\rho^2} \right) \chi = 0
+\end{align*}
+Die Lösung sind die 
+\begin{align*}
+    \xi(\rho) &= j_l(\rho) && \text{sphärischen Besselfunktionen} \\
+    \xi(\rho) &= n_l(\rho) && \text{sphärischen Neumannfunktionen, nicht regulär für } \rho\rightarrow 0 \\
+\end{align*}
+
+In der asymptotischen Form ($\rho \rightarrow \infty$) vernachlässigen wir $l(l+1)/\rho^2$ und erhalten 
+\begin{align*}
+    j_l(\rho) &= \frac{\sin (\rho - l \pi/2)}{\rho} && \text{allgemein} \\
+    j_l(\rho) &= (-1)^l \rho^l \left(\frac{\mathrm{d}}{\mathrm{d}\rho}\right)^l\frac{\sin \rho}{\rho} && \text{exakt} \\
+\end{align*}
+
+Damit ergibt sich die allgemeine reguläre Lösung der freien Schrödingergleichung
+\begin{align*}
+    \Psi(r, \theta, \phi) = \sum_{l m} c_{l m} j_l (k r) Y_{l m}(\theta, \phi)
+\end{align*}
+Beispiel: ebene Welle
+\begin{align*}
+    e^{i \mathbf{k} \mathbf{x}} = e^{i k r \cos \theta} = \sum_{l = 0}^\infty i^l (2l +1) j_l(k r) P_l (\cos \theta)
+\end{align*}
+
+\section{Partialwellenmethode, Streuphasen}
+
+\subsection{Partialwellenentwicklung}
+
+Nun: Zentralpotential $V = V(r) \implies f(\theta, \phi) = f(\theta)$
+
+Schrödingergleichung: $H \psi = E \psi$, $E = \hbar^2 k^2 / 2 m > 0$ bzw. $(\Delta + k^2) \psi = v(r) \psi$ mit $v(r) = \frac{2m}{\hbar^2} V(r)$.
+
+Randbedingungen: $\psi(\mathbf{x}) = e^{i \mathbf{k} \mathbf{x}} + f(\theta) \frac{e^{i k r}}{r}$.
+
+Ansatz: Entwicklung durch $Y_{l m}$ aber nur $m=0$ trägt bei.
+\begin{align*}
+    \psi(r, \theta, \phi) &= \sum_l \frac{u_l(r)}{r} P_l(\cos \theta) \\
+    f(\theta) &= \sum_l b_l P_l
+\end{align*}
+
+Schrödingergleichung damit $\partial_r^2 u_l + k^2 u_l - \frac{l (l+1)}{r^2} u_l = v(r) u_l$ bzw. mit dem effektiven Potential $v_{\mathrm{eff}} = v(r) + \frac{l (l+1)}{r^2}$ 
+\begin{align*}
+    (\partial_r^2 + k^2) u_l (r) = v_{\mathrm{eff}}(r) u_l(r)
+\end{align*}
+
+Allgemeine Lösung für $r \rightarrow \infty$ mit $v_{\mathrm{eff}} \approx 0$ (kleine Reichweite) ist mir $u_l = \sin kr$ oder $u_l = \cos k r$ über die Besselfunktionen
+\begin{align*}
+    u_l(r) = c_l \sin \left(k r - l \frac{\pi}{2} + \delta_l \right)
+\end{align*}
+mit der Streuphase $\delta_l$.
+
+Zur Berechnung:
+\begin{itemize}
+    \item explizite Lösung der Radialgleichung gegeben
+    \item $j_l$ und eventuell $u_l$ tauchen Auf
+    \item Randbedingungen einsetzen
+    \item Lösung eindeutig bis auf Normierung
+    \item Kann asymptotisches Verhalten auswerten und mit $A j_l + B u_l \leftrightarrow \sin \left( k r - l \frac{\pi}{2} + \delta_l\right)$ vergleichen.
+\end{itemize}
+
+Vergleich / Auswertung der Randbedingungen:
+
+Die allgemeine Lösung war
+\begin{align*}
+    \psi &= \sum c_l \frac{\sin \left(k r - l \frac{\pi}{2} + \delta_l \right)}{r} P_l(\cos \theta) \\
+    &= \sum \frac{1}{r} \left(\frac{c_l}{2 i} e^{i k r} e^{-i l \frac{\pi}{2}} e^{i \delta} - \frac{c_l}{2 i} e^{-i k r} e^{i l \frac{\pi}{2}} e^{-i \delta}\right) P_l (\cos \theta)     
+\end{align*}
+
+Wir haben zusätzlich gefordert
+\begin{align*}
+    \psi &= e^{i \mathbf{k} \mathbf{x}} + f(\theta) \frac{e^{i k r}}{r} \\
+    &= \sum \frac{1}{r} \left(\left[ \frac{2 l + 1}{2 i k} + b_l \right] e^{i k r} - e^{-i k r} (-1)^l \frac{2 l + 1} {2 i k}\right) P_l(\cos \theta)
+\end{align*}
+
+Ein Koeffizientenvergleich liefert 
+\begin{align*}
+    c_l &= 2 i (-1)^l e^{-i l \frac{\pi}{2}} e^{i \delta_l} \frac{2 l + 1}{2 i k} = e^{i l \frac{\pi}{2}} e^{i \delta_l} \frac{2 l + 1}{k} \\
+    b_l &= \frac{2 l + 1}{k} e^{i \delta_l} \sin \delta_l
+\end{align*}
+
+\subsubsection{Zusammenfassung}
+
+Falls $\delta_l$ bekannt gilt für $r \rightarrow \infty$:
+\begin{align*}
+    \psi(r, \theta, \phi) &= \sum_l \frac{2 l + 1}{2 k} \left( \left[ -i + 2 e^{i \delta_l} \sin \delta_l \right] \frac{e^{i k r}}{r} + i (-1)^l \frac{e^{-i k r}}{r}\right) P_l(\cos \theta) \\
+    e^{i \mathbf{k} \mathbf{x}} &= \sum_l \frac{2 l + 1}{2 k} \left( -i \frac{e^{i k r}}{r} + i (-1)^l \frac{e^{-i k r}}{r}\right) P_l(\cos \theta) \\
+    f(\theta) &= \sum_l \frac{2 l + 1}{2 k} 2 e^{i \delta_l} \sin \delta_l \frac{e^{i k r}}{r}  P_l(\cos \theta) 
+\end{align*}
+
+\subsection{Optisches Theorem und Wirkungsquerschnitt}
+
+\begin{align*}
+    \text{Differentieller Wirkungsquerschnitt} && \frac{\mathrm{d} \sigma}{\mathrm{d} \Sigma} &= |f(\theta)|^2 = \sum_{l l'} \frac{(2 l + 1)(2 l' + 1)}{k^2} e^{i \delta_l - i \delta_{l'}} \sin \delta_l \sin \delta_{l'} P_l P_{l'} \\
+    \text{Totaler Wirkungsquerschnitt} && \sigma &= \int \mathrm{d}\sigma = \int \mathrm{d} \Sigma |f(\theta)|^2 = 2\pi \int_{-1}^1 \mathrm{d}\cos \theta |f(\theta)|^2 \\
+    &&&=\frac{2\pi}{k^2} \sum_l (2 l + 1) 2 \sin^2 \delta_l 
+\end{align*}
+mit der Orthogonalität und Normalisierung der Legendrepolynome.
+Aufschlüsselung in $\sigma = \sum_l \sigma_l$ mit $\sigma_l = \frac{4\pi}{k^2} (2 l + 1) \sin^2  \delta_l \leq \frac{4\pi}{k^2} (2 l + 1)$ (Unitaritätsschranke).
+
+Nutzen: 
+\begin{itemize}
+    \item falls $\delta_l$ bekannt $\implies$ $\sigma, \mathrm{d}\sigma$ einfach erhaltbar
+    \item $\delta_l$-Bestimmung = Hauptarbeit
+    \item oft ausreichend: nur kleine $l$ betrachten, z.B. nur $l=0$ (``s-Wellenstreuung'')
+    \item Ungleichung liefert absolute Obergrenze an $\sigma_l$ (kann eventuell durch Bornsche Näherung verletzt sein)
+\end{itemize}
+
+\subsubsection{Optisches Theorem}
+
+Wir erinnern uns dass $P_l(1) = 1$ und damit
+\begin{align*}
+    f(\theta = 0) &= \sum_l \frac{2 l + 1}{k} e^{i \delta_l} \sin \delta_l \\
+    \implies \sigma &= \frac{4\pi}{k} \mathrm{Im} f(\theta = 0)
+\end{align*}
+
+\begin{itemize}
+    \item Relation Wahrscheinlichkeit $\leftrightarrow$ Imaginärteil der Vorwärtsstreuamplitude
+    \item QM Wahrscheinlichkeit $\leftrightarrow$ Wahrscheinlichkeitsamplitude
+    \item Interpretation: Teilchenzahlerhaltung
+    \begin{align*}
+        e^{i \mathbf{k} \mathbf{x}} \stackrel{\text{nach Streuung}}{\implies} e^{i \mathbf{k} \mathbf{x}} + f \frac{e^{i k r}}{r}
+    \end{align*}
+    Gestreuter Anteil muss aus der Vorwärtsrichtung verschwinden. In $\theta=0$-Richtung muss destruktive Interferenz stattfinden.
+    Das Ausmaß ist durch das optische Theorem gegeben.
+\end{itemize}
+
+\subsection{Kleine Reichweite, kleine Energie}
+
+Streuung bei niedrigen Energien $k \rightarrow 0, k R_0 \ll 1$
+Ansatz für Radialgleichung: $(\partial_r^2 + k^2) u(r) = v_{\mathrm{eff}}(r) u(r)$ für $l=0$, $v_{\mathrm{eff}} = v$.
+\begin{enumerate}
+    \item Lösen innen: $r < R_0$ mit $u_{\mathrm{in}}(0) = 0 \implies u_{\mathrm{in}}$ eindeutig 
+    \item Allgemeine Lösung außen $r > R_0$, $v(r)>0$:
+    \begin{align*}
+        u_a(r) &= A k r j_0(k r) + B k r n_0(k r) \\
+        &= A \sin k r + B \cos k r \\
+        &= C \sin (k r + \delta_0) = C \sin kr \cos \delta_0 + C \cos kr \sin \delta_0
+    \end{align*}
+    \item Anschlussbedingung bei $r=R_0$
+    \begin{align*}
+        \Delta_0 := \frac{u_{\mathrm{in}'(R_0)}}{u_{\mathrm{in}}} &\stackrel{!}{=} \frac{u_a'(R_0)}{u_a(R_0)} \\ 
+        &= k \frac{\cos k R_0 \cos \delta_0 - \sin k R_0 \sin \delta_0}{\sin k R_0 \cos \delta_0 + \cos k R_0 \sin \delta_0} 
+    \end{align*}
+    ergeben:
+    \begin{align*}
+        \tan \delta_0 = \frac{k \cos k R_0 - \sin k R_0 \Delta_0}{k \sin k R_0 + \cos k R_0 \Delta_0}
+    \end{align*}
+    Üblicherweise ergibt sich $\tan \delta_0 = -a_0 k$ für $k \rightarrow 0$ mit der Streulänge $a_0$.
+    Für $l=0$ folgt damit 
+    \begin{align*}
+        \sigma = \sigma_0 + \frac{4\pi}{k^2} \sin^2 \delta_0 = 4 \pi a_0^2
+    \end{align*}
+\end{enumerate}
+
+
 \end{document}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
