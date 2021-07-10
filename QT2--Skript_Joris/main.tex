@@ -600,7 +600,7 @@ Diskussion:
     \item Spin-Bahn-Koppluns: Wegen dieses Terms $[H_{\text{eff}}, \vf{S}] \neq 0$ und $[H_{\text{eff}}, \vf{L}] \neq 0$, aber $[H_{\text{eff}}, \vf{J}] = 0$.
 \end{itemize}
 
-\chapter{Ununterscheidbare Teilchen\\ \Large{Bosonen und Fermionen}}
+\chapter[Ununterscheidbare Teilchen - Bosonen und Fermionen]{Ununterscheidbare Teilchen\\ \Large{Bosonen und Fermionen}}
 
 Klassisch: jedes Teilchen hat eine eindeutige Bahnkurve $\rightarrow$ prinzipiell daran erkennbar.\par 
 
@@ -1807,5 +1807,149 @@ Ansatz für Radialgleichung: $(\partial_r^2 + k^2) u(r) = v_{\mathrm{eff}}(r) u(
     \end{align*}
 \end{enumerate}
 
+\subsection{Kurzzusammenfassung Partialwellenmethode und Ergänzungen}
+
+\begin{align*}
+    \Psi(\mathbf{x}) = e^{i \mathbf{k} \mathbf{x}} + f(\theta, \phi) \frac{e^{i k r}}{r}
+\end{align*}
+
+Zentralpotential: $\mathbf{L}^2$ und $L_z$ sind erhalten. 
+Entsprechend kann das Problem in einzelne $l$ zerlegt werden.
+
+Wir betrachten immer ein festes $l$:
+\begin{align*}
+    \text{einlaufend} && (e^{i \mathbf{k} \mathbf{x}})_{l, |\mathbf{x}| \rightarrow \infty} &\approx \left(A_l^{(0)} \frac{e^{- i k r}}{r} + B_l^{(0)} \frac{e^{i k r}}{r}\right) P_l(\cos \theta) \\
+    \text{komplett} && \Psi_l &\approx \left( A_l \frac{e^{-i k r}}{r} + B_l \frac{e^{i k r}}{r}\right) P_l(\cos \theta) \\
+    && f_l &= b_l P_l(\cos \theta)
+\end{align*}
+
+Interpretation:
+\begin{itemize}
+    \item Ebene Welle = Ein- und auslaufende Kugelwelle
+    \item Teilchenzahlerhaltung
+    \begin{align*}
+        |A_l^{(0)}| &= |B_l^{(0)}| \\
+        A_l^{(0)} &= -(-1)^l B_l^{(0)}
+    \end{align*}
+    \item Physikalische Randbedingung: Nur die auslaufende Kugelwelle ändert sich
+    \begin{align*}
+        A_l^{(0)} &= A_l \\
+        B_l^{(0)} &\neq B_l
+    \end{align*}
+    Teilchenzahlerhaltung
+    \begin{align*}
+        |B_l^{(0)}| &= |B_l|
+    \end{align*}
+    \item Ansatz: $B_l = B_l^{(0)} + b_l$
+    \begin{align*}
+        B_l &= B_l^{(0)} + e^{2 i \delta_l} \\
+        b_l &= B_l^{(0)} (e^{2 i \delta_l} - 1) = B_l^{(0)} 2 i \sin \delta_l e^{i \delta_l} \\
+        &= \frac{2 l + 1}{k} \sin \delta_l e^{i \delta_l}
+    \end{align*}
+    \item Noch nicht bewiesen ist, warum die Steuphase $\delta_l$ reell ist. Grund: Reelles Potential führt keine Absorption ein.
+\end{itemize}
+
+\section{Mathematische Methoden - Funktionalanalysis}
+
+\textbf{Hilbertraum} $\mathcal{H} = \{ \ket{\psi} \}$
+\begin{itemize}
+    \item Vektorraum auf $\mathbb{C}$
+    \item Positiv definites Skalarprodukt
+    \begin{align*}
+        \braket{\psi}{\phi}; \braket{\phi}{\phi} = \norm{\ket{\phi}}^2 \geq 0
+    \end{align*}
+    \item Vollständig (jede Cauchyfolge konvergiert)
+    \item Separabel $\exists$ abzählbare Menge $\{ \ket{\psi_n} \}$ dicht in $\mathcal{H}$
+\end{itemize}
+
+\textbf{Konvergenz}:
+\begin{itemize}
+    \item Starke Konvergenz:
+    \begin{align*}
+        (\ket{\psi_n}) &\stackrel{\text{stark}}{\rightarrow} \ket{\psi} \\
+        &\iff \forall \epsilon \exists n_0 : \norm{\ket{\psi} - \ket{\psi_n}} \leq \epsilon \forall n > n_0
+    \end{align*}
+    \item Schwache Konvergenz:
+    \begin{align*}
+        (\ket{\psi_n}) &\stackrel{\text{schwach}}{\rightarrow} \ket{\psi} \\
+        &\iff \forall \ket{\phi} \in \mathcal{H} : \braket{\phi}{\psi_n} \rightarrow \braket{\phi}{\psi_n}
+    \end{align*}
+    \item Beispiel: Wellenberg konvergiert schwach gegen $0$, aber nicht stark
+\end{itemize}
+
+\textbf{Operatoren}:
+\begin{itemize}
+    \item Beschränkter Operator $A$ $\iff \exists M > 0 \norm{A \ket{\psi}} \leq M \norm{\ket{\psi}} \forall \ket{\psi}$. In der QM gibt es oft unbeschränkte Operatoren wie $x, p, H, \ldots$. Diese sind oft nur auf einer Teilmenge $D(A) \subset \mathcal{H}$ definiert.
+    \item Hermitescher Operator $A$ $\iff \forall \ket{\phi}, \ket{\psi} \in D(A): \braket{A \phi}{\psi} = \braket{\phi}{A \psi}$
+    \item Selbstadjungierter Operator $A$ $\iff A$ hermitesch und $D(A) = D(A^\dagger)$
+\end{itemize}
+
+\textbf{Spektraltheorem}:
+$A$ selbstadjungiert bedeutet, dass man ihn in
+\begin{align*}
+    A &= \int_{-\infty}^\infty \lambda \mathrm{d}E(\lambda) \\
+    \mathrm{d}E(\lambda) &= \text{operatorwertiges Integralmaß} \\
+    E(\lambda) &= \int_{-\infty}^{\lambda} \mathrm{d}E(\lambda') = \text{Projektionsoperator} \\
+    E(+\infty) &= \int_{-\infty}^\infty \mathrm{d}E(\lambda') = \mathbf{1}
+\end{align*}
+zerlegen können.
+In der Dirac-Notation ergibt sich entsprechend (bzw. ist gerechtfertigt)
+\begin{align*}
+    A &= \int \lambda \ket{\psi_\lambda} \bra{\psi_\lambda} \mathrm{d}\lambda \\
+    &= \sum \lambda \ket{\psi_\lambda} \bra{\psi_\lambda}
+\end{align*}
+Spektrum $\sigma(A)$ Wertebereich der $\lambda$ mit $\mathrm{d}E(\lambda) \neq 0$, d.h.
+\begin{align*}
+    \int_{-\infty}^\infty \rightarrow \int_{\sigma(A)}
+\end{align*}
+reicht aus.
+\begin{itemize}
+    \item diskrete Eigenwerte bzw. diskretes Spektrum: Integral $\rightarrow$ Summe, wobei $\ket{\psi_\lambda}$ normierbare Eigenvektoren $\in \mathcal{H}$ sind.
+    \item kontinuierliche Eigenwerte bzw. kontinuierliches Spektrum: Integral nötig, wobei $\ket{\psi_\lambda}$ nicht normierbare Eigenvektoren sind. Nun ist $\ket{\psi_\lambda}\bra{\psi_\lambda} \mathrm{d}\lambda = \mathrm{d}E(\lambda)$ streng sinnvoll.
+\end{itemize}
+
+\textbf{Unitäre Operatoren}
+Speziell: $U(t) = e^{i A t}$ wobei $A$ selbstadjungiert ist.
+Allgemeine Unitaritätsbedingung: $U(t) U^\dagger(t) \stackrel{\text{nicht selbstverst.}}{=} U^\dagger(t) U(t) = \mathbf{1}$
+
+Wichtige Operatoren für Streuproblem:
+\begin{itemize}
+    \item Freie Teilchen: freier Hamiltonian $H_0$, $D(H_0) \subset \mathcal{H}$, selbstadjungiert, nur kontinuierliches Spektrum (keine Bindungszustände).
+    \item Mit Wechselwirkung: $H =  H_0 + V$, $D(H) \subset \mathcal{H}$, selbstadjungiert, evtl. kontinuierliches (Streuzustände mit positiver Energie) und diskretes Spektrum (Bindungszustände). Das Spektrum ist nach unten beschränkt.
+\end{itemize}
+
+Optimal: $D(H) \cap D(H_0)$ dicht in $\mathcal{H}$
+
+Unitäre Operatoren: 
+\begin{align*}
+    U_0(t) &:= e^{-i H_0 t} \quad (t\in \mathbb{R}) \\
+    U(t) &:= e^{-i H t}
+\end{align*}
+
+\textbf{Resolvente / Greensche Operatoren}
+\begin{align*}
+    G_0(z) &= (z \mathbf{1} - H_0)^{-1} \quad (z \in \mathbb{C}) \\
+    G(z) &= (z \mathbf{1} - H)^{-1} 
+\end{align*}
+definiert $\forall z \notin \sigma(H_0)$ bzw. $z \notin \sigma(H)$ insbesondere für $z = r + i \gamma$ mit $\gamma \neq 0$.
+\begin{itemize}
+    \item $G$, $G_0$ existieren
+    \item alle Spektralwerte $\propto (r + i \gamma - E)^{-1}$ und damit $0 < |\text{Spektralwert}| \leq \frac{1}{\gamma}$.
+    \item beschränkte, invertierbare Operatoren. operatorwertige, analystische Funktionen von $z$
+\end{itemize}
+
+\section{Formell, allgemein Streutheorie}
+
+\subsection{Motivation, Übersicht}
+
+Fragen: 
+\begin{itemize}
+    \item Mathematisch: Existenz von Integralen, saubere Beweise bei z.B. der Integralgleichung $\propto G(\mathbf{x}- \mathbf{x}')$ 
+    \begin{align*}
+        \int \mathrm{d}^3 x' \frac{e^{i k |\mathbf{x} - \mathbf{x}_|}}{|\mathbf{x} - \mathbf{x}'|} V(\mathbf{x}') \psi_{\mathbf{k}} (\mathbf{x}')
+    \end{align*}
+    Selbst wenn $V$ und $\psi$ quadratintegrabel sind, ist das Integral $\propto \frac{1}{r}$ und das Ergebnis damit im Allgemeinen $\notin L^2$.
+    \item Physikalisch: Wellenpakete mit kleinen $\Delta x_{\text{trans}}$, $\Delta x_{\text{long}}$ und $\Delta p$ anstatt von ebenen Wellen 
+\end{itemize}
 
 \end{document}
