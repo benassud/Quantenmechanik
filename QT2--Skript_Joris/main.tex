@@ -1950,6 +1950,159 @@ Fragen:
     \end{align*}
     Selbst wenn $V$ und $\psi$ quadratintegrabel sind, ist das Integral $\propto \frac{1}{r}$ und das Ergebnis damit im Allgemeinen $\notin L^2$.
     \item Physikalisch: Wellenpakete mit kleinen $\Delta x_{\text{trans}}$, $\Delta x_{\text{long}}$ und $\Delta p$ anstatt von ebenen Wellen 
+    \item Physikalisch: Bedeutung des bisherigen $\Psi_{\mathbf{k}}$
+    \item Physikalisch: Weitere mögliche nützliche Relationen zwischen $H$, $V$, $\Psi_{\mathbf{k}}$, $f$ usw.
+    \item Physikalisch: Allgemeinere Situationen (Relativistisch/Mehrteilchen?)
 \end{itemize}
+
+\subsection{In-Zustände und S-Martix}
+
+Skizzentranskript: Zwei Teilchenstrahlen treffen aufeinander, Wechselwirkung findet statt, Detektoren messen das Ergebnis.
+
+Beschreibung:
+\begin{align*}
+    &\text{Impulsoperator}& \mathbf{p} \\
+    &\text{ ohne Ww}& H_0 &= \frac{\mathbf{p}^2}{2m} \\
+    &\text{ mit Ww}& H&= H_0 + V \\
+    &\text{freie Impuls-EZe} & \ket{\psi_{\mathbf{k}}} \\
+    && \mathbf{p}  \ket{\psi_{\mathbf{k}}} &= \mathbf{k}  \ket{\psi_{\mathbf{k}}} \\
+    && H_0  \ket{\psi_{\mathbf{k}}} &= \frac{\mathbf{k}^2}{2m}  \ket{\psi_{\mathbf{k}}} \\
+    &\text{freies Wellenpaket} & \ket{\psi_g(t)} &= \int \mathrm{d}^3k g(\mathbf{k}) e^{-i E_k t} \ket{\psi_{\mathbf{k}}} \\
+    && \int \mathrm{d}^3 k |g(\mathbf{k})|^2 &= 1
+\end{align*}
+wobei $g(\mathbf{k})$ bei $\mathbf{k}=\mathbf{p}$ einen Peak hat. 
+Die Unschärfe $\Delta p$ ist klein, im Ortstraum ist die Wellenfunktion bei $\pm \Delta x_{\text{long, trans}}$ lokalisiert.
+
+Forderungen Streuzustände, präpariert von Experimentalphysiker:
+
+Präpariert ist der Zustand $\ket{\psi_g(t)}$ (Schrödingerbild bzgl. $H$) so, dass Zustand für $t \rightarrow -\infty$ wie $\ket{\phi_g(t)}$ aussieht!
+Mathematisch ist starke Konvergenz
+\begin{align*}
+    \norm{\ket{\psi_g(t)} - \ket{\phi_g(t)}} \rightarrow 0 (t \rightarrow - \infty)
+\end{align*}
+
+Äquivalent:
+\begin{align*}
+    \ket{\psi_g(t)} &= U(t) \ket{\psi_g(0)}& \ket{\psi_g(0)} &:= \ket{\psi_g^H} \\
+    \ket{\phi_g(t)} &= U_0(t) \ket{\phi_g(0)}& \ket{\phi_g(0)} &:= \ket{\phi_g^H}
+\end{align*}
+und damit die Konvergenzbedingung:
+\begin{align*}
+    \norm{U(t) \ket{\psi_g^H} - U_0(t) \ket{\phi_g^H}} &\rightarrow 0 \\
+    \iff \norm{U_0^\dagger(t) U(t) \ket{\psi_g^H} - \ket{\phi_g^H}} &\rightarrow 0 \\
+    \iff \ket{\psi_g^I(t)} &\rightarrow \ket{\phi_g^H}
+\end{align*}
+
+Die obige Gleichung beschreibt einen asymptotisch ($t\rightarrow \infty$) freien Zustand, Zeistentwicklung ``stoppt'', Wechselwirkung irrelevant.
+
+\textbf{Entwicklung im Heisenberg-Bild}
+
+\begin{align*}
+    \ket{\psi_g^H} = \int \mathrm{d}^3 k g(\mathbf{k}) \ket{\psi_{\mathbf{k}}^{\text{in}}}
+\end{align*}
+\textbf{In-Zustände}, Definition von $\ket{\psi_{\mathbf{k}}^{\text{in}}}$.
+
+Bedeutung: $\ket{\psi_{\mathbf{k}}^{\text{in}}}$ definiert über diese Integrale, abstrahiert von Wellenpaketen $\ket{\psi_g^H}$.
+
+Heisenberg-Bild: zeitunabhängig, beschreiben System zu jeder Zeit (``Filmrolle''). 
+Zustand hat die Eigenschaft nach Faltung mit $g(\mathbf{k})$ asymptotisch in freie Wellenpakete für $t \rightarrow -\infty$ überzugehen.
+
+Diese $\ket{\psi_{\mathbf{k}}^{\text{in}}}$ sind natürlich keine echten $\mathcal{H}$-Elemente, genausowenig wie $\ket{\phi_{\mathbf{k}}}$, sondern nur die $\ket{\psi_g^H}$.
+Die Existenz von $\ket{\psi_{\mathbf{k}}^{\text{in}}}$ ist noch nicht streng bewiesen.
+Aber sie gilt in allen relevanten Theorien, inklusive relativistischer QFT. (obwohl dort das Ww-Bild nicht exisitert).
+
+\textbf{Out-Zustände}: analog $\ket{\psi_g(t)}$ mit 
+\begin{align*}
+    \ket{\psi_g(t)} - \ket{\phi_g(t)} &\rightarrow 0 (t \rightarrow +\infty) \\
+    \ket{\psi_g^H} &= \int \mathrm{d}^3 k g(\mathbf{k}) \ket{\psi_{\mathbf{k}}^{\text{out}}}
+\end{align*}
+Diese Zustände werden von den Detektoren gemessen.
+
+\textbf{S-Matrix}:
+\begin{align*}
+    \ket{i}&= \text{präparierte Anfangszustand, asympt. freies Teilchen} (t \rightarrow -\infty) \\
+    &= \int \mathrm{d}^3 k g_i(t) \ket{\psi_{\mathbf{k}}^{\text{in}}}\\
+    \ket{f}&= \text{Endzustand im Detektor, asympt. freies Teilchen} (t \rightarrow +\infty) \\
+    &= \int \mathrm{d}^3 k g_f(t) \ket{\psi_{\mathbf{k}}^{\text{out}}}
+\end{align*}
+
+\begin{align*}
+    S_{f i} &= \text{Wahrscheinlichkeitsamplitude bei Präparation von } \ket{i} \text{ am Ende } \ket{f} \text{ zu messen} \\
+    &= \braket{f}{e}
+\end{align*}
+
+Astraktion von Wellenpaketen:
+
+\begin{align*}
+    S_{\mathbf{k}' \leftarrow \mathbf{k}} &= \braket{\psi_{\mathbf{k}'}^{\text{out}}}{\psi_{\mathbf{k}}^{\text{in}}}
+\end{align*}
+
+\subsection{Existenz der M{\o}ller-Operatoren}
+
+\begin{align*}
+    \Omega_\pm := \text{M{\o}ller-Operatoren}
+\end{align*}
+
+\begin{align*}
+    U(t) &= e^{- i H t} & \ket{\psi^S(t)} &= U(t) \ket{\psi^H } \\
+    U_0(t) &= e^{- i H_0 t} & \ket{\psi^I(t)} &= U_0^\dagger(t) \ket{\psi^S(t) } \\
+    W(t) &= U^\dagger(t) U_0(t) 
+\end{align*}
+
+Erhoffe eine ``gutartige'' Situation: Alle Operatoren existieren und haben einen gemeinsamen Definitionsbereich und 
+\begin{align*}
+    \Omega_\pm &:= \lim_{t \rightarrow \mp \infty} W(t)
+\end{align*}
+existiert stark.
+D.h. $\forall \ket{\psi} \in \mathcal{H}$:
+\begin{align*}
+    \lim_{t \rightarrow \mp \infty} W(t) \ket{\psi} =: \Omega_\pm \ket{\psi}
+\end{align*}
+exisitert.
+
+\textbf{Theorem (Breuig, Haag, 1963; Kupsch, Sandhas)}
+
+Starker Limes existiert, falls $|V(r)| \leq \frac{C}{r^{1+\epsilon}} \forall \epsilon>0$.
+
+Beweis für einfacheren Fall: 
+\begin{itemize}
+    \item $V$ sogar quadratintegrabel $\int V^2 r^2 \mathrm{d}r < \infty$.
+    \item Zustand $\ket{\psi} \in \mathcal{H}$ sei Gaußsches Wellenpaket
+\end{itemize}
+
+Wellenpaket:
+\begin{align*}
+    \braket{\mathbf{k}}{\psi} &= e^{- \frac{\mathbf{k}^2}{2}\sigma} = g(\mathbf{k}) \\
+    \braket{\mathbf{x}}{\psi} &= \int \frac{\mathrm{d}^3 k}{(2\pi)^3} e^{- \frac{\mathbf{k}^2}{2}\sigma} e^{i \mathbf{k} \mathbf{x}} = \text{const. } \sigma^{-\frac{3}{2}} e^{-\frac{\mathbf{x^2}}{2 r}}
+\end{align*}
+
+Für Limes betrachte ``Cauchyfolge'', sehr negative $t_2 < t_1 < 0$ und bilde
+\begin{align*}
+    \norm{W(t_2) \ket{\psi} - W(t_1) \ket{\psi}} &=: \norm{X}
+\end{align*}
+\begin{align*}
+    X &= (W(t_2) - W(t_1)) \ket{\psi} = \left(\int_{t_1}^{t_2} \mathrm{d} t \frac{\mathrm{d} W(t)}{\mathrm{d}t}\right) \ket{\psi} \\
+    &= \int_{t_1}^{t_2} \mathrm{d}t e^{i H t} (i H - i H_0) e^{-i H_0 t} \ket{\psi} \\
+    \norm{X} &\leq \int_{t_1}^{t_2} \norm{V e^{-i H_0 t} \ket{\psi}}
+\end{align*}
+
+Wir benötigen wir 
+\begin{align*}
+    \braket{\mathbf{x}}{e^{-i H_0 t} | \psi} &=: \psi^0(t, \mathbf{x}) = \int \mathrm{d}^3 k \braket{\mathbf{x}}{\mathbf{k}} \braket{\mathbf{k}}{e^{-i H_0 t} | \psi} \\
+    \psi^0(\mathbf{x}, t) &= \int \frac{\mathrm{d}^3 k}{(2 \pi)^3} e^{-\frac{\mathbf{k}^2}{2} \sigma + i \mathbf{k} \mathbf{x} - i E_k t} \\
+     &= \int \frac{\mathrm{d}^3 k}{(2 \pi)^3} e^{-\frac{\mathbf{k}^2}{2}( \sigma + \frac{i}{m}t) i \mathbf{k} \mathbf{x}} \\
+     &= \text{const. } (\sigma + \frac{i}{m}t)^{-\frac{3}{2}} e^{-\frac{\mathbf{x}^2}{2}(\sigma + \frac{i}{2m}t)^{-1}} \\
+    |\psi^0(\mathbf{x}, t)| &\leq \text{const.}' t^{-\frac{3}{2}} \forall \mathbf{x}
+\end{align*}
+
+Damit folgt schließlich
+\begin{align*}
+    \implies \norm{V \ket{\psi^0(t)}}^2 = \int \mathrm{d}^3 x V^2(\mathbf{x}) |\psi^0(\mathbf{x}, t)|^2 \leq C t^{-3}
+\end{align*}
+und 
+\begin{align*}
+    \norm{X} &\leq C |t_1^{-\frac{1}{2}} - t_2^{-\frac{1}{2}}| <  C |t_1^{-\frac{1}{2}}|
+\end{align*}
+Damit ist $W(t) \ket{\psi}$ eine Cauchyfolge in $\mathcal{H}$ und konvergiert.
 
 \end{document}
