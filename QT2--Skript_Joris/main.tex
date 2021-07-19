@@ -2105,4 +2105,268 @@ und
 \end{align*}
 Damit ist $W(t) \ket{\psi}$ eine Cauchyfolge in $\mathcal{H}$ und konvergiert.
 
+\subsection{M{\o}ller, Analyse von Jauch (1958) bzw. Bell (1960)}
+
+Oft, z.B. für ein hinreichend schnell fallendes Potential $V$ gelten:
+
+\textbf{Postulate von Jauch:}
+\begin{itemize}
+    \item $\lim_{t \rightarrow \mp \infty} W(t) \ket{\psi} =: \ket{\psi_{\pm}} $ existiert im starken Sinne $\forall \ket{\psi} \in \mathcal{H}$
+    Entsprechend existieren die M{\o}ller Operatoren, die physikalische Idee ist dass $W(t) \ket{\phi_{\mathbf{k}}} \rightarrow \ket{\psi_{\mathbf{k}}^{\text{in, out}}}$
+    \item Die $\ket{\psi_+}$ und die $\ket{\psi_-}$ spannen den selben (Teil-)Raum $R = \{\ket{\psi_+}\} = \{ \ket{\psi_-} \}$ von $\mathcal{H}$ auf.
+    \item Es gilt: $H$ hat diskretes Spektrum (echte Eigenwerte, Bindungszustände) in Raum $\mathcal{H}_{\text{Bind}}$ und kontinuierliches Spektrum (Streuzustände) in Rest $R$. 
+    Entsprechend ist $\mathcal{H} = \mathcal{H}_{\text{Bind}} \oplus R$, d.h. $\ket{\psi_\pm}$ bilden das gesamte kontinuierliche Spektrum von $H$.
+\end{itemize}
+
+\textbf{M{\o}ller-Operatoren}
+\begin{align*}
+    \Omega_\pm :& \mathcal{H} \rightarrow R \\
+& \Omega_\pm \ket{\psi} = \lim_{t \rightarrow \mp \infty} W(t) \ket{\psi} =: \ket{\psi_\pm} \\
+\implies & \Omega_\pm = \lim_{t \rightarrow \mp \infty} W(t) (\text{stark})
+\end{align*}
+\begin{itemize}
+    \item $\Omega_\pm$ erhält die Norm: $\norm{\ket{\phi_\pm}} = \lim_{t \rightarrow \mp \infty} \norm{W(t) \ket{\phi}} = \norm{\ket{\phi}} $
+    \item $\Omega_\pm$ ist nicht unbedingt unitär: (falls $R \subsetneqq \mathcal{H}$, kann nicht $\Omega_+ \Omega_+^\dagger = \mathbf{1}_{\mathcal{H}}$ gelten)
+    \item Stattdessen: 
+    \begin{align*}
+        \Omega_\pm \Omega_\pm^\dagger &= P_R (\text{Projektionsoperator}) & \Omega_\pm^\dagger \Omega_\pm = \mathbf{1}_{\mathcal{H}} 
+    \end{align*}
+\end{itemize}
+
+Damit ergibt sich der unitäre $S$-Operator:
+\begin{align*}
+    \boxed{S = \Omega_-^\dagger \Omega_+} 
+\end{align*}
+\begin{align*}
+    S^\dagger S = S S^\dagger = \mathbf{1}_{\mathcal{H}}
+\end{align*}
+
+Zusammenhang mit In-Zuständen: 
+Klar $\underbrace{\lim_{t \rightarrow \mp \infty} W(t)}_{\Omega_\pm} \ket{\phi_g^H} = \ket{\psi_g^H}$
+
+Abstrahiert von den Wellenpaketen ergibt sich formal (mathematisch durch Faltung mit beliebigen Wellenpaketen) 
+\begin{align*}
+    \boxed{\Omega_\pm \ket{\phi_{\mathbf{k}}} = \ket{\psi_{\mathbf{k}}^{\text{in, out}}}}
+\end{align*}
+
+Die $S$-Matrix folgt analog
+\begin{align*}
+    \braket{\phi_{\mathbf{k}'}|S}{\phi_{\mathbf{k}}} = \braket{\psi_{\mathbf{k}'}^{\text{out}}}{\psi_{\mathbf{k}}^{\text{in}}} = S_{\mathbf{k}' \leftarrow \mathbf{k}}
+\end{align*}
+Alle Größen sind mathematisch sinnvoll, ihre Existenz ist gesichert.
+
+\subsubsection{Intertwining-Eigenschaft, Eigenwerte}
+
+\begin{align*}
+    \underbrace{\frac{\mathrm{d}}{\mathrm{d}t}W(t)}_{\rightarrow 0 (t \rightarrow \mp \infty)} = i H W(t) - i W(t) H_0 
+\end{align*}
+\begin{align*}
+    \implies \boxed{H \Omega_\pm = \Omega_\pm H_0}
+\end{align*}
+
+Damit lassen sich Aussagen über die Spektren der M{\o}ller-operatoren finden.
+\begin{align*}
+    H_0 \ket{\phi_{\mathbf{k}}} = E_{\mathbf{k}} \ket{\phi_{\mathbf{k}}} \\
+    \implies H \ket{\psi_{\mathbf{k}}^{\text{\text{in, out}}}} = E_{\mathbf{k}} \ket{\psi_{\mathbf{k}}^{\text{\text{in, out}}}}
+\end{align*}
+als kontinuierliches Spektrum von $H$.
+
+\subsection[Integralgleichung für $\Omega$, Lippmann-Schwinger Gleichung]{Integralgleichung für $\mathbf{\Omega}$, Lippmann-Schwinger Gleichung}
+
+Integralgleichung: 
+\begin{align*}
+    \Omega_+ &= \lim_{\epsilon \rightarrow 0_+} \left(\epsilon \int_{-\infty}^0 e^{\epsilon t} W(t) \mathrm{d}t \right) \\
+    &= \lim_{\epsilon \rightarrow 0_+} \left(\epsilon \int_{-\infty}^0 e^{i H t} e^{-i (H_0 + i \epsilon) t} \mathrm{d}t \right)
+\end{align*}
+mit $\Sigma_+^\dagger$ und $\Sigma_-$ analog.
+
+Die \textbf{Lippmann-Schwinger-Gleichung} ergibt sich dann mit
+\begin{align*}
+    \ket{\psi_{\mathbf{k}}^{\text{in, out}}} = \ket{\phi_{\mathbf{k}}} + \lim_{\epsilon \rightarrow 0_+} \frac{1}{E_k - H_0 \pm i \epsilon} V \ket{\psi_\mathbf{k}^{\text{in, out}}}
+\end{align*}
+\begin{itemize}
+    \item Die Integralgleichung folgt streng, falls die Jauch-Postulate gültig sind
+    \item Lippmann-Schwinger-Gleichung ist formal und gilt für die Faltung mit Wellenpaketen
+\end{itemize}
+
+\subsubsection{Beweis-Skizze}
+
+Wähle $\ket{\psi} \in \mathcal{H}$ o.B.d.A. normiert mit Norm $=1$.
+
+Frage: $\lim_{\epsilon\rightarrow 0+}\left(\underbrace{\epsilon \int_{-\infty}^0 e^{\epsilon t} W(t) \ket{\psi} \mathrm{d}t - \Sigma_+ \ket{\psi}}_{=: X} \right) = 0$ ?
+
+Mit $\tau = \epsilon t$, $\mathrm{d}\tau = \epsilon \mathrm{d} t$ ergibt sich
+\begin{align*}
+    X &= \int_{-\infty}^0 e^\tau W(\frac{\tau}{\epsilon}) \ket{\psi} \mathrm{d} \tau - \int_{-\infty}^0 e^\tau \mathrm{d} \tau \ket{\psi_+} \\
+    &= \int_{-\infty}^0 e^{\tau} (W(\frac{\tau}{\epsilon})\ket{\psi} - \ket{\psi_+}) \mathrm{d} \tau \\
+    &= \underbrace{\int_{-\sigma}^0 e^{\tau} \underbrace{(W(\frac{\tau}{\epsilon})\ket{\psi} - \ket{\psi_+})}_{\text{Norm} \leq 2} \mathrm{d} \tau}_{\text{Norm} \leq 2 |\sigma|} + \int_{-\infty}^{-\sigma} e^{\tau} (W(\frac{\tau}{\epsilon})\ket{\psi} - \ket{\psi_+}) \mathrm{d} \tau 
+\end{align*}
+Sei $\delta > 0$ beliebig. 
+Dann können wir beide Summanden im zweiten Integral abschätzen.
+Wähle $\sigma < \frac{\delta}{4}$, dann ist die Norm des linken Integrals $\leq \frac{\delta}{2}$.
+Nach den Voraussetzungen exisitert ein $T$, so dass $\norm{W(t) \ket{\psi} - \psi_+} \leq \frac{\delta}{4}$ $\forall t < -T$.
+Wählen wir schließlich $\frac{\sigma}{\epsilon}>T$, d.h. $\epsilon < \frac{\sigma}{T} < \frac{\delta}{4 T}$ folgt dass die Norm des rechten Integrals $< \frac{\delta}{4}$ ist.
+
+Es gilt also $\forall \epsilon < \frac{\delta}{4 \pi}: \norm{\ldots} < \delta$, d.h. der Limes ist bewiesen.
+
+\subsubsection{Beweisskizze für Lippmann-Schwinger-Gleichung}
+
+Integralgleichung auf $\ket{\phi_{\mathbf{k}}}$ liefert $H_0 = E_k = \frac{k^2}{2m}$.
+\begin{align*}
+    \Omega_+ \ket{\phi_{\mathbf{k}}} &= \lim \epsilon \int_{-\infty}^0 e^{i H t} e^{-i (E_k + i \epsilon) t} \ket{\phi_{\mathbf{k}}} \\
+    &= \lim \epsilon \int_{-\infty}^0 e^{-i (E_k - H + i \epsilon) t} \ket{\phi_{\mathbf{k}}} \\
+    &= \lim \epsilon \left[ \frac{1}{-i (E_k - H + i \epsilon)} e^{-i (E_k - H + i \epsilon) t}\right]_{-\infty}^0 \ket{\phi_{\mathbf{k}}} \\
+    &= \lim i \epsilon \frac{1}{-i (E_k - H + i \epsilon)} \ket{\phi_{\mathbf{k}}}
+\end{align*}
+Der entstandene Operator entspricht der Resolvente von $H$.
+\begin{align*}
+    \boxed{\Omega_+  \ket{\phi_{\mathbf{k}}} = \lim i \epsilon G(E_k + i \epsilon)  \ket{\phi_{\mathbf{k}}}}
+\end{align*}
+
+Resolventengleichung:
+\begin{align*}
+    G - G_0 = G_0 V G = G V G_0 
+\end{align*}
+aus $G_0 (G_0^{-1} - G^{-1}) G$.
+
+Hier aus $ \ket{\phi_{\mathbf{k}}}$ angewandt:
+\begin{align*}
+    i \epsilon G(E_k + i \epsilon) &= i \epsilon G_0 (E_k + i \epsilon) + G_0 V i \epsilon G(E_k + i \epsilon) = \frac{i \epsilon}{E_k + i \epsilon - E_k} + G_0 V i \epsilon G(E_k + i \epsilon) \\
+    &= \mathbf{1} + G_0 V i \epsilon G(E_k + i \epsilon)
+\end{align*}
+
+Damit ergibt sich für die oben eingerahmte Gleichung
+\begin{align*}
+    \Omega_+  \ket{\phi_{\mathbf{k}}} =  \ket{\phi_{\mathbf{k}}} + G_0 V i \epsilon G \ket{\phi_{\mathbf{k}}} =  \ket{\phi_{\mathbf{k}}} + G_0 V \Omega_+  \ket{\phi_{\mathbf{k}}}
+\end{align*}
+mit $\Omega_+  \ket{\phi_{\mathbf{k}}} = \ket{\psi_{\mathbf{k}}^{\text{in}}}$ folgt 
+\begin{align*}
+    \ket{\psi_{\mathbf{k}}^{\text{in}}} = \ket{\phi_{\mathbf{k}}} + \frac{1}{E_k - H_0 + i \epsilon} V \ket{\psi_{\mathbf{k}}^{\text{in}}}
+\end{align*}
+
+\subsection{Lippmann-Schwinger-Gleichung und S-Matrix}
+
+Zur Erinnerung:
+\begin{align*}
+    S_{\mathbf{k} \leftarrow \mathbf{k}'} = \braket{\psi_{\mathbf{k}'}^{\text{out}}}{\psi_{\mathbf{k}}^{\text{in}}}
+\end{align*}
+
+Aus der LS-Gleichung folgt 
+\begin{align*}
+    \psi_{\mathbf{k}}^{\text{in,out}} = \ket{\phi_{\mathbf{k}}} + G(E_k \pm i\epsilon) V \ket{\phi_{\mathbf{k}}} 
+\end{align*}
+und damit
+\begin{align*}
+    \ket{\psi_{\mathbf{k}}^{\text{in}}} = \ket{\psi_{\mathbf{k}}^{\text{out}}} + \underbrace{(G(E_k + i \epsilon) - G(E_k - i \epsilon))}_{\text{Zeitentwicklung von }t=-\infty\ldots\infty} V \ket{\phi_{\mathbf{k}}}
+\end{align*}
+Multiplizieren wir von links mit $\ket{\psi_{\mathbf{k}'}^{\text{out}}}$ ergibt sich
+\begin{align*}
+    S_{\mathbf{k}' \leftarrow \mathbf{k}} &= \braket{\psi_{\mathbf{k}'}^{\text{out}}}{\psi_{\mathbf{k}}^{\text{out}}} + \ket{\psi_{\mathbf{k}'}^{\text{out}}} \underbrace{\left( \frac{1}{E_k + i \epsilon - E_{k'}} - \frac{1}{E_k - i\epsilon - E_{k'}} \right)}_{\text{Klammer}} V \ket{\phi_{\mathbf{k}}} \\
+    \text{Klammer} &= \frac{-2 i \epsilon}{(E_k - E_{k'})^2 + \epsilon^2} \rightarrow -2 i \pi \delta(E_k - E_{k'})
+    S_{\mathbf{k}' \leftarrow \mathbf{k}} &= \braket{\psi_{\mathbf{k}'}^{\text{out}}}{\psi_{\mathbf{k}}^{\text{out}}} - 2 \pi i \delta(E_k - E_{k'}) T_{\mathbf{k}' \leftarrow \mathbf{k}}
+\end{align*}
+Die neue Größe $T$ beschreibt dabei den interessanten Steuanteil
+\begin{align*}
+    T_{\mathbf{k}' \leftarrow \mathbf{k}} = \braket{\psi_{\mathbf{k}}^{\text{out}}|V}{\phi_{\mathbf{k}}} = \braket{\phi_{\mathbf{k}'}|V}{\psi_{\mathbf{k}'}^{\text{in}}}
+\end{align*}
+
+\subsection[Zusammenfassung mit $f(\theta, \phi)$]{Zusammenfassung mit $f(\theta, \phi)$}
+
+Wieder ein hinreichend schnell abfallendes $V$ 
+
+Ortsraum:
+\begin{align*}
+    \braket{\mathbf{x}}{\phi_{\mathbf{k}}} &= e^{i \mathbf{k} \mathbf{x}} \\    
+    \braket{\mathbf{x}}{\psi_{\mathbf{k}}^{\text{in}}} &= \psi_{\mathbf{k}}^{\text{in}}(\mathbf{x}) \\
+    \braket{\mathbf{x}|G_0(E_k + i \epsilon)}{\mathbf{x}'} &= -\frac{2m}{4\pi} \frac{e^{i k |\mathbf{x} - \mathbf{x}'}}{|\mathbf{x} - \mathbf{x}'|}
+\end{align*}
+
+Ortsraumdarstellung von $G_0(E_k + i \epsilon)$ ist gerade die auslaufende Kugelwelle aus 3.2 und 3.3!
+
+Umgekehrt $\lim_{\epsilon \rightarrow 0_+} G_0(E_k + i \epsilon)$ ist die Operatorversion von $-\frac{2m}{4\pi} \frac{e^{i k |\mathbf{x} - \mathbf{x}'}}{|\mathbf{x} - \mathbf{x}'|}$.
+
+LS-Gleichung allgemein:
+\begin{align*}
+    \ket{\psi_{\mathbf{k}}^{\text{in}}} = \ket{\phi_{\mathbf{k}}} + \lim_{\epsilon \rightarrow 0_+} G_0(E_k + i \epsilon) V \ket{\phi_{\mathbf{k}}^{\text{in}}} \\
+    \psi_{\mathbf{k}}^{\text{in}}(\mathbf{x}) = e^{i \mathbf{k} \mathbf{x}} - \frac{2m}{4\pi} \int \mathrm{d}^3 x' \frac{e^{i k |\mathbf{x} - \mathbf{x}'}}{|\mathbf{x} - \mathbf{x}'|} V(\mathbf{x}') \psi_{\mathbf{k}}^{\text{in}}(\mathbf{x'})
+\end{align*}
+Aus dem Vergleich zu 3.2.1 folgt 
+\begin{align*}
+    f(\theta, \phi) = -\frac{m}{2\pi} T_{\mathbf{k}' \leftarrow \mathbf{k}}
+\end{align*}
+
+Bornsche Näherung: iteriere LS-Gleichung mit $G_0 \equiv G_0(E_k + i \epsilon)$
+
+\begin{align*}
+    \ket{\psi_{\mathbf{k}}^{\text{in}}} &= \ket{\phi_{\mathbf{k}}} + G_0 V \ket{\psi_{\mathbf{k}}^{\text{in}}} \\ 
+    &= \ket{\phi_{\mathbf{k}}} + G_0 V \ket{\phi_{\mathbf{k}}} +  G_0 V G_0 V \ket{\phi_{\mathbf{k}}} + G_0 V G_0 V G_0 V \ket{\phi_{\mathbf{k}}} + \ldots
+\end{align*}
+
+Optisches Theorem allgemein $\iff$ Unitarität der $S$-Matrix.
+\begin{align*}
+    S^\dagger S &= \mathbf{1} \\
+    \iff (\mathbf{1} + i T^\dagger) (\mathbf{1} - i T) &= \mathbf{1} \\
+    \iff -i (T^\dagger - T) &= T^\dagger T
+\end{align*}
+mit $S = \mathbf{1} - i T$ wobei $\braket{\phi_{\mathbf{k}'}|T}{\phi_{\mathbf{k}}} = 2 \pi \delta(E_{k'} - E_k)$.
+
+\section{Weiteres zur allgemeinen Streutheorie}
+
+\subsection{Formulierung im Ww-Bild}
+
+Physikalische Frage: 
+\begin{align*}
+    S_{\mathbf{k}' \leftarrow \mathbf{k}} = \braket{\phi_{\mathbf{k}'}^{\text{out}}}{\phi_{\mathbf{k}}^{\text{in}}} = \braket{\phi_{\mathbf{k}'} | S}{\phi_{\mathbf{k}}} 
+\end{align*}
+
+Allgemeines Wechselwirkungsbild:
+\begin{align*}
+    &\text{Schrö.-Bild:} & \ket{\phi^S(t)} \\
+    &\text{Heis.-Bild:} & \ket{\phi^H} &= U^\dagger(t) \ket{\phi^S(t)} \\
+    &\text{Dirac/Ww.-Bild:} & \ket{\phi^I(t)} &= U_0^\dagger(t) \ket{\phi^S(t)} \\
+    &&&=W^\dagger(t) \ket{\phi^H}
+\end{align*}
+
+Zeitentwicklung im Ww.-Bild:
+\begin{align*}
+    \ket{\psi^I (t_1)} = U_I(t_1 ,t_0) \ket{\psi^I(t_0)}
+\end{align*}
+mit unitärem Operator $U_I (t_1, t_0)$.
+
+Einerseits gilt per Definition
+\begin{align*}
+    U_I(t_1, t_0) &= W^\dagger (t_1) W(t_0) \\
+    U_I(t_0, t_0) &= \mathbf{1}
+\end{align*}
+
+Andererseits gilt folgende ``Schrödingergleichung'':
+\begin{align*}
+    i \frac{\dif}{\dif t} U_I(t, t_0) &= i \frac{\dif}{\dif t} (e^{i H_0 t} e^{-i H t} W(t_0)) \\
+    &= e^{i H_0 t} (-H_0+ H) e^{-i H t} W(t_0) \\
+    &= e^{i H_0 t} V e^{-i H_0 t} \underbrace{e^{i H_0 t} e^{-i H t} W(t_0)}_{U_I}
+\end{align*}
+\begin{align*}
+    \boxed{i \frac{\dif}{\dif t} U_I = V(t) U_I(t, t_0)}
+\end{align*}
+mit $V_I(t) = e^{i H_0 t} V e^{-i H_0 t}$
+
+\subsubsection{Zusammenhang mit Streuproblem}
+\begin{align*}
+    S_{\mathbf{k}' \leftarrow \mathbf{k}} = \braket{\phi_{\mathbf{k}'}^{\text{out}}}{\phi_{\mathbf{k}}^{\text{in}}} 
+\end{align*}
+
+Schreibe: 
+\begin{align*}
+    \ket{\psi_{\mathbf{k}}^{\text{in}}} &= W(t_0) \ket{\psi_{\mathbf{k}}^{\text{in}, I}(t_0)} \\
+    \ket{\psi_{\mathbf{k}'}^{\text{out}}} &= W(t_1) \ket{\psi_{\mathbf{k}'}^{\text{out}, I}(t_1)}
+\end{align*}
+\begin{align*}
+    \implies S_{\mathbf{k}' \leftarrow \mathbf{k}} = \braket{\phi_{\mathbf{k}'}^{\text{out},I}(t_1) | U_I(t_1, t_0) }{\phi_{\mathbf{k}}^{\text{in},I}(t_0)} 
+\end{align*}
+Präparierter Anfangszustand:
+\begin{align*}
+    \ket{\psi_{\mathbf{k}}^{\text{in}, I}(t_0)} = W^\dagger(t_0) \Omega_+ \ket{\phi_{\mathbf{k}}} \rightarrow \ket{\phi_{\mathbf{k}}} \quad (t \rightarrow -\infty)
+\end{align*}
+
+
 \end{document}
