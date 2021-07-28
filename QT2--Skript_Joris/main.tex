@@ -1561,6 +1561,25 @@ $$f^{(n)}=-\frac{m}{2\pi}\int\dif^3x'e^{-i\vk\cdot\vx } V(\vx')\psi_\vk^{(n-1)}(
 Besonders interessant: 1. Bornsche Näherung
 $$f^{(1)}=-\frac{m}{2\pi}\int\dif^3x'\:e^{i(\vk -\vk')\vx'}V(\vx )$$
 
+Die Streuamplitude ergibt sich aus der Fouriertransformation des Potentials:
+\begin{align*}
+    V(\vec{x}) &= \int \frac{\dif^3 q}{(2\pi)^3} e^{i \vec{q} \vec{x}} \tilde{V}(\vec{q}) \\
+    V(\vec{q}) &= \int \dif^3 x e^{-i \vec{q} \vec{x}} \tilde{V}(\vec{x}) \\
+    f^{(1)}(\vec{e}_k') &= -\frac{m}{2 \pi} \tilde{V}(\vec{k}' - \vec{k}) 
+\end{align*}
+
+Beispiele:
+\begin{table}[htb]
+    \centering
+    \begin{tabular}{lccc}
+        & $V$ & DGl & $\tilde{V}$ \\
+        Coulomb & $\frac{1}{4 \pi r}$ & $\Delta V = -\delta^3$ & $\frac{1}{\vec{q}^2}$ \\
+        Yukawa & $\frac{e^{-M r}}{4 \pi r}$ & $(\Delta - M^2) V = -\delta^3$ & $\frac{1}{\vec{q}^2 + M^2}$ \\
+        Delta & $\delta^3(\vec{x})$ &  & $1$ \\
+        Ladungsvert. & $\int \dif^3 x \frac{\rho(\vec{x})}{4 \pi |\vec{x} - \vec{x}'|}$ & $\Delta V = - \rho$ & $\frac{\tilde{\rho}}{\vec{q}^2}$ \\
+    \end{tabular}
+\end{table}
+
 \section{Mathematische Methoden - Funktionen in drei oder weniger dimensionaler Physik}
 
 \subsection{Komplexe und reelle Analysis}
