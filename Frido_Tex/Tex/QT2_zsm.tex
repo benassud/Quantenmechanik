@@ -7,10 +7,13 @@
 \usepackage{graphicx}
 \usepackage{latexsym}
 \usepackage{xfrac}
+\usepackage{physics}
 \usepackage{tikz}
 \usepackage{bbold}
 \usepackage{cancel}
 \usepackage[left=3cm,right=2cm,top=1cm,bottom=1.2cm]{geometry}
+
+\newcommand{\dif}{\mathrm{d}}
 
 \begin{document}
 \section{Ein-Teilchen}
@@ -138,6 +141,8 @@
     &&&D^\mu \psi := (\partial^\mu-ieA^\mu)\psi \qquad P^\mu\psi \to \text{e}^ie\theta(x)D\mu \psi\\
 \end{align*}
 
+Sinnvolle Rechenregel: $(\vec{\sigma} \vec{A}) (\vec{\sigma} \vec{B}) = \vec{A} \vec{B} + i \vec{\sigma} (\vec{A} \times \vec{B})$
+
 \section*{Viel-Teilchen}
 \subsection*{Symetrisierungsoperator}
 \begin{align*}
@@ -153,4 +158,69 @@
    &\text{Bosonen:} \mathcal{H}_0 \oplus \mathcal{H}_1 \oplus \mathcal{H}_2^\pm \oplus \mathcal{H}_3^\pm\ldots
    && \text{Fermionen:} \mathcal{H}_0 \oplus \mathcal{H}_1 \oplus \mathcal{H}_2^\mp \oplus \mathcal{H}_3^\mp\ldots\\
 \end{align*}
+
+\subsection*{Erzeugungs- und Vernichtungsoperatoren}
+
+Bosonen: $[a_n, a_m^\dagger] = \delta_{n m}$, $[a_n^\dagger, a_m^\dagger] = 0$, $[a_n, a_m] = 0$.
+
+Fermionen: $\{a_n, a_m^\dagger\} = \delta_{n m}$, $\{a_n^\dagger, a_m^\dagger\} = 0$, $\{a_n, a_m\} = 0$.
+
+In Teilchenzahldarstellung: 
+\begin{align*}
+    a_r^\dagger \ket{\ldots n_r \ldots}^{(+)} &= \sqrt{n_r + 1} \ket{\ldots n_r+1 \ldots}^{(+)} \\
+    a_r \ket{\ldots n_r \ldots}^{(+)} &= \sqrt{n_r} \ket{\ldots n_r-1 \ldots}^{(+)} \\
+    a_r^\dagger \ket{\ldots n_r \ldots}^{(-)} &= (-1)^{N_r} \delta_{n_r, 0} \ket{\ldots n_r+1 \ldots}^{(-)} \\
+    a_r \ket{\ldots n_r \ldots}^{(-)} &= (-1)^{N_r} \delta_{n_r, 1}  \ket{\ldots n_r-1 \ldots}^{(-)}
+\end{align*}
+
+Besetzungszahloperator: $n_m = a_m^\dagger, a_m$
+
+Teilchenzahloperator: $N = \sum_m n_m$ mit den Vertauschungsrelationen $[N, a_j^\dagger] = a_j^\dagger$, $[N, a_j] = -a_j$, $[N, H] = 0$.
+
+\section*{Streuung}
+
+\begin{align*}
+    &\text{Ansatz}& \Psi &= e^{i k x} + f(\theta, \phi) \frac{e^{i k r}}{r}
+\end{align*}
+löst die Schrödingergleichung $H\Psi = E\Psi$ mit $E = \frac{\hbar^2 k^2}{2 m}$.
+\begin{align*}
+    &\text{Diff. Wirkungsquerschnitt}& \dif \sigma &= |f(\theta, \phi)|^2 \dif \Omega \\
+    &\text{Lippmann-Schwinger-Gl.} & \Psi_k(x) &= \underbrace{e^{i k x}}_{\text{hom. Lsg.}} + \underbrace{\int \dif^3 x' G(x - x') v(x') \Psi_k(x')}_{\text{Falt. mit Greenfkt. von } (\Delta + k^2)} \\
+    & \text{Greensche Funktion} & G(x) &= -\frac{e^{i k |x|}}{4\pi |x|} \\
+    &\text{Streuamplitude} & f(\theta, \phi) &= -\frac{1}{4\pi} \int \dif^3 x' e^{-i \vec{k} \vec{x}'} v(\vec{x}) \psi_k(\vec{x})
+\end{align*}
+
+Bornsche Näherung durch rekursives Einsetzen:
+\begin{align*}
+    &\text{1. Näherung}& f^{(1)}(\vec{k}' - \vec{k} := \vec{q}) &= -\frac{m}{2\pi} \int \dif^3 x' e^{i \vec{q} \vec{x}'} V(\vec{x}')
+\end{align*}
+
+Beispiele:
+\begin{table}[htb]
+    \centering
+    \begin{tabular}{lccc}
+        & $V$ & DGl & $\tilde{V}$ \\
+        Coulomb & $\frac{1}{4 \pi r}$ & $\Delta V = -\delta^3$ & $\frac{1}{\vec{q}^2}$ \\
+        Yukawa & $\frac{e^{-M r}}{4 \pi r}$ & $(\Delta - M^2) V = -\delta^3$ & $\frac{1}{\vec{q}^2 + M^2}$ \\
+        Delta & $\delta^3(\vec{x})$ &  & $1$ \\
+        Ladungsvert. & $\int \dif^3 x \frac{\rho(\vec{x})}{4 \pi |\vec{x} - \vec{x}'|}$ & $\Delta V = - \rho$ & $\frac{\tilde{\rho}}{\vec{q}^2}$ \\
+    \end{tabular}
+\end{table}
+
+\subsection*{Partialwellenmethode}
+
+Lösung der Schrödingergleichung $\frac{1}{r} \partial_r^2 (r R(r)) + (k^2 - \frac{l(l+1)}{r})R(r) = v(r) R(r)$ für den Radialteil $R(r)$ der Wellenfunktion über Bessel- $j_l$ und Neumannfunktionen $n_l$.
+
+Für $r\rightarrow \infty$ ist $r R(r) \propto \sin \left(kr - l\frac{\pi}{2} + \delta_l\right)$.
+
+Falls $\delta_l$ bekannt gilt für $r \rightarrow \infty$:
+\begin{align*}
+    \psi(r, \theta, \phi) &= \sum_l \frac{2 l + 1}{2 k} \left( \left[ -i + 2 e^{i \delta_l} \sin \delta_l \right] \frac{e^{i k r}}{r} + i (-1)^l \frac{e^{-i k r}}{r}\right) P_l(\cos \theta) \\
+    e^{i \mathbf{k} \mathbf{x}} &= \sum_l \frac{2 l + 1}{2 k} \left( -i \frac{e^{i k r}}{r} + i (-1)^l \frac{e^{-i k r}}{r}\right) P_l(\cos \theta) \\
+    f(\theta) &= \sum_l \frac{2 l + 1}{ k}  e^{i \delta_l} \sin \delta_l  P_l(\cos \theta) \\
+    \frac{\mathrm{d} \sigma}{\mathrm{d} \Sigma} &= |f(\theta)|^2 = \sum_{l l'} \frac{(2 l + 1)(2 l' + 1)}{k^2} e^{i \delta_l - i \delta_{l'}} \sin \delta_l \sin \delta_{l'} P_l P_{l'} \\
+    \sigma &= \int \mathrm{d}\sigma = \int \mathrm{d} \Sigma |f(\theta)|^2 = 2\pi \int_{-1}^1 \mathrm{d}\cos \theta |f(\theta)|^2 =\frac{4\pi}{k^2} \sum_l (2 l + 1) \sin^2 \delta_l 
+\end{align*}
+Optisches Theorem: $\sigma = \frac{4\pi}{k} Im f(\theta = 0)$
+
 \end{document}
